@@ -3,7 +3,8 @@ $(window).load(function(){
 	$('.loading').addClass('loading_hide');
 	$('html').css({overflowY: 'auto'})
 	setTimeout(function(){$('.loading').remove()},500);//删除加载页
-
+});
+function about(){
 	var wTop = $(window).scrollTop();//文档对顶部偏移
 	var wHeight = $(window).height();//窗口高度
 	var h = $('.banner').height();
@@ -81,4 +82,5 @@ $(window).load(function(){
 		content();
 		goback();
 	});
-})
+}
+about();

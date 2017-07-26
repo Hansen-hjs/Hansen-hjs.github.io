@@ -4,8 +4,9 @@ $(window).load(function(){
 	$('html').css({overflowY: 'auto'})
 	setTimeout(function(){$('.loading').remove()},500);//删除加载页
 	setTimeout(function(){$('.text').removeClass('text_hide')},800);
-
-	var wTop = $(window).scrollTop();//文档对顶部偏移
+});
+function community(){
+		var wTop = $(window).scrollTop();//文档对顶部偏移
 	var wHeight = $(window).height();//窗口高度
 	var value = 2;//焦点图的比值
 	var w = $(window).width();//窗口宽度
@@ -110,5 +111,5 @@ $(window).load(function(){
 		content();
 		goback();
 	});
-
-});
+}
+community()

@@ -13,6 +13,8 @@
 <script src="js/jQuery.js"></script>
 <script>
 	document.documentElement.style.fontSize =document.documentElement.clientWidth / 7.5 + 'px';
+	document.oncontextmenu=new Function("event.returnValue=false;");
+	document.onselectstart=new Function("event.returnValue=false;");
 	function inde() {location.href="index.html"}
 	function aow() {location.href="aow.html"}
 	function pgs() {location.href="pgs.html"}

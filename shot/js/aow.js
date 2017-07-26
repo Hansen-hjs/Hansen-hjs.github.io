@@ -5,7 +5,8 @@ $(window).load(function(){
 	setTimeout(function(){$('.loading').remove()},500);//删除加载页
 	setTimeout(function(){$('.text').removeClass('text_hover')},800);
 	setTimeout(function(){$('.text h2').addClass('h2_hover');$('.text p').addClass('p_hover')},1700);
-
+});
+function aow(){
 	var wTop = $(window).scrollTop();//文档对顶部偏移
 	var wHeight = $(window).height();//窗口高度
 	var value = 2;//焦点图初始的比值
@@ -21,7 +22,6 @@ $(window).load(function(){
 	}
 	windowSize();
 	var h = w/value;
-
 	$('.banner').css({height: h});//焦点图
 	//窗口变动事件
 	$(window).resize(function(){
@@ -31,7 +31,7 @@ $(window).load(function(){
 		windowSize();
 		h = w/value;
 	 	$('.banner').css({height:h});
-	})
+	});
 	//手机按钮事件
 	$(".menu_btn").toggle(
 	  function () {
@@ -117,4 +117,5 @@ $(window).load(function(){
 		content();
 		goback();
 	});
-});
+}
+aow();

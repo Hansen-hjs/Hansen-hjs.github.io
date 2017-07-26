@@ -5,7 +5,8 @@ $(window).load(function(){
 	setTimeout(function(){$('.loading').remove()},500);//删除加载页
 	setTimeout(function(){$('.text').removeClass('text_hover')},800);
 	setTimeout(function(){$('.text i').removeClass('i_hover')},1500);
-
+});
+function pgs(){
 	var wTop = $(window).scrollTop();//文档对顶部偏移
 	var wHeight = $(window).height();//窗口高度
 	var value = 2;//焦点图初始的比值
@@ -96,5 +97,5 @@ $(window).load(function(){
 		content();
 		goback();
 	});
-
-});
+}
+pgs();

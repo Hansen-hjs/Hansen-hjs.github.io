@@ -3,7 +3,8 @@ $(window).load(function(){
 	$('.loading').addClass('loading_hide');
 	$('html').css({overflowY: 'auto'})
 	setTimeout(function(){$('.loading').remove()},500);//删除加载页
-
+});
+function index(){
 	var wTop = $(window).scrollTop();//文档对顶部偏移
 	var wHeight = $(window).height();//窗口高度
 	var value = 2;//焦点图的比值
@@ -19,7 +20,6 @@ $(window).load(function(){
 	}
 	windowSize();
 	var h = w/value;
-
 	$('.banner').css({height: h});//焦点图
 	//窗口变动事件
 	$(window).resize(function(){
@@ -29,7 +29,18 @@ $(window).load(function(){
 		windowSize();
 		h = w/value;
 		$('.banner').css({height:h});
-	})
+	});
+	//导航事件
+	function menu(){
+		if (wTop > h-100) {
+			$('header').addClass('header');
+			$('#logo').css({padding:'0px 30px'});
+		}else{
+			$('header').removeClass('header');
+			$('#logo').css({padding:'15px 30px'});
+		}
+	}
+	menu();
 	//手机按钮事件
 	$(".menu_btn").toggle(
 	  function () {
@@ -47,17 +58,6 @@ $(window).load(function(){
 	    setTimeout(function(){$('.phone_menu').hide()},410); 
 	  }
 	)
-	//导航事件
-	function menu(){
-		if (wTop > h-100) {
-			$('header').addClass('header');
-			$('#logo').css({padding:'0px 30px'});
-		}else{
-			$('header').removeClass('header');
-			$('#logo').css({padding:'15px 30px'});
-		}
-	}
-	menu();
 	//banner事件
 	function banner(bannerLi,bannerSpan){
 		var bLi = 0;
@@ -83,6 +83,7 @@ $(window).load(function(){
 	}
 	banner(".banner li",".banner span");
 	setTimeout(function(){$('.banner em').addClass('em_move')},2500);
+
 	//文字显示事件
 	function text(){
 			var $text = $('section .text');
@@ -93,13 +94,14 @@ $(window).load(function(){
 				}
 			})
 	}
-	setTimeout(text,800)
+	setTimeout(text,800);
 	//图片显示事件
 	function photo(){
 		var $photo = $('.photos span');
 		$photo.each(function(index,span){
-			if (wTop + wHeight > $(span).offset().top) {
-				$(span).css({transform: "translate(0,0)", opacity: 1})
+			if (wTop + wHeight > span.offsetTop) {
+				span.style.transform ='translate(0,0)';
+				span.style.opacity = 1;
 			}
 		})
 	}
@@ -173,6 +175,20 @@ $(window).load(function(){
 		photo();
 		album();
 		goback();
-	});
+	})
+}
+index();	
+	
+	
 
-})
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

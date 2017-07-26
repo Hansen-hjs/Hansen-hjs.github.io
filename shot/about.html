@@ -13,11 +13,13 @@
 <script src="js/jQuery.js"></script>
 <script>
 	document.documentElement.style.fontSize =document.documentElement.clientWidth / 7.5 + 'px';
-	function inde() {window.location.href="index.html"}
-	function aow() {window.location.href="aow.html"}
-	function pgs() {window.location.href="pgs.html"}
-	function comm() {window.location.href="community.html"}
-	function about() {window.location.href="about.html"}
+	document.oncontextmenu=new Function("event.returnValue=false;");
+	document.onselectstart=new Function("event.returnValue=false;");
+	function inde() {location.href="index.html"}
+	function aow() {location.href="aow.html"}
+	function pgs() {location.href="pgs.html"}
+	function comm() {location.href="community.html"}
+	function about() {location.href="about.html"}
 </script>
 <body>
 	<header>
