@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>个人简历</title>
+	<link rel="stylesheet" href="iconfont/iconfont.css">
+	<link rel="stylesheet" href="css/load.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<script src="js/1.7.2.js"></script>
+<script>
+		document.documentElement.style.fontSize =document.documentElement.clientWidth / 7.5 + 'px';
+		var userAgent = window.navigator.userAgent.toLowerCase();
+		$.browser.msie10 = $.browser.msie && /msie 10\.0/i.test(userAgent);
+		$.browser.msie9 = $.browser.msie && /msie 9\.0/i.test(userAgent); 
+		$.browser.msie8 = $.browser.msie && /msie 8\.0/i.test(userAgent);
+		$.browser.msie7 = $.browser.msie && /msie 7\.0/i.test(userAgent);
+		$.browser.msie6 = !$.browser.msie8 && !$.browser.msie7 && $.browser.msie && /msie 6\.0/i.test(userAgent);
+		if($.browser.msie6){
+			 window.location.href="http://modesign.cc/outdatedbrowser/";
+		}if($.browser.msie7){
+			 window.location.href="http://modesign.cc/outdatedbrowser/";
+		}if($.browser.msie8){
+			 window.location.href="http://modesign.cc/outdatedbrowser/";
+		}if($.browser.msie9){
+			 window.location.href="http://modesign.cc/outdatedbrowser/";
+		}
+		document.oncontextmenu=new Function("event.returnValue=false;");
+		document.onselectstart=new Function("event.returnValue=false;");
+</script>
+<body>
+	<div class="loading">
+		<div class="box_6">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<div id="wrap">
+		<div id="top">
+			<div class="menu">
+				<ul>
+					<li data-to="top">首页</li>
+					<li data-to="vitae">个人信息</li>
+					<li data-to="works">个人作品</li>
+					<li data-to="skill">技术经验</li>
+					<li data-to="demand">求职意向</li>
+					<li data-to="footer">联系方式</li>
+					<span class="slider"></span>
+				</ul>
+			</div>
+			<span class="box_left"></span>
+			<span class="box_right"></span>
+			<span class="box_text">
+				<p>黄景圣</p>
+				<p>信息系17届毕业生</p>
+			</span>
+		</div>
+		<div id="vitae">
+			<div class="portrait">
+				<img src="img/portrait.png" alt="">
+			</div>
+			<div class="vitae_content">
+				<h1>个人信息</h1>
+				<p><b>姓名：</b>黄景圣</p>
+				<p><b>基本信息：</b>男生—1995/12/22—178cm</p>
+				<p><b>教育经历：</b>2015/9/01—2017/6/01于广州市工贸技师学院就读，信息系《网站开发与维护》专业。</p>
+				<p><b>所学技能：</b>前端三大件：HTML、CSS3、javascript; 前端框架：「jQuery」、「Bootstrap」、「Vue」、「Swiper」，还有photoshop和少量PHP。</p>
+				<p><b>个人特点：</b>喜欢探索、研究与时俱进的事物，对视觉新鲜感比较有追求，所以喜欢设计感较强的东西，喜欢做突破传统思维的事情。对工作方面如果是自己力所能及的事情，会在短时间内尽力完成，不喜欢拖泥带水。</p>
+			</div>
+			<span class="clear"></span>
+		</div>
+		<div id="works">
+			<h1>个人作品</h1>
+			<span class="underline"></span>
+			<b>点击下方左右两端箭头查看全部作品（点击图片可跳转）</b>
+			<ul class="demo">
+				<li>
+					<div id="pc_demo">
+						<img src="img/pc.png" alt="" class="pc_img">
+						<div id="pc_box">	
+							<ul class="demo_ul">
+								<li><a href="https://hansen-hjs.github.io/shot/"><img src="img/shot.jpg" alt=""></a></li>
+								<li><a href="http://skt.webgz.cn/qy"><img src="img/web.jpg" alt=""></a></li>
+								<li><a href="http://skt.webgz.cn/game"><img src="img/game.jpg" alt=""></a></li>
+								<li><a href="http://skt.webgz.cn/food"><img src="img/web2.jpg" alt=""></a></li>
+								<li><a href="http://skt.webgz.cn/jl"><img src="img/jl.jpg" alt=""></a></li>
+							</ul>
+						</div>	
+						<span class="pc_left iconfont">&#xe6a8;</span>
+						<span class="pc_right iconfont">&#xe62f;</span>
+					</div>
+					<div id="pc_text">
+						<ul>
+							<li class="text_hover">
+								<h1>艺术摄影网</h1>
+								<p><b>代码技术：</b>jQuery+CSS3+HTML编写的响应式特效网页</p>
+								<p><b>特点：</b>原创简约大气华丽的设计，流线式的响应式，电脑、平板、手机通用。</p>
+								<p><b>功能：</b>本站的设计初衷就是为了给摄影爱好者提供一个华丽的平台，让整个网页看上去和摄影大片一样的富有观看性。</p>
+							</li>
+							<li>
+								<h1>企业形象网页</h1>
+								<p><b>代码技术：</b>由jQuery+CSS+HTML编写的响应式网页</p>
+								<p><b>特点：</b>流线式的网页布局，百分比全局适应各种主流设备(包括平板、手机端)，优秀的响应式，部分特效。兼容IE。</p>
+								<p><b>功能：</b>适用于企业形象宣传、企业官网介绍等类似功能，良好的兼容性保证了商务需求。</p>
+							</li>
+							<li>
+								<h1>游戏推广网页</h1>
+								<p><b>代码技术：</b>swiper+CSS+HTML编写的全屏滚动网页。</p>
+								<p><b>特点：</b>基于「极品飞车online」官网的游戏特色全屏滚动页，官网的在1440*900以下分辨率下无法正常显示，我的可以。</p>
+								<p><b>功能：</b>在制作游戏的宣传页作为推广时，这类型的网页更有吸引力，增强了玩家对这款游戏的好奇感。</p>
+							</li>
+							<li>
+								<h1>美食公益网页</h1>
+								<p><b>代码技术：</b>纯原生Javascript+CSS+HTML编写的特效网页。</p>
+								<p><b>特点：</b>百分百原创，自主设计。目前只适应PC端，支持IE（IE8以上），手机端暂不支持。</p>
+								<p><b>功能：</b>适用于做美食官网、美食教学网站。大气简洁，图片、文字、视频等功能齐全。</p>
+							</li>
+							<li>
+								<h1>简历（平面设计师）</h1>
+								<p><b>代码技术：</b>由jQuery+CSS+HTML编写的个人简历网页。</p>
+								<p><b>特点：</b>简洁大气的简历型网页，目前只适应PC端，支持IE,手机端暂不支持。</p>
+								<p><b>功能：</b>适用于设计师类个人资料介绍，作品展示，工作经验等...</p>
+							</li>
+						</ul>
+					</div>
+					<span class="clear"></span>
+				</li>
+				<li style="margin-bottom: 0;">
+					<div id="phone_demo">
+						<img src="img/phone.png" alt="" class="phone_img">
+						<div id="phone_box">
+							<ul class="phone_ul">
+								<li><a href="http://skt.webgz.cn/music/phoneBox.html"><img src="img/music.jpg" alt=""></a></li>
+								<li><a href="http://skt.webgz.cn/weibo/phoneBox.html"><img src="img/weibo.jpg" alt=""></a></li>
+								<li><a href="http://skt.webgz.cn/travel/phoneBox.html"><img src="img/H5.jpg" alt=""></a></li>
+								<li><a href="http://skt.webgz.cn/mjl/phoneBox.html"><img src="img/app.jpg" alt=""></a></li>
+								<li><a href="http://skt.webgz.cn/album/phoneBox.html"><img src="img/H5_2.jpg" alt=""></a></li>
+							</ul>
+						</div>
+						<span class="phone_left iconfont">&#xe6a8;</span>
+						<span class="phone_right iconfont">&#xe62f;</span>
+					</div>
+					<div id="phone_text">
+						<ul>
+							<li class="text_hover">
+								<h1>QQ音乐网页</h1>
+								<p><b>代码技术：</b>Vue+swiper+CSS+HTML5</p>
+								<p><b>特点：</b>除了与QQ音乐官方版的高相似度外，还加入了导航切换的滑动特效还有页面无刷新的过渡特效，使页面更加华丽。</p>
+								<p><b>功能：</b>模仿QQ音乐（手机官网）做的音乐播放网页，实现了与官网数据同步的图片浏览和音乐排行榜的更新，在线试听功能，播放功能基本与官网一致。</p>
+							</li>
+							<li>
+								<h1>浪微博APP网页</h1>
+								<p><b>代码技术：</b>jQueryMobile+CSS（Less）+HTML5</p>
+								<p><b>特点：</b>采用目前手机端兼容性比较好的rem布局，确保了手机端上的各类型尺寸兼容性，达到了与设计稿较高的还原度。</p>
+								<p><b>功能：</b>模仿「新浪APP」做的HTML5网页，实现了浏览图片文字、界面下拉、点击放大、虚拟加载内容等功能。因为只是模仿，所以部分功能没能实现。</p>
+							</li>
+							<li>
+								<h1>H5旅行推广</h1>
+								<p><b>代码技术：</b>swiper+CSS+HTML5</p>
+								<p><b>特点：</b>采用目前比较强大的「swiper」移动端插件，达到了web内容的多种3D切换效果，增强了微信推广页的视觉吸引力度</p>
+								<p><b>功能：</b>用来旅行记录、分享的一种方式，既好看又实用，火热的微信平台推广、吸粉和个人朋友圈装X利器。</p>
+							</li>
+							<li>
+								<h1>孟加拉APP网页</h1>
+								<p><b>代码技术：</b>jQueryMobile+CSS（Less）+HTML5</p>
+								<p><b>特点：</b>采用目前手机端兼容性比较好的rem布局，确保了手机端上的各类型尺寸兼容性，达到了与设计稿较高的还原度。</p>
+								<p><b>功能：</b>模仿「孟加拉旅游APP」做的HTML5网页，实现了浏览图片文字、用户界面弹出、3D特效焦点图、虚拟加载内容等功能。因为只是模仿，所以部分功能没能实现。</p>
+							</li>
+							<li>
+								<h1>H5个人相册</h1>
+								<p><b>代码技术：</b>swiper+CSS+HTM5L</p>
+								<p><b>特点：</b>采用目前比较强大的「swiper」移动端插件，达到了web内容的多种3D切换效果，增强了微信推广页的视觉吸引力度</p>
+								<p><b>功能：</b>个人相册，社区相册，火热的微信平台推广、吸粉和个人朋友圈装X利器。</p>
+							</li>
+						</ul>
+					</div>
+					<span class="clear"></span>
+				</li>				
+			</ul>
+		</div>
+		<div id="skill">
+			<h1>技术经验</h1>
+			<span class="underline"></span>
+			<div class="skill_text">
+					<p><b>所学技术：</b>两年在校期间，除了学习「HTML」、「CSS」、「javascript」等基础网页制作技术、页面架构和布局外，还分别学习和运用「jQuery」、「Bootstrap」、「Vue」、「Swiper」等代码技术。可以独立完成页面制作，掌握浏览器兼容性。能够自主学习和使用web前端框架代码。</p>
+					<p><b>工作经验：</b>学生期间独自设计、模仿完成了多个web项目，并测试和优化项目在服务器中运行的性能（比如服务器加载界面，图片和代码的压缩），做过的代码插件会封装起来，做相似功能时能够直接调用来提高工作效率。平时喜欢研究各类网站的先进代码，工作中对代码质量要求较高，实现功能的同时美观、简洁、易懂。</p>
+			</div>			
+		</div>
+		<div id="demand">
+			<h1>求职意向</h1>
+			<span class="underline"></span>
+			<span class="demand_text">
+				<p><b>希望工作岗位：</b>「HTML5」、「web前端」工程师，「网页设计」能力相关岗位。</p>
+				<p><b>职业规划：</b>成为高级前端工程师，成为高级前端工程师，成为高级前端工程师，重要的事情说三遍。</p>
+				<p><b>期望待遇：</b>珠三角城市地区，积极上进的工作单位。</p>
+			</span>
+		</div>
+		<div id="footer">
+			<h1>联系方式</h1>
+			<div class="contact">
+				<p><i class="iconfont">&#xeb87;</i><b>地址：</b>广州市大学城青蓝街26号有米科技大厦</p>
+				<p><i class="iconfont">&#xe603;</i><b>电话：</b>13265317656或13729010274</p>
+				<p><i class="iconfont">&#xe61d;</i><b>邮箱：</b>1141752341@qq.com</p>
+				<p><i class="iconfont">&#xe668;</i><b>QQ：</b>1141752341</p>
+				<p><i class="iconfont">&#xe658;</i><b>微信：</b>下方二维码</p>
+				<span>
+					<img src="img/WeChat.jpg" alt="">
+				</span>			
+			</div>
+			<form action="" class="bd">
+				<input type="text" placeholder="姓名" required title="姓名必填">
+				<input type="text" placeholder="邮箱" required title="邮箱必填">
+				<input type="text" placeholder="联系电话" required title="别漏联系电话">
+				<textarea placeholder="内容" required title="内容不可无"></textarea>
+				<button type="submit" id="bd_btn">发送</button>
+			</form>
+		</div>
+		<div class="menu_side">
+			<span id="more" class="iconfont">&#xe612;</span>
+			<span id="off" class="iconfont">&#xf0020;</span>
+			<ul>
+				<li data-to="top" class="mhover">顶部</li>
+				<li data-to="vitae">个人信息</li>
+				<li data-to="works">个人作品</li>
+				<li data-to="skill">技术经验</li>
+				<li data-to="demand">求职意向</li>
+				<li data-to="footer">联系方式</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
+<script src="js/index.js"></script>
