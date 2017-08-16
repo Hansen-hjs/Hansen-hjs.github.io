@@ -1,0 +1,95 @@
+/*主页*/
+.data_content{ width: 100%; padding-top: 0.88rem; }
+.data_banner{ display: block; width: 100%; }
+.data_banner img{ width: 100%; display: block; }
+.data_electric{ width: 100%; background: #f3f3f3; }
+.data_electric ul{ width: 6.8rem; margin: auto; padding: 0.2rem 0 0.06rem; overflow: hidden;}
+.data_electric li{ width: 3.4rem; height: 2.94rem; background-size: 100%; float: left; margin: 0; color: #fff; text-align: center;}
+.data_electric h3{ font-size: 0.64rem; margin: 0.74rem 0 0.22rem; font-weight: 400}
+.data_electric p{ font-size: 0.3rem; }
+.data_class{ width: 100%; padding-bottom: 1.2rem;}
+.data_class ul{ height: 2rem; width: 100%; border-top: solid 1px #ddd; }
+.data_class li{ margin: 0; }
+.data_class span{ display: block; width: 0.96rem; height: 0.96rem; overflow: hidden; margin: 0.3rem auto 0.2rem;}
+.data_class img{ width: 100%; display: block; }
+.data_class p{ font-size: 0.24rem; color: #666666; text-align: center; }
+.data_class .data_center{ border-left: solid 1px #ddd; border-right: solid 1px #ddd; }
+/*通用样式*/
+.jian_content,.daychart_content,.dayform_content,.contrast_content,.monthchart_content,.monthform_content{ padding-top: 0.88rem; transition: .3s all; position: relative;}
+.line{ height: 0.2rem; border-top: solid 1px #ddd; border-bottom: solid 1px #ddd; background: #f3f3f3; display: block; }
+.title_h2{ height: 0.64rem; font-weight: 400; font-size: 0.28rem; color: #333; text-align: center; line-height: 0.58rem; }
+	/*多级级菜单选项*/
+.test_nav{ width: 100%; height: 0.84rem; overflow: hidden; }
+.test_nav h3{ font-size: 0.3rem; margin-left: 0.24rem; margin-right: 0.1rem; font-weight: 400; line-height: 0.84rem; float: left; color: #48acf8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; width: 1.46rem; height: 0.84rem}
+.test_nav h4{ width: 1.61rem; float: left; font-weight: 400; font-size: 0.28rem; line-height: 0.84rem; color: #999999; text-overflow: ellipsis; white-space: nowrap; height: 0.84rem; display: block; overflow: hidden;}
+.test_nav h5{ width: 1.47rem; float: left; font-weight: 400; font-size: 0.28rem; line-height: 0.84rem; color: #999999; text-overflow: ellipsis; white-space: nowrap; height: 0.84rem; display: block; overflow: hidden;}
+.test_nav h6{ width: 1.25rem; float: left; font-weight: 400; font-size: 0.28rem; line-height: 0.84rem; color: #999999; text-overflow: ellipsis; white-space: nowrap; height: 0.84rem; display: block; overflow: hidden;}
+.test_nav span{ margin-right: 0.1rem; float: left; font-weight: 400; font-size: 0.28rem; line-height: 0.84rem; color: #999999; text-overflow: ellipsis; white-space: nowrap; height: 0.84rem; display: block; overflow: hidden; }
+	/*多级菜单列表*/
+.list_ul{ position: absolute; top: 1.76rem; left: 0; background: #fff; width: 100%; box-shadow: 0px 7px 10px #ddd; z-index: 5}
+.list_ul li{ padding-left: 0.24rem; font-size: 0.24rem; height: 0.68rem; line-height: 0.68rem; color: #333; border-bottom: solid 1px #ddd; background-image: url(../../img/icon_next.png); background-size: 0.44rem 0.44rem; background-repeat: no-repeat; background-position: center right; }
+.h4_ul{ display: none; }
+.h5_ul{ display: none; }
+.h6_ul{ display: none; }
+/*尖峰平谷*/
+.jian_content{ }
+.time_ul{ height: 0.68rem; border-bottom: solid 1px #ddd;}
+.time_ul li{ text-align: center; line-height: 0.68rem; color: #333; font-size: 0.28rem; }
+.time_ul .li_hover{ color: #48acf8; border-bottom: solid 0.06rem #48acf8; }
+#trend{ height: 4.62rem;}
+#trend h6{ font-size: 0.36rem; line-height: 4.62rem; text-align: center; color: #48acf8 }
+.trend_box{ overflow: hidden; }
+.trand_title{ height: 0.52rem; }
+.trand_title span{ text-align: center; font-size: 0.28rem; color: #333; line-height: 0.52rem; }
+.title_class{ width: 5.2rem; height: 0.55rem; margin: auto; padding-bottom: 0.3rem;}
+.title_class li{ float: left; font-size: 0.28rem; line-height: 0.55rem; margin-right: 0.3rem; margin-top: 0;}
+.title_class i{ display: block; width: 0.2rem; height: 0.2rem; float: left; margin-right: 0.2rem; margin-top: 0.17rem;}
+#electricity{ height: 4.25rem; border-bottom: solid 1px #ddd; padding-bottom: 0.3rem; }
+#electricity h6{ font-size: 0.36rem; line-height: 4.25rem; text-align: center; color: #48acf8 }
+#fees{ height: 4.25rem; border-bottom: solid 1px #ddd; padding-bottom: 0.3rem; }
+#fees h6{ font-size: 0.36rem; line-height: 4.25rem; text-align: center; color: #48acf8 }
+#summary{ width: 6.7rem; border: solid 1px #ddd; overflow: hidden; margin: 0 auto 1.5rem; color: #333; font-size: 0.24rem;}
+#summary ul{ height: 0.48rem; overflow: hidden; border-top: solid 1px #ddd; }
+#summary ul li{ text-align: center; line-height: 0.48rem; border-right: solid 1px #ddd; }
+#summary ul li:last-child{ border: none; }
+.summary_text li:nth-of-type(even){ background: #e7f5ff; }
+#summary .summary_title{ background: #e8e8e8; border: none;}
+#summary .summary_title li{ border: none; background: #e8e8e8}
+/*日趋势图*/
+.daychart_content{ }
+.test_Dcontent{ border-top: solid 1px #ddd; }
+.test_Dcontent h3{ display: block; font-size: 0.28rem; color: #666; padding: 0.28rem 0 0.32rem 0.24rem; font-weight: 400; position: relative;}
+.test_Dcontent h3:before{ position: absolute; content: ""; height: 0.32rem; width: 0.06rem; left: 0; top: 50%; background: #48acf8; margin-top: -0.17rem; }
+#touch_ul{ width: 100%; height: 0.6rem; overflow: hidden; padding-bottom: 0.28rem;}
+.test_Dcontent ul{ overflow: auto; width: 130%;}
+.test_Dcontent li{ padding: 0.08rem 0.24rem; float: left; color: #666; margin-left: 0.24rem; font-size: 0.28rem; border: solid 1px #ddd; border-radius: 0.08rem; }
+.test_Dcontent .li_hover{ border-color: #48acf8; background: #48acf8; color: #fff; }
+.td_data{ width: 6.75rem; padding: 0.2rem 0 1.2rem; margin: auto; position: relative;}
+.td_data h4{ font-weight: 400; color: #666; font-size: 0.28rem; padding-left: 0.5rem; background-image: url(../../img/icon_curve.png); background-size: 0.3rem 0.3rem; background-position: center left; background-repeat: no-repeat; margin: 0;}
+.td_data input{ border: none; color: #48acf8; font-size: 0.28rem; display: block; padding-right: 0.5rem; background-image: url(../../img/icon_day.png); background-size: 0.3rem 0.3rem; background-position: center right; background-repeat: no-repeat; float: right; width: 1.5rem; height: 0.38rem;}
+.time_nav{ height: 0.64rem; font-size: 0.28rem; text-align: center; line-height: 0.64rem; color: #666; border-top: solid 1px #ddd; margin-top: 0.2rem;}
+.time_lihover{ color: #48acf8; border-bottom: solid 0.06rem #48acf8}
+#main,#main2{ width: 6.75rem; height: 4.51rem; margin-bottom: 0.1rem; font-size: 0.28rem; color: #666}
+#main{ position: relative; }
+#main h2{ position: absolute; font-weight: 600; color: #48acf8; top: 0; left: 0; right: 0; bottom: 0; width: 2rem; height: 0.5rem; display: block; font-size: 0.36rem; margin: auto;}
+#main2 h2{ position: absolute; font-weight: 600; color: #48acf8; top: 0; left: 0; right: 0; bottom: 0; width: 2rem; height: 0.5rem; display: block; font-size: 0.36rem; margin: auto;}
+
+/*日报表*/
+.dayform_content{  }
+.data_sheet{ width: 100%; padding-top: 0.28rem; text-align: center; color: #333;}
+.data_sheet h2{ font-size: 0.28rem; line-height: 0.64rem; font-weight: 400; }
+.sheet_title{ height: 0.48rem; font-size: 0.24rem; background: #e8e8e8; border: solid 1px #ddd; border-bottom: none; }
+.sheet_title li{ line-height: 0.48rem; overflow: hidden; }
+.data_form{ border: solid 1px #ddd; overflow: hidden; text-align: center; line-height: 0.48rem; font-size: 0.24rem;}
+.data_form ul{ width: 50%; float: left; overflow: hidden;}
+.data_form li{ overflow: hidden; height: 0.48rem; width: 50%; float: left; border-bottom: solid 1px #ddd;}
+.data_form li:nth-of-type(even){ background: #e7f5ff; }
+/*没有数据时候显示*/
+.loading{ color: #48acf8; text-align: center; line-height: 2rem; font-size: 0.3rem; width: 100%; display: block; height: 2rem; position: absolute; top: 2rem; font-weight: 500; }
+/*对比分析*/
+.contrast_content{  }
+#analysis,#analysis2{ height: 5.2rem; }
+/*月趋势表*/
+.monthchart_content{  }
+/*月报表*/
+.monthform_content{  }

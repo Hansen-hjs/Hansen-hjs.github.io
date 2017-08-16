@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>月趋势图</title>
+	<link rel="stylesheet" href="css/share.css">
+	<link rel="stylesheet" href="css/monitor.css">
+	<link rel="stylesheet" href="css/lCalendar.css">
+</head>
+<script>
+	document.documentElement.style.fontSize =document.documentElement.clientWidth / 7.2 + 'px';
+</script>
+<script src="../share.js/jQuery.js"></script>
+<script src="../share.js/swiper.min.js"></script>
+<script src="js/echarts.min.js"></script>
+<body>
+	<header class="top">
+		<a href="monitor.html"></a>
+		<h2>月趋势图</h2>
+	</header>
+	<div class="monthchart_content">
+        <!-- 多级菜单列表 -->
+		<nav class="test_nav">
+			<p>
+				<h3>企业名称</h3>
+                <span>∨</span>
+                <h4>未选择</h4>
+                <span>></span>
+                <h5>未选择</h5>
+                <span>></span>
+                <h6>未选择</h6>
+			</p>
+		</nav>
+        <!-- 多级菜单列表 -->
+        <ul class="list_ul h4_ul"></ul>
+        <ul class="list_ul h5_ul"></ul>
+        <ul class="list_ul h6_ul"></ul>
+        <!--  -->
+		<div class="test_Dcontent">
+			<h3>选择监测类型</h3>
+			<div class="swiper-container" id="touch_ul">
+		       <ul class="swiper-wrapper">
+					<li class="li_hover swiper-slide">电压</li>
+					<li class="swiper-slide">电流</li>
+					<li class="swiper-slide">电能</li>
+					<li class="swiper-slide">频率</li>
+					<li class="swiper-slide">功率</li>
+					<li class="swiper-slide">功率因数</li>
+				</ul>
+		    </div>
+		    <span class="line"></span>
+			<div class="td_data">
+				<input id="star" style="width: 1rem" class="time_box" type="text" readonly="" name="input_date" data-lcalendar="2010-01-11,2019-12-31" />
+				<h4>分时段曲线</h4>
+				<div id="main2">
+					<h2>还没选择</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="footer">
+		<nav class="flex">
+			<a href="../home/home.html" class="f1"><span><img src="../img/icon_home.png" alt=""></span></a>
+            <a href="../testing/testing.html" class="f1"><span><img src="../img/icon_testing.png" alt=""></span></a>
+            <a href="monitor.html" class="f1"><span><img src="../img/icon_data_press.png" alt=""></span></a>
+            <a href="../event/event.html" class="f1"><span><img src="../img/icon_event.png" alt=""></span></a>
+            <a href="../administration/administration.html" class="f1"><span><img src="../img/icon_administration.png" alt=""></span></a>
+		</nav>
+	</footer>
+</body>
+</html>
+<script src="../url.js"></script>
+<script src="js/lCalendar.min.js"></script>
+<script src="js/monthchart.js"></script>

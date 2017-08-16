@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>尖峰平谷</title>
+	<link rel="stylesheet" href="css/share.css">
+	<link rel="stylesheet" href="css/monitor.css">
+</head>
+<script>
+	document.documentElement.style.fontSize =document.documentElement.clientWidth / 7.2 + 'px';
+</script>
+<script src="../share.js/jQuery.js"></script>
+<script src="../share.js/swiper.min.js"></script>
+<script src="js/echarts.min.js"></script>
+<body>
+	<header class="top">
+		<a href="monitor.html"></a>
+		<h2>尖峰平谷</h2>
+	</header>
+	<div class="jian_content">
+		<nav class="test_nav">
+			<p>
+				<h3>企业名称</h3>
+                <span>∨</span>
+                <h4>未选择</h4>
+                <span>></span>
+                <h5>未选择</h5>
+                <span>></span>
+                <h6>未选择</h6>
+			</p>
+		</nav>
+        <!-- 多级菜单列表 -->
+        <ul class="list_ul h4_ul"></ul>
+        <ul class="list_ul h5_ul"></ul>
+        <ul class="list_ul h6_ul"></ul>
+        <!-- 时间选项 -->
+		<span class="line"></span>
+		<ul class="time_ul flex">
+			<li class="f1 li_hover">昨日</li>
+			<li class="f1">上月</li>
+			<li class="f1">本月</li>
+			<li class="f1">今年</li>
+		</ul>
+		<h2 class="title_h2">累计趋势</h2>
+		<div id="trend">
+			<h6>还没选择</h6>
+		</div>
+		<section class="trend_box">
+			<div class="trand_title flex">
+				<span class="f1">电量（kW·h）</span>
+				<span class="f1">电费（元）</span>
+			</div>
+			<ul class="title_class">
+				<li><i style="background: #d87a80"></i>峰</li>
+				<li><i style="background: #2ec7c9"></i>平</li>
+				<li><i style="background: #48acf8"></i>谷</li>
+				<li><i style="background: #fcea1b"></i>未统计电量</li>
+			</ul>
+		</section>
+		<h2 class="title_h2" style=" border-top: solid 1px #ddd;">累计电量</h2>
+		<div id="electricity">
+			<h6>还没选择</h6>
+		</div>
+		<h2 class="title_h2">累计电费</h2>
+		<div id="fees">
+			<h6>还没选择</h6>
+		</div>
+		<h2 class="title_h2">汇总表</h2>
+		<div id="summary">
+			<ul class="flex summary_title">
+				<li class="f1">类型</li>
+				<li class="f1">电量(kW·h)</li>
+				<li class="f1">费率(元/kW·h)</li>
+				<li class="f1">费用(元)</li>
+			</ul>
+			<div id="summary_form"></div>
+		</div>
+	</div>	
+	<footer class="footer">
+		<nav class="flex">
+			<a href="../home/home.html" class="f1"><span><img src="../img/icon_home.png" alt=""></span></a>
+            <a href="../testing/testing.html" class="f1"><span><img src="../img/icon_testing.png" alt=""></span></a>
+            <a href="monitor.html" class="f1"><span><img src="../img/icon_data_press.png" alt=""></span></a>
+            <a href="../event/event.html" class="f1"><span><img src="../img/icon_event.png" alt=""></span></a>
+            <a href="../administration/administration.html" class="f1"><span><img src="../img/icon_administration.png" alt=""></span></a>
+		</nav>
+	</footer>		
+</body>
+</html>
+<script src="../url.js"></script>
+<script src="js/jianfeng.js"></script>

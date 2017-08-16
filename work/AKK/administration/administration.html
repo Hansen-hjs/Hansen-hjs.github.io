@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>管理</title>
+</head>
+<link rel="stylesheet" href="css/share.css">
+<link rel="stylesheet" href="css/administration.css">
+<script src="../share.js/jQuery.js"></script>
+<script>
+	document.documentElement.style.fontSize =document.documentElement.clientWidth / 7.2 + 'px';
+</script>
+<body>
+	<header class="top">
+		<h2>管理</h2>
+	</header>
+	<header class="top_class translate_hover">
+		<i id="goback"><img src="../img/icon_back.png" alt=""></i>
+		<h2>修改密码</h2>
+	</header>
+	<div class="setup_content">
+		<section>
+			<span class="banner" style="position: relative; display: block;"><img src="../img/banner.png" alt=""></span>	
+			<h2>安兴科（深圳）技术有限公司</h2>
+			<div class="set_text">
+				<ul>
+					<li>
+						<span class="set_textLeft" style="background-image: url(../img/icon_user_2.png)">负责人：</span>
+						<span>吴志存</span>
+					</li>
+					<li>
+						<span class="set_textLeft" style="background-image: url(../img/icon_phone.png)">联系方式：</span>
+						<span>18717311089</span>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<span class="set_line"></span>
+		<div class="set_text2">
+			<ul>
+				<li>
+					<span class="set_textLeft" style="background-image: url(../img/icon_system.png)">系统设置</span>
+					<i></i>
+				</li>
+				<li>
+					<span class="set_textLeft" style="background-image: url(../img/icon_update.png)">检查更新</span>
+					<i></i>
+				</li>
+				<li id="modify">
+					<span class="set_textLeft" style="background-image: url(../img/icon_password_modification.png)">修改密码</span>
+					<i></i>
+				</li>
+			</ul>
+			<div id="signout"><a href="###">退出登录</a></div>
+		</div>
+	</div>
+	<div class="password_content translate_hover">
+		<form action="" id="reset">
+			<span>
+				原密码：
+				<input type="text" id="account" placeholder="原密码">
+			</span>
+			<span>
+				新密码：
+				<input type="password" id="password" placeholder="新密码">
+				<i id="newPass"></i>
+			</span>
+			<span>
+				确认密码：
+				<input type="password" id="newpassword" placeholder="确认密码">
+				<i id="cPass"></i>
+			</span>
+			<span id="confirm">确认修改</span>
+		</form>
+	</div>	
+	<footer class="footer">
+		<nav class="flex">
+			<a href="../home/home.html" class="f1"><span><img src="../img/icon_home.png" alt=""></span></a>
+			<a href="../testing/testing.html" class="f1"><span><img src="../img/icon_testing.png" alt=""></span></a>
+			<a href="../monitor/monitor.html" class="f1"><span><img src="../img/icon_data.png" alt=""></span></a>
+			<a href="../event/event.html" class="f1"><span><img src="../img/icon_event.png" alt=""></span></a>
+			<a href="administration.html" class="f1"><span><img src="../img/icon_administration_press.png" alt=""></span></a>
+		</nav>
+	</footer>
+</body>
+</html>
+<script src="../url.js"></script>
+<script src="js/administration.js"></script>

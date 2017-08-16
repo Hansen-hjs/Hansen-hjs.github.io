@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+	<link rel="stylesheet" href="css/share.css">
+	<link rel="stylesheet" href="css/home.css">
+</head>
+<script>
+	document.documentElement.style.fontSize =document.documentElement.clientWidth / 7.2 + 'px';
+</script>
+<script src="../share.js/jQuery.js"></script>
+<script src="http://api.map.baidu.com/getscript?v=2.0&ak=MGnapawhZDoHPWKdeabqcPQyiGKiHnOj"></script>
+<body>
+	<header class="top">
+		<h2>首页</h2>
+	</header>
+	<div class="map_content">
+		<!-- 地图容器 -->
+		<div id="map_box"></div>
+		<!-- 地图数据容器 -->
+		<div id="map_data"></div>
+		<!-- 百度地图logo -->
+		<span id="baidumap_logo"><a href="http://map.baidu.com/?sr=1"><img src="../img/baidumap_logo.png" alt=""></a></span>
+		<!-- 搜索提交 -->
+		<form action="" id="search_bd">
+			<input type="text" id="search_box" placeholder="输入单位名称">
+			<button type="submit" disabled="disabled" id="search"><img src="../img/icon_search.png" alt=""></button>
+			<div id="searchResultPanel">
+				<ul></ul>
+			</div>
+		</form>
+		<!-- 报警信息 -->
+		<div class="warning flex">
+			<div class="warn_h2" style="background: #f7ae47"><p>报警信息</p></div>
+			<span style="border-right: solid 1px #ddd">
+				<h3 style="color: #48acf8" id="comfirmed">0</h3>
+				<p>已确认</p>
+			</span>
+			<span>
+				<h3 style="color: #f83b44" id="uncomfirmed">0</h3>
+				<p>未确认</p>
+			</span>
+		</div>
+		<!-- 巡检任务 -->
+		<div class="task flex">
+			<div class="warn_h2" style="background: #48acf8"><p>巡检任务</p></div>
+			<span>
+				<h3 style="color: #3c55d5" id="alreadyAccomplish">0</h3>
+				<p>已完成</p>
+			</span>
+			<span style="border-left: solid 1px #ddd; border-right: solid 1px #ddd">
+				<h3 style="color: #f83b44" id="notAccomplish">0</h3>
+				<p>未完成</p>
+			</span>
+			<span>
+				<h3 style="color: #f7ae47" id="patrolCentre">0</h3>
+				<p>巡检中</p>
+			</span>
+		</div>
+	</div>
+	<footer class="footer">
+		<nav class="flex">
+			<a href="home.html" class="f1"><span><img src="../img/icon_home_press.png" alt=""></span></a>
+			<a href="../testing/testing.html" class="f1"><span><img src="../img/icon_testing.png" alt=""></span></a>
+			<a href="../monitor/monitor.html" class="f1"><span><img src="../img/icon_data.png" alt=""></span></a>
+			<a href="../event/event.html" class="f1"><span><img src="../img/icon_event.png" alt=""></span></a>
+			<a href="../administration/administration.html" class="f1"><span><img src="../img/icon_administration.png" alt=""></span></a>
+		</nav>
+	</footer>
+</body>
+</html>
+<script src="../url.js"></script>
+<script src="js/home.js"></script>

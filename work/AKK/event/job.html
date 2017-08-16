@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件|工单</title>
+</head>
+<link rel="stylesheet" href="css/share.css">
+<link rel="stylesheet" href="css/job.css">
+<script>
+	document.documentElement.style.fontSize =document.documentElement.clientWidth / 7.2 + 'px';
+</script>
+<script src="../share.js/jQuery.js"></script>
+<body>
+	<header class="top">
+		<a href="###" onclick="javascript:history.go(-1)"></a>
+		<h2>工单详情</h2>
+	</header>
+	<!-- 头部分页 -->
+	<header class="top_class translate_hover">
+		<i id="step"><img src="../img/icon_back.png" alt=""></i>
+		<h2>开始巡检</h2>
+	</header>
+	<!-- 内容 -->
+	<div class="content">
+		<div class="c_box">
+			<h2 id="box_title"></h2>
+			<!-- 开始 -->
+			<div id="start">
+				<ul id="start_list"></ul>
+				<h3>开始巡检</h3>
+			</div>
+			<!-- 步骤开始 -->
+			<div id="step_content"></div>
+		</div>
+	</div>
+	<footer class="footer">
+		<nav class="flex">
+			<a href="../home/home.html" class="f1"><span><img src="../img/icon_home.png" alt=""></span></a>
+			<a href="../testing/testing.html" class="f1"><span><img src="../img/icon_testing.png" alt=""></span></a>
+			<a href="../monitor/monitor.html" class="f1"><span><img src="../img/icon_data.png" alt=""></span></a>
+			<a href="event.html" class="f1"><span><img src="../img/icon_event-_press.png" alt=""></span></a>
+			<a href="../administration/administration.html" class="f1"><span><img src="../img/icon_administration.png" alt=""></span></a>
+		</nav>
+	</footer>
+</body>
+</html>
+<script src="../share.js/url.js"></script>
+<script src="js/job.js"></script>
