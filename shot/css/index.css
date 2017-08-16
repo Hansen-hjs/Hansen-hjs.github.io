@@ -1,5 +1,6 @@
 /*焦点图*/
 .banner{ width: 100%; height: 657px; z-index: 2; position: relative; overflow: hidden;}
+.banner ul{ width: 100%; height: 100%;}
 .banner li{width: 100%; height: 100%; background-position: center center; background-size: cover; background-attachment: fixed; position: absolute; top: 0; left: 0; opacity: 0; -webkit-transition: 3s all; transition: 3s all; -moz-transition: 3s all; -o-transition: 3s all;}
 .banner li:nth-child(1){ background-image: url(../img/index.jpg); }
 .banner li:nth-child(2){ background-image: url(../img/index2.jpg); }
@@ -13,11 +14,11 @@
 .banner span i{ display: block; width: 250px; height: 2px; margin: 0 auto; background: rgba(255,255,255,0.3); }
 .banner em{ display: block; width: 1%; height: 2px; background: #fff;}
 .banner .em_move{ animation: loadline 6s linear infinite; -webkit-animation: loadline 6s linear infinite; }
-@keyframes loadline{ 
+@keyframes loadline{
 	0%{ width: 1%; }
 	100%{ width: 100%; }
 }
-@-webkit-keyframes loadline{ 
+@-webkit-keyframes loadline{
 	0%{ width: 1%; }
 	100%{ width: 100%; }
 }
@@ -56,7 +57,7 @@ section .show{ -webkit-transform: translateY(0); transform: translateY(0); opaci
 .big_photos .album_left{ top: 50%; left: 0;}
 .big_photos .album_right{ top: 50%; right: 0;}
 .big_photos .album_close{ top: 25px; right: 0; font-size: 26px; }
-.bp_hover{ -webkit-transform: translateY(0); transform: translateY(0); } 
+.bp_hover{ -webkit-transform: translateY(0); transform: translateY(0); }
 
 /*响应式*/
 @media screen and (max-width: 1366px){
