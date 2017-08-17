@@ -155,235 +155,34 @@ function dataSwitch(){
                      let myList = json.data[i].variablename.split(".");
                      chart_name.push(myList[1]);
                  }
-                 console.log(json,chart_name);
-                //  电压按钮
-                if(btnIndex == 0){
-                   var data_value1 = [];                    // A相电压
-                   var data_value2 = [];                    // B相电压
-                   var data_value3 = [];                    // C相电压
-                   var data_value4 = [];                    // AB相电压
-                   var data_value5 = [];                    // BC相电压
-                   var data_value6 = [];                    // AC相电压
-                   var chart_day = [];
-                   for(i = 1; i < (jsonLength-1); i++){
-                      data_value1.push(json.data[0][i]);                    // A相电压
-                      data_value2.push(json.data[1][i]);                    // B相电压
-                      data_value3.push(json.data[2][i]);                    // C相电压
-                      data_value4.push(json.data[3][i]);                    // AB相电压
-                      data_value5.push(json.data[4][i]);                    // BC相电压
-                      data_value6.push(json.data[5][i]);                    // AC相电压
-                      chart_day.push(i);                                    // 时间
-                   }
-                  chart_value = [
-                    {
-                        name:chart_name[0],
-                        type:'line',
-                        data:data_value1
-                    },
-                    {
-                        name:chart_name[1],
-                        type:'line',
-                        data:data_value2
-                    },
-                    {
-                        name:chart_name[2],
-                        type:'line',
-                        data:data_value3
-                    },
-                    {
-                        name:chart_name[3],
-                        type:'line',
-                        data:data_value1
-                    },
-                    {
-                        name:chart_name[4],
-                        type:'line',
-                        data:data_value2
-                    },
-                    {
-                        name:chart_name[5],
-                        type:'line',
-                        data:data_value3
+                 // 图表天数
+                 chart_day = [];
+                 for(let i = 1; i < jsonLength;i++){
+                    chart_day.push(i);
+                 }
+                 // 定义一个数组存放
+                 let json_value = [];
+                 json.data.forEach(function(dataItem, index) {
+                   let keyArr = Object.keys(dataItem);
+                  //   去掉variablename的值
+                    keyArr.splice(keyArr.indexOf('variablename'), 1);
+                    json_value['data_value' + (index + 1)] = [];
+                    for(let key of keyArr) {
+                         // console.log(key, dataItem[key]);
+                        json_value['data_value' + (index + 1)].push(dataItem[key]);
                     }
-                 ];
-                  montchart(chart_name,chart_day,chart_value);     // 调用图表
-                }
-                //  电流按钮
-                if(btnIndex == 1){
-                   var data_value1 = [];                    // A相电流
-                   var data_value2 = [];                    // B相电流
-                   var data_value3 = [];                    // C相电流
-                   var chart_day = [];
-                   for(i = 1; i < (jsonLength-1);i++){
-                      data_value1.push(json.data[0][i]);     // A相电流
-                      data_value2.push(json.data[1][i]);     // B相电流
-                      data_value3.push(json.data[2][i]);     // C相电流
-                      chart_day.push(i);                     // 时间
-                   }
-                   chart_value = [
-                    {
-                        name:chart_name[0],
-                        type:'line',
-                        data:data_value1
-                    },
-                    {
-                        name:chart_name[1],
-                        type:'line',
-                        data:data_value2
-                    },
-                    {
-                        name:chart_name[2],
-                        type:'line',
-                        data:data_value3
-                    }
-                 ];
-                 montchart(chart_name,chart_day,chart_value);     // 调用图表
-                }
-                //  电能按钮
-                if(btnIndex == 2){
-                   var data_value1 = [];
-                   var data_value2 = [];
-                   var data_value3 = [];
-                   var data_value4 = [];
-                   var data_value5 = [];
-                   var chart_day = [];
-                   for(i = 1; i < jsonLength;i++){
-                      data_value1.push(json.data[0][i]);
-                      data_value2.push(json.data[1][i]);
-                      data_value3.push(json.data[2][i]);
-                      data_value4.push(json.data[3][i]);
-                      data_value5.push(json.data[4][i]);
-                      chart_day.push(i);
-                   }
-                   chart_value = [
-                      {
-                          name:chart_name[0],
-                          type:'line',
-                          data:data_value1
-                      },
-                      {
-                          name:chart_name[1],
-                          type:'line',
-                          data:data_value2
-                      },
-                      {
-                          name:chart_name[2],
-                          type:'line',
-                          data:data_value3
-                      },
-                      {
-                          name:chart_name[3],
-                          type:'line',
-                          data:data_value4
-                      },
-                      {
-                          name:chart_name[4],
-                          type:'line',
-                          data:data_value5
-                      }
-                  ];
-                  montchart(chart_name,chart_day,chart_value);     // 调用图表
-                }
-                //  频率按钮
-                if(btnIndex == 3){
-                    var data_value1 = [];
-                   var chart_day = [];
-                   for(i = 1; i < jsonLength;i++){
-                      data_value1.push(json.data[0][i]);     // 频率
-                      chart_day.push(i);                     // 时间
-                   }
-                   chart_value = [
-                      {
-                          name:chart_name[0],
-                          type:'line',
-                          data:data_value1
-                      }
-                  ];
-                  montchart(chart_name,chart_day,chart_value);     // 调用图表
-                }
-                //  功率按钮
-                if(btnIndex == 4){
-                   var data_value1 = [];
-                   var data_value2 = [];
-                   var data_value3 = [];
-                   var data_value4 = [];
-                   var data_value5 = [];
-                   var data_value6 = [];
-                   var data_value7 = [];
-                   var data_value8 = [];
-                   var chart_day = [];
-                   for(i = 1; i < jsonLength;i++){
-                      data_value1.push(json.data[0][i]);     // 总有功功率
-                      data_value2.push(json.data[1][i]);     // 总无功功率
-                      data_value3.push(json.data[2][i]);     // A相有功功率
-                      data_value4.push(json.data[3][i]);     // B相有功功率
-                      data_value5.push(json.data[4][i]);     // C相有功功率
-                      data_value6.push(json.data[5][i]);     // A相无功功率
-                      data_value7.push(json.data[6][i]);     // B相无功功率
-                      data_value8.push(json.data[7][i]);     // C相无功功率
-                      chart_day.push(i);                     // 时间
-                   }
-                   chart_value = [
-                      {
-                          name:chart_name[0],
-                          type:'line',
-                          data:data_value1
-                      },
-                      {
-                          name:chart_name[1],
-                          type:'line',
-                          data:data_value2
-                      },
-                      {
-                          name:chart_name[2],
-                          type:'line',
-                          data:data_value3
-                      },
-                      {
-                          name:chart_name[3],
-                          type:'line',
-                          data:data_value4
-                      },
-                      {
-                          name:chart_name[4],
-                          type:'line',
-                          data:data_value5
-                      },
-                      {
-                          name:chart_name[5],
-                          type:'line',
-                          data:data_value6
-                      },
-                      {
-                          name:chart_name[6],
-                          type:'line',
-                          data:data_value7
-                      },
-                      {
-                          name:chart_name[7],
-                          type:'line',
-                          data:data_value8
-                      },
-                  ];
-                  montchart(chart_name,chart_day,chart_value);     // 调用图表
-                }
-                //  功率因素按钮
-                if(btnIndex == 5){
-                   var data_value1 = [];
-                   var chart_day = [];
-                   for(i = 1; i < jsonLength;i++){
-                      data_value1.push(json.data[0][i]);     // 总功率因素
-                      chart_day.push(i);                     // 时间
-                   }
-                   chart_value = [
-                      {
-                          name:chart_name[0],
-                          type:'line',
-                          data:data_value1
-                      }
-                  ];
-                  montchart(chart_name,chart_day,chart_value);     // 调用图表
-                }
+                 });
+                 // 最终得出data_value
+                 chart_value = [];
+                 chart_name.forEach(function(item, index) {
+                    chart_value.push({
+                      name: item,
+                      type: 'line',
+                      data: json_value['data_value' + (index + 1)]
+                    })
+                 });
+               //   console.log(json,chart_name,chart_day,chart_value);
+               montchart(chart_name,chart_day,chart_value)
             }
         })
     }
@@ -392,7 +191,7 @@ function dataSwitch(){
     $(".test_Dcontent li").click(function(){
         $(this).addClass('li_hover').siblings().removeClass('li_hover');
         btnIndex = $(this).index();
-        console.log(btnIndex);
+      //   console.log(btnIndex);
         class_btn();
      })
     // 按钮功能

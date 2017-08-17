@@ -125,7 +125,6 @@ function btn(){
   }
 }
 var navLi;                                  // 请求变量
-
 // 按钮值
 var btnIndex = 0;
 // 初始化时间间隔按钮
@@ -167,7 +166,7 @@ function monitoring(navLi,btnIndex,time_on){
                 let keyArr = Object.keys(dataItem);
                //   去掉variablename的值
                  keyArr.splice(keyArr.indexOf('variablename'), 1);
-               //   去电day的值
+               //   去掉day的值
                  keyArr.splice(keyArr.indexOf('day'), 1);
                  json_value['data_value' + (index + 1)] = [];
                  for(let key of keyArr) {
@@ -194,7 +193,7 @@ function monitoring(navLi,btnIndex,time_on){
                 let keyArr = Object.keys(dataItem);
                //   去掉variablename的值
                  keyArr.splice(keyArr.indexOf('variablename'), 1);
-               //   去电day的值
+               //   去掉day的值
                  keyArr.splice(keyArr.indexOf('day'), 1);
                  json_value['data_value' + (index + 1)] = [];
                  for(let key of keyArr) {
@@ -225,7 +224,7 @@ function monitoring(navLi,btnIndex,time_on){
                 let keyArr = Object.keys(dataItem);
                  //   去掉variablename的值
                   keyArr.splice(keyArr.indexOf('variablename'), 1);
-                //   去电day的值
+                //   去掉day的值
                   keyArr.splice(keyArr.indexOf('day'), 1);
                  json_value['data_value' + (index + 1)] = [];
                  for(let key of keyArr) {
@@ -257,7 +256,7 @@ function monitoring(navLi,btnIndex,time_on){
                 let keyArr = Object.keys(dataItem);
                  //   去掉variablename的值
                   keyArr.splice(keyArr.indexOf('variablename'), 1);
-                //   去电day的值
+                //   去掉day的值
                   keyArr.splice(keyArr.indexOf('day'), 1);
                  json_value['data_value' + (index + 1)] = [];
                  for(let key of keyArr) {
