@@ -1,22 +1,17 @@
 // 多选列表事件
 function list(){
     // 展开一级菜单列表
-    $('.test_nav h3,.test_nav h4').click(function(){ 
+    $('.test_nav h3,.test_nav h4').click(function(){
         $('.list_ul').hide();
         $('.h4_ul').show();
     });
     // 展开二级菜单列表
-    $('.test_nav h5').click(function(){ 
+    $('.test_nav h5').click(function(){
         $('.list_ul').hide();
         $('.h5_ul').show();
     });
-    // 展开三级菜单列表
-    $('.test_nav h6').click(function(){ 
-        $('.list_ul').hide();
-        $('.h6_ul').show();
-    });
     $(document).bind("click",function(e){
-        //class为list_ul的是菜单，class为test_nav的是打开菜单的按钮            
+        //class为list_ul的是菜单，class为test_nav的是打开菜单的按钮
         if($(e.target).closest(".list_ul").length == 0 && $(e.target).closest(".test_nav").length == 0){
             //点击 class为list_ul 之外且class不是不是test_nav，则触发
             $('.list_ul').hide();
@@ -25,11 +20,13 @@ function list(){
 }
 // 设备编号保存
 var deviceno = 0;
+var apiNo = sessionStorage.getItem("apiNo");
+console.log(apiNo);
 // 5.4.1获取实时监测左侧树
 function testNav(){
      $.ajax({
         url: $url+"/iom_app_server/api/third/getTreeData",
-            data:  {url:"pcm/Tree.do",dtype:"设备列表"},
+            data:  {url:"pcm/Tree.do",dtype:"设备列表",unitNo:apiNo},
             dataTyp: 'json',
             type: 'get',
             xhrFields:{ // 跨域cookie打开
@@ -50,44 +47,25 @@ function testNav(){
                         $('.h4_ul').hide(); // 当前的消失
                         $('.h5_ul').show(); // 对应的显示
                         var $h4 = $(this).index();  //当前选项
-                        $(".h5_ul").html(""); // 先清空选项                      
+                        $(".h5_ul").html(""); // 先清空选项
+                        deviceno = json[0].children[$h4].id;
                         if (json[0].children[$h4].children.length > 0) { // 判断是否存在子选项
                             // console.log(json[0].children[$h4].children.length);
                             for(var h5_i = 0; h5_i < json[0].children[$h4].children.length; h5_i++){ //二级菜单循环
-                                $(".h5_ul").append("<li>"+json[0].children[$h4].children[h5_i].text+"</li>"); //添加内容到二级菜单                                
+                                $(".h5_ul").append("<li>"+json[0].children[$h4].children[h5_i].text+"</li>"); //添加内容到二级菜单
                                 $('.h5_ul li').click(function(){ // 二级菜单点击
                                     list();
                                     var $list2 = $(this).text();
                                     $('.test_nav h5').text($list2);
                                     $('.h5_ul').hide();
-                                    $('.h6_ul').show();
                                     var $h5 = $(this).index();
                                     deviceno = json[0].children[$h4].children[$h5].id;
-                                    $('.h6_ul').html("");
-                                    // console.log(json[0].children[$h4].children[$h5].children.length);
-                                    if (json[0].children[$h4].children[$h5].children.length > 0 ) {
-                                        // console.log("有");
-                                        for(var h6_i = 0; h6_i < json[0].children[$h4].children[$h5].children.length; h6_i++){ //三级菜单循环
-                                            $(".h6_ul").append("<li>"+json[0].children[$h4].children[$h5].children[h6_i].text+"</li>"); //添加内容到最后内容
-                                            $('.h6_ul li').click(function(){ // 三级菜单
-                                                list();
-                                                $('.list_ul').hide();
-                                                var $list3 = $(this).text();
-                                                $('.test_nav h6').text($list3);
-                                                var $h6 = $(this).index(); 
-                                                deviceno = json[0].children[$h4].children[$h5].children[$h6].id;
-                                            });
-                                        }
-                                    }else{
-                                        $('.test_nav h6').text("无");
-                                    }
                                 });// 二级菜单点击结束
                             }
                         }else{
                             $('.test_nav h5').text("无");
-                        }       
+                        }
                     }); // 一级菜单点击结束
-                    
                 }
                 // console.log(json[0].children.length);
             }
@@ -140,7 +118,7 @@ function send(navText,bg,end){
             console.log(json);
             // 总电费
             var cost = (json.data[0].value*json.data[0].price+json.data[1].value*json.data[1].price+json.data[2].value*json.data[2].price).toFixed(2);
-            
+
             if (json.data.length > 0) {
                 electricity(json);                                      // 电量
                 fees(json,cost);                                        // 电费
@@ -192,7 +170,7 @@ function send(navText,bg,end){
                 $("#fees h6").text("暂无数据");
                 $("#trend h6").text("暂无数据");
             }
-           
+
         }
     })
 }
@@ -249,7 +227,7 @@ function trend(json){
                         trigger: 'item',
                         backgroundColor: 'rgba(0,0,0,0)',
                         formatter: function(params){
-                            return '<img src="' 
+                            return '<img src="'
                                     + params.data.symbol.replace('image://', '')
                                     + '"/>';
                         }

@@ -29,11 +29,6 @@ function list(){
         $('.list_ul').hide();
         $('.h5_ul').show();
     });
-    // 展开三级菜单列表
-    $('.test_nav h6').click(function(){
-        $('.list_ul').hide();
-        $('.h6_ul').show();
-    });
     $(document).bind("click",function(e){
         //class为list_ul的是菜单，class为test_nav的是打开菜单的按钮
         if($(e.target).closest(".list_ul").length == 0 && $(e.target).closest(".test_nav").length == 0){
@@ -42,13 +37,13 @@ function list(){
         }
     });
 }
-
-
+var apiNo = sessionStorage.getItem("apiNo");
+console.log(apiNo);
  // 5.4.1获取实时监测左侧树
 function testNav(){
      $.ajax({
         url: $url+"/iom_app_server/api/third/getTreeData",
-            data:  {url:"pcm/Tree.do",dtype:"设备列表"},
+            data:  {url:"pcm/Tree.do",dtype:"设备列表",unitNo:apiNo},
             dataTyp: 'json',
             type: 'get',
             xhrFields:{ // 跨域cookie打开
@@ -79,31 +74,12 @@ function testNav(){
                                     var $list2 = $(this).text();
                                     $('.test_nav h5').text($list2);
                                     $('.h5_ul').hide();
-                                    $('.h6_ul').show();
-                                    var $h5 = $(this).index();
-                                    $('.h6_ul').html("");
-                                    // console.log(json[0].children[$h4].children[$h5].children.length);
-                                    if (json[0].children[$h4].children[$h5].children.length > 0 ) {
-                                        // console.log("有");
-                                        for(var h6_i = 0; h6_i < json[0].children[$h4].children[$h5].children.length; h6_i++){ //三级菜单循环
-                                            $(".h6_ul").append("<li>"+json[0].children[$h4].children[$h5].children[h6_i].text+"</li>"); //添加内容到最后内容
-                                            $('.h6_ul li').click(function(){ // 三级菜单
-                                                list();
-                                                $('.list_ul').hide();
-                                                var $list3 = $(this).text();
-                                                $('.test_nav h6').text($list3);
-                                            });
-                                        }
-                                    }else{
-                                        $('.test_nav h6').text("无");
-                                    }
                                 });// 二级菜单点击结束
                             }
                         }else{
                             $('.test_nav h5').text("无");
                         }
                     }); // 一级菜单点击结束
-
                 }
                 // console.log(json[0].children.length);
             }
@@ -115,13 +91,13 @@ function dataSwitch(){
     var navText;                                // 定义最终选择字符
     // 监测类型按钮
     function btn(){
-        var h6_text = $('.test_nav h6').text(); // 第三级字符
-        var h5_text = $('.test_nav h5').text(); // 第二季字符
-        if (h6_text == "无") {
-            navText = h5_text;                  // 第二级字符传到最终字符
-        }else{
-            navText = h6_text;                  // 第三级字符传到最终字符
-        }
+      let h5_text = $('.test_nav h5').text(); // 第二季字符
+      let h4_text = $('.test_nav h4').text();
+      if (h5_text == "无") {
+           navText = h4_text;                  // 第二级字符传到最终字符
+      }else{
+           navText = h5_text;                  // 第三级字符传到最终字符
+      }
         // console.log(navText);
     }
     var navLi;                              // 请求变量

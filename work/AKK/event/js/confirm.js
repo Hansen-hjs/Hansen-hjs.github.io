@@ -24,12 +24,12 @@ option();
 var calendardatetime = new lCalendar();
 calendardatetime.init({
 	'trigger': '#star',
-	'type': 'datetime'
+	'type': 'date'
 });
 var calendardatetime2 = new lCalendar();
 calendardatetime2.init({
 	'trigger': '#end',
-	'type': 'datetime'
+	'type': 'date'
 });
 // 确认
 function confirm(json,taskDetails){
@@ -54,6 +54,7 @@ function confirm(json,taskDetails){
         		'</p><p>'
         		+json.data[i].data+
         		'</p><p class="p_unconfirmed"><span>未确认</span></p></li>');
+
 		}
 	}
 
@@ -62,7 +63,7 @@ function confirm(json,taskDetails){
 	const userID = sessionStorage.getItem("userID");  // 用户ID
 
 	let taskType = $("#task_type").val();                  // 巡检类型
-  	let taskDetails = $("#task_details").val();             // 工单详情
+  	let taskDetails = $("#task_details").val();             // 报警类型
 	let tTime = new Date();                                     // 今天时间
 	let tMonth = ("0"+(tTime.getMonth()+ 1)).slice(-2);         // 今天月份
 	let tDay = ("0"+tTime.getDate()).slice(-2);                 // 今天日期
@@ -73,8 +74,8 @@ function confirm(json,taskDetails){
 
 	// calendardatetime.trigger.value;						// 开始时间
 	// calendardatetime2.trigger.value;						// 结束时间
-	calendardatetime.trigger.value = yTime.getFullYear() + "-" + yMonth + "-" + yDay+" 00:00";
-	calendardatetime2.trigger.value = tTime.getFullYear() + "-" + tMonth + "-" + tDay+" 00:00";
+	calendardatetime.trigger.value = yTime.getFullYear() + "-" + yMonth + "-" + yDay;
+	calendardatetime2.trigger.value = tTime.getFullYear() + "-" + tMonth + "-" + tDay;
 	let bgsize = 0;	// 初始化条数值
     // 请求数据
 	function send(taskDetails,taskType){
@@ -85,8 +86,8 @@ function confirm(json,taskDetails){
 	        	"unitno":userID,
 				"isconfirmed":taskDetails,
 				"type":taskType,
-				"bgdate":calendardatetime.trigger.value+":00",
-				"enddate":calendardatetime2.trigger.value+":00",
+				"bgdate":calendardatetime.trigger.value+" 00:00",
+				"enddate":calendardatetime2.trigger.value+" 00:00",
 				"bgsize":bgsize,
 				"len":10,
 				"devicename":""
@@ -102,7 +103,6 @@ function confirm(json,taskDetails){
 	            console.log(json);
 	            if(taskDetails==0){
 	            	confirm(json,taskDetails);
-						list_click(json);
 	            }else{
 	            	confirm(json,taskDetails);
 						list_click(json);
@@ -140,7 +140,6 @@ function confirm(json,taskDetails){
 							if(json.data.length>0){
 	 			            if(taskDetails==0){
 	 			            	confirm(json,taskDetails);
-									list_click(json)
 	 			            }else{
 	 			            	confirm(json,taskDetails);
 									list_click(json)
@@ -167,8 +166,8 @@ function confirm(json,taskDetails){
 	$("#reset").click(function(){
 		$("#task_type").val("0");
 		$("#task_details").val("0");
-		calendardatetime.trigger.value= tDay;
-		calendardatetime2.trigger.value= yDay;
+		calendardatetime.trigger.value= yTime.getFullYear() + "-" + yMonth + "-" + yDay;
+		calendardatetime2.trigger.value= tTime.getFullYear() + "-" + tMonth + "-" + tDay;
 		$("#confirm_content").html("");
 	})
 

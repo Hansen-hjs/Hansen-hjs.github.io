@@ -1,13 +1,12 @@
 $('.analysis i').click(function(){
     location.href = "../event/event.html";
 });
-
 // 获取首页的数据
-var apiNo = sessionStorage.getItem("apiNo");
+var apiNoclass = sessionStorage.getItem("apiNoclass");
 var entryId = sessionStorage.getItem("entryId");
 var enterpriseName = sessionStorage.getItem("enterpriseName");
 var teskId = sessionStorage.getItem("teskId");
-// console.log(apiNo);
+console.log(apiNoclass);
 // console.log(enterpriseName);
 // console.log(teskId);
 $('.top_class').html(enterpriseName); // 标题
@@ -49,7 +48,7 @@ function electric(){
 
     var Time = {
             "url":"/app/power!getClassPG.do",
-            "unitno": apiNo,
+            "unitno": apiNoclass,
             "bgdate": y,
             "enddate": t
         }
@@ -242,10 +241,10 @@ function price(json){
     myChart2.setOption(option2);
 }
 // 最新事件
-function newEvent(apiNo){
+function newEvent(apiNoclass){
      var eventData = {
         "url":"/app/event!searchEventsByUnit.do",
-        "unitno": apiNo,
+        "unitno": apiNoclass,
         "bg": "0",
         "len": "10"
     }
@@ -268,4 +267,4 @@ function newEvent(apiNo){
             }
         }
     })
-}newEvent(apiNo);
+}newEvent(apiNoclass);

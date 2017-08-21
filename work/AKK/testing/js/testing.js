@@ -30,11 +30,6 @@ function list(){
 		$('.list_ul').hide();
 		$('.h5_ul').show();
 	});
-	// 展开三级菜单列表
-	$('.test_nav h6').click(function(){
-		$('.list_ul').hide();
-		$('.h6_ul').show();
-	});
 	$(document).bind("click",function(e){
 	    //class为list_ul的是菜单，class为test_nav的是打开菜单的按钮
 	    if($(e.target).closest(".list_ul").length == 0 && $(e.target).closest(".test_nav").length == 0){
@@ -88,12 +83,13 @@ function nav_left(json,i){
 			}
 	}); // 一级菜单点击结束
 }
-
+var apiNo = sessionStorage.getItem("apiNo");
+console.log(apiNo);
 // 5.4.1获取实时监测左侧树
 function testNav(){
 	 $.ajax({
 	 	url: $url+"/iom_app_server/api/third/getTreeData",
-		data:  {url:"pcm/Tree.do",dtype:"设备列表"},
+		data:  {url:"pcm/Tree.do",dtype:"设备列表",unitNo:apiNo},
 		dataTyp: 'json',
 		type: 'get',
 		xhrFields:{ // 跨域cookie打开
@@ -102,7 +98,7 @@ function testNav(){
     	crossDomain: true,
     	success:function(data){
     		var json = (new Function("return " + data))();  // 转换json标准格式
-    		// console.log(json);
+    		console.log(json);
     		$(".test_nav h3").text(json[0].text);
     		list();
     		for(var i = 0; i < json[0].children.length; i++){
@@ -117,12 +113,12 @@ function dataSwitch(){
 	var navText; 								// 定义最终选择字符
 	// 监测类型按钮
 	function btn(){
-		var h6_text = $('.test_nav h6').text();	// 第三级字符
-		var h5_text = $('.test_nav h5').text();	// 第二季字符
-		if (h6_text == "无") {
-			navText = h5_text;					// 第二级字符传到最终字符
+		var h5_text = $('.test_nav h5').text();	// 第三级字符
+		var h4_text = $('.test_nav h4').text();	// 第二季字符
+		if (h5_text == "无") {
+			navText = h4_text;					// 第二级字符传到最终字符
 		}else{
-			navText = h6_text;					// 第三级字符传到最终字符
+			navText = h5_text;					// 第三级字符传到最终字符
 		}
 	}
 	var navLi; 									// 请求变量
@@ -243,6 +239,162 @@ function dataSwitch(){
 	});
 }
 dataSwitch();
+// 接线图列表
+function chartMenu(){
+	// 展开一级菜单列表
+	$('.chart_nav h2,.chart_nav h4').click(function(){
+		$('.chart_list').hide();
+		$('.chart_h4').show();
+	});
+	// 展开二级菜单列表
+	$('.chart_nav h5').click(function(){
+		$('.chart_list').hide();
+		$('.chart_h5').show();
+	});
+	$(document).bind("click",function(e){
+	    if($(e.target).closest(".chart_list").length == 0 && $(e.target).closest(".chart_nav").length == 0){
+	        $('.chart_list').hide();
+	    }
+	});
+}
+// 5.4.6接线图数据
+function svgData(json,chartName){
+	var devi = {
+		"url":"pcm/WebSocket!send.do",
+		"data":"findRtVarData;"
+		+chartName+
+		"进线柜.电流A;"
+		+chartName+
+		"电容柜.电流A;"
+		+chartName+
+		"D3回路1.电流A;"
+		+chartName+
+		"D3回路2.电流A;"
+		+chartName+
+		"D3回路3.电流A;"
+		+chartName+
+		"D3回路4.电流A;"
+		+chartName+
+		"D3回路5.电流A;"
+		+chartName+
+		"D4回路1.电流A;"
+		+chartName+
+		"D4回路2.电流A;"
+		+chartName+
+		"D4回路3.电流A;"
+		+chartName+
+		"D4回路4.电流A;"
+		+chartName+
+		"D4回路5.电流A;"
+		+chartName+
+		"D4回路6.电流A;"
+		+chartName+
+		"进线柜.电流B;"
+		+chartName+
+		"电容柜.电流B;"
+		+chartName+
+		"D3回路1.电流B;"
+		+chartName+
+		"D3回路2.电流B;"
+		+chartName+
+		"D3回路3.电流B;"
+	}
+	$.ajax({
+		url: $url+"iom_app_server/api/third/getData",
+		data: devi,
+		dataTyp: 'json',
+		type: 'get',
+		xhrFields:{ // 跨域cookie打开
+			withCredentials: true
+		},
+    	crossDomain: true,
+    	success:function(data){
+    		var json = (new Function("return " + data))();  // 转换json标准格式
+    		console.log(json);
+    	}
+	})
+}
+// 请求wdr文件
+function chart_wdr(chartName){
+	console.log(chartName);
+	var chart_svg = {
+		"url":"/pcm/svg!get.do",
+		"pageId":chartName+".wdr"
+	}
+	$.ajax({
+		url: $url+"iom_app_server/api/third/getSvgData",
+		data:  chart_svg,
+		dataTyp: 'json',
+		type: 'get',
+		xhrFields:{ // 跨域cookie打开
+			withCredentials: true
+		},
+    	crossDomain: true,
+    	success:function(data){
+    		var json = (new Function("return " + data))();  // 转换json标准格式
+    		console.log(json,chartName);
+    		svgData(json,chartName);
+        $("#jxt embed").attr('src',$url+json.data);
+        var w = $(window).width();//窗口宽度
+        $("#jxt").css({ height: w,width:"8rem"});
+    	}
+	})
+}
+// 接线图多级菜单
+function nav_right(json,i){
+	var chartName;
+	// 展开一级菜单列表
+	chartMenu();
+	$(".chart_h4").append("<p>"+json[0].children[i].text+"</p>");
+	$(".chart_h4 p").click(function(){		//	一级菜单展开
+		$('.chart_nav h4').text($(this).text());
+		$('.chart_h4').hide(); 				// 当前的消失
+		$('.chart_h5').show(); 				// 对应的显示
+		var $h4 = $(this).index();  		//当前选项
+		$(".chart_h5").text(""); 			// 先清空选项
+      chartName = $(".chart_nav h4").text();
+      if(json[0].children[$h4].children.length > 1){
+         for(var j = 0; j < json[0].children[$h4].children.length; j++){
+            chartMenu();
+            $(".chart_h5").append("<p>"+json[0].children[$h4].children[j].text+"</p>");
+            $(".chart_h5 p").click(function(){		// 二级菜单
+               chartMenu();
+               $('.chart_nav h5').text($(this).text());
+               $('.chart_h5').hide(); 				// 当前的消失
+               chartName = $(".chart_nav h5").text();
+               console.log(chartName);
+            })
+         }
+      }else{
+         $(".chart_nav h5").text("无");
+      }
+      console.log(chartName);
+	})
+}
+// 接线图 5.4.4获取接线图所有的树形列表.wdr数据
+function chart_nav(){
+	$.ajax({
+	 	url: $url+"/iom_app_server/api/third/getSvgTreeData",
+		data:  {url:"pcm/Tree.do",dtype:"图形列表",unitNo:apiNo},
+		dataTyp: 'json',
+		type: 'get',
+		xhrFields:{ // 跨域cookie打开
+			withCredentials: true
+		},
+    	crossDomain: true,
+    	success:function(data){
+    		var json = (new Function("return " + data))();  // 转换json标准格式
+    	// 	console.log(json);
+    		$(".chart_nav h2").text(json[0].text);
+    		for(var i = 0; i < json[0].children.length; i++){
+    			nav_right(json,i)
+    		}
+    	}
+	 })
+}
+chart_nav();
+
+
 
 // 图表
 function chart(){
@@ -331,175 +483,3 @@ window.onload = function() {
 	   show.innerHTML ='<h5>状态：正常</h5>' + t;
 	  }, 1000);
  };
-// 接线图列表
-function chartMenu(){
-	// 展开一级菜单列表
-	$('.chart_nav h2,.chart_nav h4').click(function(){
-		$('.chart_list').hide();
-		$('.chart_h4').show();
-	});
-	// 展开二级菜单列表
-	$('.chart_nav h5').click(function(){
-		$('.chart_list').hide();
-		$('.chart_h5').show();
-	});
-	// 展开三级菜单列表
-	$('.chart_nav h6').click(function(){
-		$('.chart_list').hide();
-		$('.chart_h6').show();
-	});
-	$(document).bind("click",function(e){
-	    if($(e.target).closest(".chart_list").length == 0 && $(e.target).closest(".chart_nav").length == 0){
-	        $('.chart_list').hide();
-	    }
-	});
-}
-// 5.4.6接线图数据
-function svgData(json,chartName){
-	var devi = {
-		"url":"pcm/WebSocket!send.do",
-		"data":"findRtVarData;"
-		+chartName+
-		"进线柜.电流A;"
-		+chartName+
-		"电容柜.电流A;"
-		+chartName+
-		"D3回路1.电流A;"
-		+chartName+
-		"D3回路2.电流A;"
-		+chartName+
-		"D3回路3.电流A;"
-		+chartName+
-		"D3回路4.电流A;"
-		+chartName+
-		"D3回路5.电流A;"
-		+chartName+
-		"D4回路1.电流A;"
-		+chartName+
-		"D4回路2.电流A;"
-		+chartName+
-		"D4回路3.电流A;"
-		+chartName+
-		"D4回路4.电流A;"
-		+chartName+
-		"D4回路5.电流A;"
-		+chartName+
-		"D4回路6.电流A;"
-		+chartName+
-		"进线柜.电流B;"
-		+chartName+
-		"电容柜.电流B;"
-		+chartName+
-		"D3回路1.电流B;"
-		+chartName+
-		"D3回路2.电流B;"
-		+chartName+
-		"D3回路3.电流B;"
-	}
-	$.ajax({
-		url: $url+"iom_app_server/api/third/getData",
-		data: devi,
-		dataTyp: 'json',
-		type: 'get',
-		xhrFields:{ // 跨域cookie打开
-			withCredentials: true
-		},
-    	crossDomain: true,
-    	success:function(data){
-    		var jsonp = (new Function("return " + data))();  // 转换json标准格式
-    		console.log(jsonp);
-    	}
-	})
-}
-// 请求wdr文件
-function chart_wdr(chartName){
-	console.log(chartName);
-	var chart_svg = {
-		"url":"/pcm/svg!get.do",
-		"pageId":chartName+".wdr"
-	}
-	$.ajax({
-		url: $url+"iom_app_server/api/third/getSvgData",
-		data:  chart_svg,
-		dataTyp: 'json',
-		type: 'get',
-		xhrFields:{ // 跨域cookie打开
-			withCredentials: true
-		},
-    	crossDomain: true,
-    	success:function(data){
-    		var json = (new Function("return " + data))();  // 转换json标准格式
-    		console.log(json);
-    		svgData(json,chartName);
-        $("#jxt embed").attr('src',$url+json.data);
-        var w = $(window).width();//窗口宽度
-        $("#jxt").css({ height: w,width:"8rem"});
-    	}
-	})
-}
-// 接线图多级菜单
-function nav_right(json,i){
-	var chartName;
-	// 展开一级菜单列表
-	chartMenu();
-	$(".chart_h4").append("<p>"+json[0].children[i].text+"</p>");
-	$(".chart_h4 p").click(function(){		//	一级菜单展开
-		$('.chart_nav h4').text($(this).text());
-		$('.chart_h4').hide(); 				// 当前的消失
-		$('.chart_h5').show(); 				// 对应的显示
-		var $h4 = $(this).index();  		//当前选项
-		$(".chart_h5").text(""); 			// 先清空选项
-		for(var j = 0; j < json[0].children[$h4].children.length; j++){
-			chartMenu();
-			$(".chart_h5").append("<p>"+json[0].children[$h4].children[j].text+"</p>");
-			$(".chart_h5 p").click(function(){		// 二级菜单
-				chartMenu();
-				$('.chart_nav h5').text($(this).text());
-				$('.chart_h5').hide(); 				// 当前的消失
-				$('.chart_h6').show(); 				// 对应的显示
-				var $h5 = $(this).index();  		//当前选项
-				$(".chart_h6").text(""); 			// 先清空选项
-				chartName = $(".chart_nav h5").text();
-				if (json[0].children[$h4].children[$h5].children.length > 0) {			// 判断是否有数据
-					for(var k = 0; k < json[0].children[$h4].children[$h5].children.length; k++){
-						chartMenu();
-						$(".chart_h5").append("<p>"+json[0].children[$h4].children[$h5].children[k].text+"</p>");
-						$('.chart_h5 p').click(function(){ 			// 三级菜单
-							$('.chart_h6').hide();
-							$('.chart_nav h6').text($(this).text());
-							chartName = $(".chart_nav h6").text();
-						});
-						chart_wdr(chartName);
-					}
-				}else{
-					$('.chart_nav h6').text("无");
-					chart_wdr(chartName);
-				}
-			})
-
-		}
-	})
-}
-// 接线图 5.4.4获取接线图所有的树形列表.wdr数据
-function chart_nav(){
-	$.ajax({
-	 	url: $url+"/iom_app_server/api/third/getSvgTreeData",
-		data:  {url:"pcm/Tree.do",dtype:"图形列表","unitNo":""},
-		dataTyp: 'json',
-		type: 'get',
-		xhrFields:{ // 跨域cookie打开
-			withCredentials: true
-		},
-    	crossDomain: true,
-    	success:function(data){
-    		var json = (new Function("return " + data))();  // 转换json标准格式
-    		console.log(json);
-
-    		$(".chart_nav h2").text(json[0].text);
-    		for(var i = 0; i < json[0].children.length; i++){
-    			nav_right(json,i)
-    		}
-    	}
-	 })
-}
-chart_nav()

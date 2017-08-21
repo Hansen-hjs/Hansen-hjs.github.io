@@ -5,17 +5,15 @@
 .test_class .test_class_hover{ color: #48acf8; border-bottom: solid 0.06rem #48acf8; }
 /*多级级菜单选项*/
 .test_nav{ width: 100%; height: 0.84rem; overflow: hidden; border-bottom: solid 1px #ddd; }
-.test_nav h3{ font-size: 0.3rem; margin-left: 0.24rem; margin-right: 0.1rem; font-weight: 400; line-height: 0.84rem; float: left; color: #48acf8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; width: 1.46rem; height: 0.84rem}
+.test_nav h3{ font-size: 0.3rem; margin-left: 0.24rem; margin-right: 0.1rem; font-weight: 400; line-height: 0.84rem; float: left; color: #48acf8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; width: 2.8rem; height: 0.84rem}
 .test_nav h4{ width: 1.61rem; float: left; font-weight: 400; font-size: 0.28rem; line-height: 0.84rem; color: #999999; text-overflow: ellipsis; white-space: nowrap; height: 0.84rem; display: block; overflow: hidden;}
 .test_nav h5{ width: 1.47rem; float: left; font-weight: 400; font-size: 0.28rem; line-height: 0.84rem; color: #999999; text-overflow: ellipsis; white-space: nowrap; height: 0.84rem; display: block; overflow: hidden;}
-.test_nav h6{ width: 1.25rem; float: left; font-weight: 400; font-size: 0.28rem; line-height: 0.84rem; color: #999999; text-overflow: ellipsis; white-space: nowrap; height: 0.84rem; display: block; overflow: hidden;}
 .test_nav span{ margin-right: 0.1rem; float: left; font-weight: 400; font-size: 0.28rem; line-height: 0.84rem; color: #999999; text-overflow: ellipsis; white-space: nowrap; height: 0.84rem; display: block; overflow: hidden; }
 /*多级菜单列表*/
-.list_ul{ position: absolute; top: 2.64rem; left: 0; background: #fff; width: 100%; box-shadow: 0px 7px 10px #ddd; z-index: 5}
+.list_ul{ position: absolute; top: 2.64rem; left: 0; background: #fff; width: 100%; box-shadow: 0px 7px 10px #ddd; z-index: 4; max-height: 7rem; overflow-y: scroll;}
 .list_ul li{ padding-left: 0.24rem; font-size: 0.24rem; height: 0.68rem; line-height: 0.68rem; color: #333; border-bottom: solid 1px #ddd; background-image: url(../../img/icon_next.png); background-size: 0.44rem 0.44rem; background-repeat: no-repeat; background-position: center right; }
 .h4_ul{ display: none; }
 .h5_ul{ display: none; }
-.h6_ul{ display: none; }
 /*内容容器*/
 .test_data{ width: 100%; }
 .test_Dcontent{ width: 100%; display: none; overflow: hidden;}
@@ -38,11 +36,10 @@
 #time_data h5{ font-weight: 400; font-size: 0.28rem; color: #fff; float: left; }
 /*接线图*/
 .chart_nav{ width: 100%; height: 0.84rem; overflow: hidden; }
-.chart_nav h2{ font-size: 0.3rem; padding: 0; margin-left: 0.24rem; margin-right: 0.1rem; font-weight: 400; line-height: 0.84rem; float: left; color: #48acf8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; width: 1.46rem; height: 0.84rem }
+.chart_nav h2{ font-size: 0.3rem; padding: 0; margin-left: 0.24rem; margin-right: 0.1rem; font-weight: 400; line-height: 0.84rem; float: left; color: #48acf8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; width: 2.8rem; height: 0.84rem }
 .chart_nav span{ margin-right: 0.1rem; float: left; font-weight: 400; font-size: 0.28rem; line-height: 0.84rem; color: #999999; text-overflow: ellipsis; white-space: nowrap; height: 0.84rem; display: block; overflow: hidden; }
 .chart_nav h4{ width: 1.61rem; float: left; font-weight: 400; font-size: 0.28rem; line-height: 0.84rem; color: #999999; text-overflow: ellipsis; white-space: nowrap; height: 0.84rem; display: block; overflow: hidden; }
 .chart_nav h5{ width: 1.47rem; float: left; font-weight: 400; font-size: 0.28rem; line-height: 0.84rem; color: #999999; text-overflow: ellipsis; white-space: nowrap; height: 0.84rem; display: block; overflow: hidden; }
-.chart_nav h6{ width: 1.25rem; float: left; font-weight: 400; font-size: 0.28rem; line-height: 0.84rem; color: #999999; text-overflow: ellipsis; white-space: nowrap; height: 0.84rem; display: block; overflow: hidden; }
 .chart_list{ position: absolute; top: 2.6rem; left: 0; background: #fff; width: 100%; box-shadow: 0px 7px 10px #ddd; z-index: 5; display: none; border-top: 1px solid #ddd}
 .chart_list p{ padding-left: 0.24rem; font-size: 0.24rem; height: 0.68rem; line-height: 0.68rem; color: #333; border-bottom: solid 1px #ddd; background-image: url(../../img/icon_next.png); background-size: 0.44rem 0.44rem; background-repeat: no-repeat; background-position: center right;}
 .chart_svg{ width: 100%; height: 9rem; overflow: scroll; }
