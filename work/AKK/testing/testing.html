@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实时监测</title>
+</head>
+<link rel="stylesheet" href="css/share.css">
+<link rel="stylesheet" href="css/testing.css">
+<script>
+	document.documentElement.style.fontSize =document.documentElement.clientWidth / 7.2 + 'px';
+</script>
+<script src="../share.js/jQuery.js"></script>
+<script src="../share.js/swiper.min.js"></script>
+<script src="js/echarts.min.js"></script>
+<body>
+	<header class="top">
+		<h2>实时监测</h2>
+	</header>
+	<div class="testing_content">
+		<div class="test_class flex">
+			<span class="f1 test_class_hover">实时监测</span>
+			<span class="f1">接线图</span>
+		</div>
+		<!-- 多级菜单导航 -->
+		<nav class="test_nav">
+			<p>
+				<h3>企业名称</h3>
+				<span>∨</span>
+				<h4>未选择</h4>
+				<span>></span>
+				<h5>未选择</h5>
+			</p>
+		</nav>
+		<!-- 多级菜单列表 -->
+		<ul class="list_ul h4_ul"></ul>
+		<ul class="list_ul h5_ul"></ul>
+		<!-- 切换的数据页 -->
+		<section class="test_data">
+			<!-- 实时监测 -->
+			<div class="test_Dcontent Dcontent_hover">
+				<h3>选择监测类型</h3>
+				<div class="swiper-container" id="touch_ul">
+			       <ul class="swiper-wrapper">
+						<li class="li_hover swiper-slide">电压</li>
+						<li class="swiper-slide">电流</li>
+						<li class="swiper-slide">电能</li>
+						<li class="swiper-slide">频率</li>
+						<li class="swiper-slide">功率</li>
+						<li class="swiper-slide">功率因素</li>
+					</ul>
+			    </div>
+				<div class="td_data">
+					<h4>分时段曲线</h4>
+					<div id="main"></div>
+					<table id="td_text" cellpadding="0" cellspacing="0" >
+						<span id="time_data"></span>
+						<tr>
+							<th>变量名</th><th>数值(V)</th>
+						</tr>
+						<tr>
+							<td>AB线电压</td><td>403.360</td>
+						</tr>
+						<tr>
+							<td>A相电压</td><td>403.360</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<!-- 接线图 -->
+			<div class="test_Dcontent">
+				<!-- 接线图多级菜单 -->
+				<nav class="chart_nav">
+					<p>
+						<h2>企业名称</h2>
+						<span>∨</span>
+						<h4>未选择</h4>
+						<span>></span>
+						<h5>未选择</h5>
+					</p>
+				</nav>
+				<!-- 接线图多级菜单列表 -->
+				<ul class="chart_list chart_h4"></ul>
+				<ul class="chart_list chart_h5"></ul>
+				<div class="chart_svg">
+					<span id="jxt">
+						<!-- <h2>确定</h2> -->
+						<embed src="" type="">
+					</span>
+				</div>
+			</div>
+		</section>
+	</div>
+	<footer class="footer">
+		<nav class="flex">
+			<a href="../home/home.html" class="f1"><span><img src="../img/icon_home.png" alt=""></span></a>
+			<a href="###" class="f1"><span><img src="../img/icon_testing_press.png" alt=""></span></a>
+			<a href="../monitor/monitor.html" class="f1"><span><img src="../img/icon_data.png" alt=""></span></a>
+			<a href="../event/event.html" class="f1"><span><img src="../img/icon_event.png" alt=""></span></a>
+			<a href="../administration/administration.html" class="f1"><span><img src="../img/icon_administration.png" alt=""></span></a>
+		</nav>
+	</footer>
+</body>
+</html>
+<script src="../url.js"></script>
+<script src="js/testing.js"></script>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页|详情</title>
+	<link rel="stylesheet" href="css/share.css">
+	<link rel="stylesheet" href="css/company.css">
+</head>
+<script>
+	document.documentElement.style.fontSize =document.documentElement.clientWidth / 7.2 + 'px';
+</script>
+<script src="js/echarts.min.js"></script>
+<script src="../share.js/jQuery.js"></script>
+<body>
+	<header class="top">
+		<a href="home.html"></a>
+		<h2>单位概况</h2>
+	</header>
+	<div class="map_class">
+		<header class="top_class">鱼化光电园</header>
+		<div class="line"></div>
+		<section class="chart">
+			<span class="analysis">
+				<h2 style="background-image: url(../img/icon_flash.png);">电能分析</h2>
+				<i></i>
+			</span>
+			<div class="consume">
+				<div id="ammeter"><h2>计算中...</h2></div>
+				<div id="price"><h2>计算中...</h2></div>
+			</div>
+			<span class="chart_text">昨日耗电情况</span>
+		</section>
+		<div class="line"></div>
+		<section class="information">
+			<span class="analysis">
+				<h2 style="background-image: url(../img/icon_alert.png)">报警信息</h2>
+				<i></i>
+			</span>
+			<div class="information_warning">
+				<h2>报警信息</h2>
+				<ul class="flex">
+					<li class="f1" style="border-right: solid 1px #ddd">
+						<h3 style="color: #48acf8" id="comfirmed">0</h3>
+						<p>已确认</p>
+					</li>
+					<li class="f1">
+						<h3 style="color: #f83b44" id="uncomfirmed">0</h3>
+						<p>未确认</p>
+					</li>
+				</ul>
+			</div>
+			<div class="information_task">
+				<h2>巡检任务</h2>
+				<ul id="intask_text">
+					<li><p>已完成&nbsp; &nbsp; <span style="color: #3c55d5" id="alreadyAccomplish">0</span></p></li>
+					<li><p>未完成&nbsp; &nbsp; <span style="color: #f83b44" id="notAccomplish">0</span></p></li>
+					<li style="border: none"><p>巡检中&nbsp; &nbsp; <span style="color: #f7ae47" id="patrolCentre">0</span></p></li>
+				</ul>
+			</div>
+		</section>
+		<div class="line"></div>
+		<!-- 最新事件 -->
+		<section>
+			<span class="analysis">
+				<h2 style="background-image: url(../img/icon_new.png)">最新事件</h2>
+				<i></i>
+			</span>
+			<ul class="news"></ul>
+		</section>
+	</div>
+	<footer class="footer">
+		<nav class="flex">
+			<a href="###" class="f1"><span><img src="../img/icon_home_press.png" alt=""></span></a>
+			<a href="../testing/testing.html" class="f1"><span><img src="../img/icon_testing.png" alt=""></span></a>
+			<a href="../monitor/monitor.html" class="f1"><span><img src="../img/icon_data.png" alt=""></span></a>
+			<a href="../event/event.html" class="f1"><span><img src="../img/icon_event.png" alt=""></span></a>
+			<a href="../administration/administration.html" class="f1"><span><img src="../img/icon_administration.png" alt=""></span></a>
+		</nav>
+	</footer>
+</body>
+</html>
+<script src="../url.js"></script>
+<script src="js/company.js"></script>

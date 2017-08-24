@@ -1,0 +1,17 @@
+*{ padding: 0; margin: 0; }
+body{ font-family: 微软雅黑; letter-spacing: 1px; overflow-x: hidden; background: #fff;}
+ul,li{ list-style: none;}
+a{ text-decoration: none; }
+
+.flex{ display: flex; display: -webkit-flex; display: -moz-flex; }
+.f1{ flex: 1 }
+/*头部*/
+.top{ width: 100%; height: 0.88rem; background-color: #48acf8; position: fixed; z-index: 5; top: 0; left: 0;}
+.top h2{ font-size: 0.36rem; color: #fff; text-align: center; line-height: 0.88rem; font-weight: 400;}
+.top a{ display: block; position: fixed; width: 0.88rem; height: 0.88rem; top: 0; left: 0; background-image: url(../../img/icon_back.png); background-size: 100%; background-repeat: no-repeat; background-position: center center; }
+/*底部*/
+.footer{ width: 100%; height: 0.98rem; background-color: rgba(255, 255, 255, 0.95); position: fixed; z-index: 5; bottom: 0; left: 0; border-top: solid 1px #aaa}
+.footer nav{ height: 100%; }
+.footer span{ width: 0.98rem; height: 0.98rem; display: block; margin: auto; overflow: hidden; background-size: 100%; background-position: left top; transition: .3s all;}
+.footer span img{ width: 100%; display: block; }
+.footer .a_hover{ background-position: left bottom; }

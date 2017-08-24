@@ -1,0 +1,68 @@
+.sone{ margin-top: 0.88rem; }
+.section{ height: 3.16rem; width: 100%; border-bottom: solid 1px #ddd; overflow: hidden;}
+#task,#warning{ border-right: solid 1px #ddd; }
+#task h2{ font-size: 0.36rem; line-height: 3.16rem; text-align: center; color: #48acf8 }
+#warning h2{ font-size: 0.36rem; line-height: 3.16rem; text-align: center; color: #48acf8 }
+.section span{ display: block; border-bottom: solid 1px #ddd;}
+.task span{ height: 1.05rem; }
+.task h5{ line-height: 1.05rem; font-size: 0.3rem; color: #999; margin-left: 0.32rem; float: left; font-weight: 400;}
+.task h4{ line-height: 1.05rem; font-size: 0.48rem; float: left; margin-left: 0.48rem; font-weight: 400;}
+.task i{ display: block; width: 0.44rem; height: 0.44rem; background-image: url(../../img/icon_next.png); background-size: 100%; float: right; margin: 0.3rem 0.24rem 0 0; }
+.warning span{ height: 1.58rem; position: relative;}
+.warning i{ display: block; width: 0.44rem; height: 0.44rem; background-image: url(../../img/icon_next.png); background-size: 100%; position: absolute; top: 50%; right: 0.24rem; margin-top: -0.22rem }
+.warning h4{ line-height: 0.79rem; font-weight: 400; font-size: 0.48rem; text-align: center; padding-top: 0.11rem;}
+.warning h5{ line-height: 0.38rem; font-weight: 400; font-size: 0.3rem; text-align: center; color: #999}
+.line{ display: block; width: 100%; height: 0.2rem; background: #f3f3f3; border-bottom: solid 1px #ddd; }
+/*最新事件*/
+.newEvent{ width: 100%;}
+.newEvent span{ display: block; overflow: auto; padding: 0.11rem 0.24rem; }
+.newEvent h2{ float: left; font-weight: 400; font-size: 0.3rem; color: #666; height: 0.42rem; padding-left: 0.5rem; background-image: url(../../img/icon_new.png); background-size: 0.3rem 0.3rem; background-repeat: no-repeat; background-position: bottom left;}
+.newEvent i{ float: right; width: 0.42rem; height: 0.42rem; background-image: url(../../img/icon_more.png); background-size: 100%; }
+.news_list{ width: 100%; padding-bottom: 1.2rem}
+.news_list li{ padding: 0.24rem; padding-left: 0; border-top: solid 1px #ddd; color: #666; overflow: hidden;}
+.news_list span{ float: left; width: 1.3rem; height: 1rem; border-right: solid 1px #ddd; display: block; padding: 0.3rem 0 0; margin-right: 0.1rem; }
+.news_list i{ display: block; float: none; width: 0.6rem; height: 0.6rem; margin: auto; background-image: url(../../img/icon_over_limit_alarm_red.png); background-size: 100%;}
+.news_list p{ font-size: 0.28rem; line-height: 0.44rem; }
+.news_list .time_p{ float: right; }
+.news_list .title_p{ width: 2.3rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-left: 1.36rem;}
+/*通用样式*/
+.news{ width: 100%; background: #fff;}
+.news li{ padding: 0.24rem; padding-left: 0; border-top: solid 1px #ddd; color: #666; overflow: hidden;}
+.news_left{ float: left; width: 1.3rem; height: 1rem; padding: 0.3rem 0 0; border-right: solid 1px #ddd; display: block; text-align: center; margin-right: 0.1rem; }
+.news_leftp{ white-space: normal; }
+.news_left img{ width: 100%; display: block; width: 0.6rem; height: 0.6rem; margin: auto; }
+.news p{ text-overflow: ellipsis; white-space: nowrap; font-size: 0.28rem; line-height: 0.44rem; overflow: hidden;}
+.news .time_p{ float: right; }
+.news .title_p{ width: 2.3rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-left: 1.36rem;}
+.news .p_complete{ color: #999999; text-align: right; }
+.news .p_patrol{ color: #999999; text-align: right; }
+.news .p_unfinished{ color: #999999; text-align: right; }
+.news .p_unconfirmed{ color: #999999; text-align: right; }
+.p_complete span{ color: #3de435; }
+.p_patrol span{ color: #e2ba2d; }
+.p_unfinished span{ color: #f22525; }
+.p_unconfirmed span{ background: #f83b44; padding: 0.05rem 0.2rem; color: #fff; margin-left: 0.46rem; border-radius: 0.08rem; text-align: left;}
+.top_class{ transition: .3s all; width: 100%; height: 0.88rem; background-color: #48acf8; position: fixed; z-index: 5; top: 0; left: 0;}
+.top_class h2{ font-size: 0.36rem; color: #fff; text-align: center; line-height: 0.88rem; font-weight: 400; }
+.top_class i{ position: fixed; width: 0.88rem; height: 0.88rem; top: 0; left: 0; }
+.top_class img{ width: 100%; display: block; }
+.translate_hover{ transform: translateX(100%); }
+/*任务页*/
+.task_content{ padding-top: 0.88rem; transition: .3s all; }
+.task_top{ padding-top: 0.36rem; overflow: hidden; border-bottom: solid 1px #ddd;}
+.task_top ul{ width: 100%; height: 0.64rem; margin-bottom: 0.36rem;}
+.task_top li{ height: 0.64rem; line-height: 0.64rem; font-size: 0.28rem; overflow: hidden; color: #333; padding-left: 0.24rem;}
+.task_top li p{ float: left; margin-right: 0.1rem;}
+.task_top li:last-child{ padding-left: 0; }
+.time_box{ display: block; float: left; width: 1.4rem; padding: 0 0.5rem 0 0.1rem; height: 0.6rem; color: #48acf8; text-align: center; border: solid 1px #ddd; border-radius: 0.08rem; text-align: center; outline: none; background-image: url(../../img/icon_day.png); background-size: 0.3rem 0.3rem; background-repeat: no-repeat; background-position: 1.6rem center}
+.time_box::-webkit-input-placeholder { color:#48acf8; }
+.sss_type{ width: 2rem; height: 0.6rem; float: left; font-size: 0.28rem; color: #48acf8; text-align: center; border: solid 1px #ddd; border-radius: 0.08rem; text-align: center; outline: none;}
+.sss_type option{ text-align: center; outline: none; font-size: 0.28rem;}
+.task_buttom{ display: block; width: 2.12rem; height: 0.64rem; background: #48acf8; border-radius: 0.08rem; color: #fff; line-height: 0.64rem; text-align: center; float: left; }
+
+.task_box{ width: 100%; overflow: hidden; padding-bottom: 1rem; position: relative;}
+.task_box i{ display: block; width: 0.64rem; height: 0.64rem; float: right; margin-right: 0.2rem;  background-image: url(../../img/icon_more.png); background-size: 0.64rem 0.64rem; background-position: center right; background-repeat: no-repeat; }
+.task_box h2{ height: 0.64rem; color: #666666; font-size: 0.28rem; padding-left: 0.46rem; background-size: 0.3rem 0.3rem; background-position: center left; background-repeat: no-repeat; margin-left: 0.36rem; line-height: 0.64rem; font-weight: 400;  }
+.task_box h3{ position: absolute; display: block; width: 100%; height: 0.7rem; text-align: center; line-height: 0.7rem; color: #48acf8; font-size: 0.3rem; top: 0.7rem; left: 0; z-index: -10}
+/*点击提示框*/
+.msg{ position: fixed; display: block; width: 3rem; height: 2rem; text-align: center; line-height: 2rem; color: #48acf8; font-size: 0.3rem; top: 50%; left: 50%; margin: -1rem -1.5rem; opacity: 0; background: #fff; border: solid 1px #48acf8; border-radius: 0.08rem; transition: .3s all; z-index: -10}

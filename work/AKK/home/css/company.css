@@ -1,0 +1,35 @@
+.map_class{ padding-top: 0.88rem; margin: 0; overflow: hidden; }
+.top_class{ height: 0.72rem; line-height: 0.72rem; text-align: center; font-size: 0.28rem; color: #48acf8; }
+/*通用样式*/
+.line{ height: 0.2rem; background: #f3f3f3; border-top: solid 1px #ddd; border-bottom: solid 1px #ddd; }
+.analysis{ display: block; overflow: auto; padding: 0.11rem 0.24rem; }
+.analysis h2{ float: left; font-weight: 400; font-size: 0.28rem; color: #666; height: 0.42rem; padding-left: 0.5rem; background-size: 0.3rem 0.3rem; background-repeat: no-repeat; background-position: center left;}
+.analysis i{ float: right; width: 0.42rem; height: 0.42rem; background-image: url(../../img/icon_more.png); background-size: 100%; }
+/*图表*/
+.consume{ height: 4.3rem; overflow: hidden; width: 100%;}
+.consume h2{ font-size: 0.36rem; line-height: 4.3rem; text-align: center; color: #48acf8}
+#ammeter{ width: 50%; height: 100%; float: left; padding: 0; margin: 0}
+#price{ width: 50%; height: 100%; float: left; padding: 0; margin: 0}
+.chart_text{ display: block; color: #333; height: 0.72rem; font-size: 0.28rem; text-align: center; line-height: 0.72rem;}
+/*报警信息*/
+.information{ overflow: hidden; padding-bottom: 0.28rem; }
+.information_warning{ width: 3.24rem; height: 2.38rem; float: left; margin-left: 0.22rem; border: solid 1px #ddd; border-radius: 0.08rem; overflow: hidden;}
+.information_warning h2{ height: 0.7rem; background: #f7ae47; color: #fff; font-size: 0.34rem; text-align: center; font-weight: 400; line-height: 0.7rem; }
+.information_warning ul{ height: 1.68rem; }
+.information_warning li{ text-align: center; font-weight: 400; font-size: 0.3rem; }
+.information_warning h3{ padding-top: 0.3rem; font-size: 0.48rem }
+.information_warning p{ color: #999; }
+.information_task{ width: 3.24rem; height: 2.38rem; float: left; margin-left: 0.22rem; border: solid 1px #ddd; border-radius: 0.08rem; overflow: hidden;}
+.information_task h2{ width: 0.7rem; height: 2.14rem; background: #8bb0ee; color: #fff; font-size: 0.34rem; text-align: center; float: left; font-weight: 400; padding-top: 0.24rem;}
+#intask_text{ width: 2.54rem; float: left; overflow: hidden; }
+#intask_text li{ height: 0.79rem; border-bottom: solid 1px #ddd; background-image: url(../../img/icon_next.png); background-repeat: no-repeat; background-position: center right; background-size: 0.44rem 0.44rem}
+#intask_text p{ color: #333; font-size: 0.28rem; line-height: 0.79rem; text-align: center; }
+#intask_text span{ font-weight: 600; }
+/*最新事件*/
+.news{ width: 100%; padding-bottom: 1.2rem}
+.news li{ padding: 0.24rem; padding-left: 0; border-top: solid 1px #ddd; color: #666; overflow: hidden;}
+.news span{ float: left; width: 1.3rem; height: 1rem; border-right: solid 1px #ddd; display: block; padding-top: 0.3rem; margin-right: 0.1rem; }
+.news i{ display: block; width: 0.6rem; height: 0.6rem; margin: auto; background-image: url(../../img/icon_over_limit_alarm_red.png); background-size: 100%;}
+.news p{ font-size: 0.28rem; line-height: 0.44rem;}
+.news .time_p{ float: right; }
+.news .title_p{ width: 2.3rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-left: 1.36rem;}

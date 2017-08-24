@@ -1,2 +1,7 @@
-# Hansen-hjs.github.io
-#个人仓库的一些网页前端Demo
+<h2 align="center">I am 大仙</h2>
+
+<p align="center"><img src="https://raw.githubusercontent.com/Hansen-hjs/Hansen-hjs.github.io/master/photos/me.jpg"></img></p>
+
+### 微信：
+
+![me](https://raw.githubusercontent.com/Hansen-hjs/Hansen-hjs.github.io/master/photos/wechart.jpg)
