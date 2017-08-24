@@ -61,7 +61,7 @@
 </html>
 <script>
 	// 红球生成数
-	var red = [];
+	let red = [];
 	function my_red(n,min,max){			// n是随机个数，min和max是数域
 		for( i = 0; i < n; i++){
 			red[i] = parseInt(Math.random()*(max-min+1)+min);
@@ -76,7 +76,7 @@
 		}
 	}
 	// 蓝球生成数
-	var blue = [];
+	let blue = [];
 	function my_blue(n,min,max){		// n是随机个数，min和max是数域
 		for( i = 0; i < n; i++){
 			blue[i] = parseInt(Math.random()*(max-min+1)+min);
@@ -94,8 +94,8 @@
 	function bighappy(bighappy) {
 		my_red(5,1,35); 	// 红球
 		my_blue(2,1,12);	// 蓝球
-		var dlt_btn = document.getElementById(bighappy);
-		var Ball = '<li class="red">'
+		let dlt_btn = document.getElementById(bighappy);
+		let Ball = '<li class="red">'
 				+red[0]+
 				'</li><li class="red">'
 				+red[1]+
@@ -123,8 +123,8 @@
 	function twoColorBall(twoColorBall){
 		my_red(6,1,33); 	// 红球
 		my_blue(1,1,16);	// 蓝球
-		var ssq_btn = document.getElementById(twoColorBall);
-		var Ball = '<li class="red">'
+		let ssq_btn = document.getElementById(twoColorBall);
+		let Ball = '<li class="red">'
 				+red[0]+
 				'</li><li class="red">'
 				+red[1]+
@@ -150,12 +150,28 @@
 	}
 
 	setInterval(function () {
-		var tTime = new Date();                                     // 今天时间
-		var tMonth = ("0"+(tTime.getMonth()+ 1)).slice(-2);         // 今天月份
-		var tDay = ("0"+tTime.getDate()).slice(-2);                 // 今天日期
-		var tHours = ("0"+tTime.getHours()).slice(-2)								// 今天小时
-		var tMinutes = ("0"+tTime.getMinutes()).slice(-2)						// 今天小时
-		var tSeconds = ("0"+tTime.getSeconds()).slice(-2)						// 今天小时
+		let tTime = new Date();                                     // 今天时间
+		let tMonth = ("0"+(tTime.getMonth()+ 1)).slice(-2);         // 今天月份
+		let tDay = ("0"+tTime.getDate()).slice(-2);                 // 今天日期
+		let tHours = ("0"+tTime.getHours()).slice(-2)								// 今天小时
+		let tMinutes = ("0"+tTime.getMinutes()).slice(-2)						// 今天小时
+		let tSeconds = ("0"+tTime.getSeconds()).slice(-2)						// 今天小时
 		document.getElementById('today_time').innerHTML = tTime.getFullYear() + "-" + tMonth + "-" + tDay+" "+tHours+":"+tMinutes+":"+tSeconds;
 	},1000)
+
+
+	let obj = 10;
+	(() => {
+		let obj = 20;
+		console.log(obj);
+	})();
+	(function aa(){
+		let obj = 30;
+		console.log(obj);
+	})();
+	let a;
+	(function(a){
+	  console.log(a);  //firebug输出123,使用（）运算符
+	})(123);
+	console.log(obj);
 </script>
