@@ -18,12 +18,12 @@
 	.content{ max-width: 500px; width: 100%; height: 250px; margin: 0 auto 20px; }
 	.ball{ width: 100%; height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover; position: relative; z-index: 1}
 	.ball:before{ position: absolute; content: ""; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: -1; }
-	.box_content{ width: 350px; height: 40px; margin: -20px -175px; overflow: auto; position: absolute; top: 35%; left: 50%;}
+	.box_content{ width: 380px; height: 40px; margin: -20px -175px; overflow: hidden; position: absolute; top: 35%; left: 50%;}
 	.box_content li{ float: left; width: 40px; height: 40px; margin-right: 10px; border-radius: 50%; color: #fff; text-align: center; line-height: 40px}
 	.red{ background: #fb3f3f; }
 	.bule{ background: #48acf8; }
 	.create{ width: 150px; height: 40px; position: absolute; margin: -20px -75px; bottom: 35%; left: 50%; background: linear-gradient(to right, #fb3f3f, #48acf8); text-align: center; line-height: 40px; color: #fff; border-radius: 4px; cursor: pointer; }
-	.create:hover{ background: linear-gradient(to right,#48acf8,#fb3f3f); }
+	.create:hover{ background: linear-gradient(to right,#48acf8,#fb3f3f); transform: scale();}
 </style>
 <body>
 	<header>
@@ -61,7 +61,7 @@
 </html>
 <script>
 	// 红球生成数
-	let red = [];
+	var red = [];
 	function my_red(n,min,max){			// n是随机个数，min和max是数域
 		for( i = 0; i < n; i++){
 			red[i] = parseInt(Math.random()*(max-min+1)+min);
@@ -76,7 +76,7 @@
 		}
 	}
 	// 蓝球生成数
-	let blue = [];
+	var blue = [];
 	function my_blue(n,min,max){		// n是随机个数，min和max是数域
 		for( i = 0; i < n; i++){
 			blue[i] = parseInt(Math.random()*(max-min+1)+min);
@@ -94,8 +94,9 @@
 	function bighappy(bighappy) {
 		my_red(5,1,35); 	// 红球
 		my_blue(2,1,12);	// 蓝球
-		let dlt_btn = document.getElementById(bighappy);
-		let Ball = '<li class="red">'
+		var dlt_btn = document.getElementById(bighappy);
+		var dlt_li = dlt_btn.getElementsByTagName('li');
+		var Ball = '<li class="red">'
 				+red[0]+
 				'</li><li class="red">'
 				+red[1]+
@@ -109,22 +110,29 @@
 				+blue[0]+
 				'</li><li class="bule">'
 				+blue[1]+'</li>';
-		dlt_btn.style.transform = "scale(0.5,0.5)";
-		dlt_btn.style.opacity = "0.2";
+		dlt_btn.innerHTML = Ball;
+	  for (var i = 0; i < dlt_li.length; i++) {
+	  	dlt_li[i].style.transform = "scale(0.5,0.5)";
+			dlt_li[i].style.opacity = "0.2";
+	  }
 		setTimeout(function(){
-			dlt_btn.innerHTML = Ball;
-		},300)
-		setTimeout(function(){
-			dlt_btn.style.transform = "scale(1,1)";
-			dlt_btn.style.opacity = "1";
-		},400)
+			for (var i = 0; i < dlt_li.length; i++) {
+				(function(j){
+					setTimeout(function(){
+						dlt_li[j].style.transform = "scale(1,1)";
+						dlt_li[j].style.opacity = "1";
+					},100 + 100 * j)
+				})(i)
+			}
+		},200)
 	}
 	// 双色球
 	function twoColorBall(twoColorBall){
 		my_red(6,1,33); 	// 红球
 		my_blue(1,1,16);	// 蓝球
-		let ssq_btn = document.getElementById(twoColorBall);
-		let Ball = '<li class="red">'
+		var ssq_btn = document.getElementById(twoColorBall);
+		var ssq_li = ssq_btn.getElementsByTagName('li');
+		var Ball = '<li class="red">'
 				+red[0]+
 				'</li><li class="red">'
 				+red[1]+
@@ -138,38 +146,44 @@
 				+red[5]+
 				'</li><li class="bule">'
 				+blue[0]+'</li>';
-		ssq_btn.style.transform = "scale(0.5,0.5)";
-		ssq_btn.style.opacity = "0.2";
+		ssq_btn.innerHTML = Ball;
+		for (var i = 0; i < ssq_li.length; i++) {
+			ssq_li[i].style.transform = "scale(0.5,0.5)";
+			ssq_li[i].style.opacity = "0.2";
+		}
 		setTimeout(function(){
-			ssq_btn.innerHTML = Ball;
-		},300)
-		setTimeout(function(){
-			ssq_btn.style.transform = "scale(1,1)";
-			ssq_btn.style.opacity = "1";
-		},400)
+			for (var i = 0; i < ssq_li.length; i++) {
+				(function(j){
+					setTimeout(function(){
+						ssq_li[j].style.transform = "scale(1,1)";
+						ssq_li[j].style.opacity = "1";
+					},100 + 100 * j)
+				})(i)
+			}
+		},200)
 	}
 
 	setInterval(function () {
-		let tTime = new Date();                                     // 今天时间
-		let tMonth = ("0"+(tTime.getMonth()+ 1)).slice(-2);         // 今天月份
-		let tDay = ("0"+tTime.getDate()).slice(-2);                 // 今天日期
-		let tHours = ("0"+tTime.getHours()).slice(-2)								// 今天小时
-		let tMinutes = ("0"+tTime.getMinutes()).slice(-2)						// 今天小时
-		let tSeconds = ("0"+tTime.getSeconds()).slice(-2)						// 今天小时
+		var tTime = new Date();                                     // 今天时间
+		var tMonth = ("0"+(tTime.getMonth()+ 1)).slice(-2);         // 今天月份
+		var tDay = ("0"+tTime.getDate()).slice(-2);                 // 今天日期
+		var tHours = ("0"+tTime.getHours()).slice(-2)								// 今天小时
+		var tMinutes = ("0"+tTime.getMinutes()).slice(-2)						// 今天小时
+		var tSeconds = ("0"+tTime.getSeconds()).slice(-2)						// 今天小时
 		document.getElementById('today_time').innerHTML = tTime.getFullYear() + "-" + tMonth + "-" + tDay+" "+tHours+":"+tMinutes+":"+tSeconds;
 	},1000)
 
 
-	let obj = 10;
+	var obj = 10;
 	(() => {
-		let obj = 20;
+		var obj = 20;
 		console.log(obj);
 	})();
 	(function aa(){
-		let obj = 30;
+		var obj = 30;
 		console.log(obj);
 	})();
-	let a;
+	var a;
 	(function(a){
 	  console.log(a);  //firebug输出123,使用（）运算符
 	})(123);
