@@ -7,15 +7,15 @@ window.onload = function () {
   },500);
   var leftH2 = box.querySelector('.left_top');
   var rightH2 = box.querySelector('.right_bottom');
-  var textP = box.querySelectorAll('.text_from p');
+  var textLi = box.querySelectorAll('.text_from li');
   setTimeout(function () {
     leftH2.classList.remove('inleft');
     rightH2.classList.remove('inright');
     setTimeout(function () {
-      for (var i = 0; i < textP.length; i++) {
+      for (var i = 0; i < textLi.length; i++) {
         (function (j) {
           setTimeout(function () {
-            textP[j].classList.add('p_translate');
+            textLi[j].classList.add('li_translate');
           }, 200 + 200 * j);
         })(i)
       }
