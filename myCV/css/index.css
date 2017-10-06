@@ -5,7 +5,7 @@ a{ text-decoration: none; }
 p{ line-height: 24px; }
 span,img{ display: block; }
 img{ width: 100%; }
-div,li,ul,span,h2,p,i,em{ transition: 0.5s all; -webkit-transition: 0.5s all; -moz-transition: 0.5s all; }
+div,li,ul,span,h2,h3,h4,h5,h6,p,i,em{ transition: 0.5s all; -webkit-transition: 0.5s all; -moz-transition: 0.5s all; }
 /*加载*/
 .loding{ width: 100%; height: 100%; position: fixed; top: 0; left: 0; background-color: #fff; z-index: 10; }
 .loding_box{ width: 250px; height: 250px; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; -webkit-animation: loding 3s linear infinite; animation: loding 3s linear infinite; }
@@ -20,8 +20,9 @@ div,li,ul,span,h2,p,i,em{ transition: 0.5s all; -webkit-transition: 0.5s all; -m
 .loding_hide{ -webkit-transform: translateY(-100%); transform: translateY(-100%);}
 /*主体*/
 #wrap{ width: 100%; }
+#wrap a{ color: blue; }
 #wrap h2{ display: block; color: #fff; font-size: 158px; font-weight: 600; position: absolute; top: 50%; -webkit-transform: translate(0,-50%); transform: translate(0,-50%); }
-#wrap h3{ line-height: 60px; text-align: center; font-size: 24px; color: #191654; }
+#wrap h3{ line-height: 60px; text-align: center; font-size: 28px; color: #191654; }
 /*.banner{ width: 100%; height: 100vh; min-height: 60vh; background: -webkit-gradient(linear, left top, right top, from(#191654), to(#43C6AC)); background: linear-gradient(to right, #191654, #43C6AC); }*/
 .banner{ width: 100%; height: 100vh; min-height: 60vh; background-image: url(../images/background.jpg); background-position: center center; background-size: cover; background-repeat: no-repeat; position: relative; background-attachment: fixed; }
 .banner::before{ position: absolute; top: 0; left: 0; height: 100%; width: 100%; content: ""; background-color: rgba(37, 35, 50, 0.67); }
@@ -37,10 +38,35 @@ div,li,ul,span,h2,p,i,em{ transition: 0.5s all; -webkit-transition: 0.5s all; -m
 .text_from .li_translate{ -webkit-transform: translateX(0px); transform: translateX(0px); opacity: 1; }
 /*项目*/
 .my_project{ width: 100%; margin: auto; padding: 20px 0; }
-.project_content{ width: 100%; max-width: 1200px; margin: auto; height: 400px; box-shadow: 0 0 15px rgba(0,0,0,0.5)}
+.project_content{ width: 100%; max-width: 1180px; padding: 10px; margin: auto; box-shadow: 0 0 15px rgba(0,0,0,0.5); }
+.prompt_box{ width: 230px; height: 74px; text-align: center; margin: 0 auto 20px; text-align: center; }
+#gesture{ display: block; width: 50px; height: 50px; background-image: url(../images/gesture.jpg); background-repeat: no-repeat; background-size: 100%; background-position: top; -webkit-animation: tanslateX 3s infinite; animation: tanslateX 3s infinite; }
+@keyframes tanslateX{
+  0%{ transform: translateX(0px); -webkit-transform: translateX(0px);}
+  50%{ transform: translateX(180px); -webkit-transform: translateX(180px);}
+  100%{ transform: translateX(0px); -webkit-transform: translateX(0px);}
+}
+@-webkit-keyframes translateX{
+  0%{ transform: translateX(0px); -webkit-transform: translateX(0px);}
+  50%{ transform: translateX(180px); -webkit-transform: translateX(180px);}
+  100%{ transform: translateX(0px); -webkit-transform: translateX(0px);}
+}
+.project_li{ width: 100%; overflow: hidden; padding: 10px 0px; border-top: #eee solid 2px; }
+.project_photos{ float: left; }
+.project_text{ float: left; }
+.project_text h4{ font-size: 24px; line-height: 36px; }
+.project_text b{ color: rgb(82, 82, 82); }
+.project_text p{ margin-bottom: 10px; }
+.project_text i{ font-style: normal; color: #1db975; }
+.phone_box{ width: 310px; height: 551px; padding: 86px 16px 85px 19px; overflow: hidden; background-image: url(../images/phone.png); background-size: 100%; background-repeat: no-repeat; }
+.phone_text{ width: 60%; padding: 5% 0 0 5%; }
+.computer_box{ width: 558px; height: 322px; padding: 23px 20px 137px 22px; background-image: url(../images/computer.png); background-size: 100%; background-repeat: no-repeat; }
+.computer_box li{ height: 322px; background-repeat: no-repeat; background-size: 100%; background-position: left top;}
+.computer_box li:hover{ background-position: left bottom; transition: 5s all; }
+.computer_text{ width: 40%; padding-left: 5%; }
 /*个人资料*/
 .my_data{ width: 100%; margin: auto; padding: 20px 0; background-color: #f3f2f3;}
-.data_content{ width: 100%; max-width: 800px; margin: auto; height: 400px; }
+.data_content{ width: 100%; max-width: 800px; margin: auto; }
 .data_list{ width: 100%; }
 .data_list li{ width: 100%; overflow: hidden; margin-bottom: 20px; }
 .data_title{ width: 100px; height: 100px; border-radius: 50%; font-size: 18px; line-height: 100px; text-align: center; float: left; margin-right: 20px; color: #fff; background-color: #1db975; }
@@ -50,28 +76,45 @@ div,li,ul,span,h2,p,i,em{ transition: 0.5s all; -webkit-transition: 0.5s all; -m
 footer{ width: 100%; height: 280px; background-image: url(../images/background.jpg); background-position: center center; background-size: cover; background-repeat: no-repeat; position: relative; background-attachment: fixed; z-index: 1; }
 footer::before{ position: absolute; top: 0; left: 0; height: 100%; width: 100%; content: ""; background-color: rgba(37, 35, 50, 0.67); z-index: 2; }
 footer h6{ text-align: center; line-height: 280px; font-size: 100px; font-weight: 600; color: #fff; position: relative; z-index: 3; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-p{}
+#gotop{visibility: hidden; width: 40px; height: 40px; background: rgba(0,0,0,0.8); position: fixed; right: 10px; bottom: 10px; cursor: pointer; z-index: 12; border-radius: 50%; overflow: hidden; }
+/*响应式*/
+@media screen and (min-width: 1921px) { /*大于 1921px 时*/
+	#wrap{ width: 1920px; margin: 0 auto; }
+}
+@media screen and (max-width: 1200px) {
+	.my_project{ padding: 10px 0px; }
+  .project_content{ width: 96%; padding: 2%; box-shadow: none; }
+}
+@media screen and (max-width: 1160px) {
+	.computer_box{ margin: auto; float: none; margin-bottom: 20px; }
+  .computer_text{ width: 80%; margin: auto; float: none; box-shadow: 0 0 15px rgba(0,0,0,0.5); padding: 2%; margin-bottom: 10px; }
+}
+@media screen and (max-width: 1050px) {
+	.phone_box{ margin: auto; float: none; margin-bottom: 20px; }
+  .phone_text{ width: 80%; margin: auto; float: none; box-shadow: 0 0 15px rgba(0,0,0,0.5); padding: 2%; margin-bottom: 10px; }
+}
+@media screen and (max-width: 820px) {
+	#wrap .left_top{ display: none; }
+  #wrap .right_bottom{ display: none; }
+  #gesture{ background-position: bottom; }
+  .text_box{ width: 100%; height: 230px; }
+  .text_from{ width: 355px; }
+  .text_from li{ font-size: 24px; line-height: 38px; }
+  .text_from b{ width: 170px; }
+  .data_content{ width: 90%; padding: 4%; }
+  .data_title{ float: none; margin: 0 auto 10px;}
+  footer h6{ font-size: 68px; }
+}
+@media screen and (max-width: 700px) {
+	.computer_text{ width: 90%; }
+  .phone_text{ width: 90%; }
+  .computer_box{ width: 330px; height: 191px; padding: 13px 12px 80px 13px; }
+  .computer_box li{ height: 191px; }
+  footer h6{ font-size: 58px; }
+}
+@media screen and (max-width: 600px) {
+  #wrap h3{ font-size: 24px; line-height: 56px; }
+	.computer_text{ width: 90%; }
+  .phone_text{ width: 90%; }
+  footer h6{ font-size: 52px; }
+}
