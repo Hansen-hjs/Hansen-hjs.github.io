@@ -49,11 +49,19 @@ window.onload = function () {
     lazyLoadingInPrevNext : true,
     loop: true
   });
+  var mySwiper = new Swiper ('#aikang_pc', {
+    direction: 'horizontal',
+    autoplay : 7000,
+    autoplayDisableOnInteraction : false,
+    lazyLoading : true,
+    lazyLoadingInPrevNext : true,
+    loop: true
+  });
 };
 // 窗口变动改变尺寸
-window.onresize = function(){
-
-}
+// window.onresize = function(){
+//
+// }
 // 返回顶部
 function gobackTop(btn){
 	var goback = document.getElementById(btn);

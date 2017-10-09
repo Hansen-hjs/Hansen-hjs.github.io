@@ -61,9 +61,10 @@ div,li,ul,span,h2,h3,h4,h5,h6,p,i,em{ transition: 0.5s all; -webkit-transition: 
 .phone_box{ width: 310px; height: 551px; padding: 86px 16px 85px 19px; overflow: hidden; background-image: url(../images/phone.png); background-size: 100%; background-repeat: no-repeat; }
 .phone_text{ width: 60%; padding: 5% 0 0 5%; }
 .computer_box{ width: 558px; height: 322px; padding: 23px 20px 137px 22px; background-image: url(../images/computer.png); background-size: 100%; background-repeat: no-repeat; }
-.computer_box li{ height: 322px; background-repeat: no-repeat; background-size: 100%; background-position: left top;}
+.computer_box li{ height: 322px !important; background-repeat: no-repeat; background-size: 100%; background-position: left top;}
 .computer_box li:hover{ background-position: left bottom; transition: 5s all; }
 .computer_text{ width: 40%; padding-left: 5%; }
+.phone_box li{ height: 551px !important; }
 /*个人资料*/
 .my_data{ width: 100%; margin: auto; padding: 20px 0; background-color: #f3f2f3;}
 .data_content{ width: 100%; max-width: 800px; margin: auto; }
@@ -109,7 +110,7 @@ footer h6{ text-align: center; line-height: 280px; font-size: 100px; font-weight
 	.computer_text{ width: 90%; }
   .phone_text{ width: 90%; }
   .computer_box{ width: 330px; height: 191px; padding: 13px 12px 80px 13px; }
-  .computer_box li{ height: 191px; }
+  .computer_box li{ height: 191px !important; }
   footer h6{ font-size: 58px; }
 }
 @media screen and (max-width: 600px) {
