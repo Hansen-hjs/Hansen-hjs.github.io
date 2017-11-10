@@ -62,49 +62,32 @@ window.onload = function () {
 // window.onresize = function(){
 //
 // }
-// 返回顶部
-function gobackTop(btn){
-	var goback = document.getElementById(btn);
-	var documentH = document.body.scrollHeight;  // 文档高度
-	var scrollTop;
-	var t1;
-	var isExecuted = true;                       // 鼠标重复点击
-	// console.log(documentH);
-	//窗口滚动时
-	window.onscroll = function(){
-		scrollTop = document.body.scrollTop || document.documentElement.scrollTop;//谷歌不可以就换IE
-		if(scrollTop > (documentH/2.5)){
-			goback.style.visibility = 'visible';
+
+function goTop(clickEleSelector){
+	var clickEle = document.querySelector(clickEleSelector);
+	var intervalId = null;
+  var isExecuted = true;  // 重复点击
+  var rootNode = document.body.scrollTop === 0 ? document.documentElement : document.body;
+  window.addEventListener('scroll', function(){
+		if(rootNode.scrollTop > (document.body.scrollHeight/2)){
+			clickEle.style.visibility = 'visible';
 		}else{
-			goback.style.visibility = 'hidden';
+			clickEle.style.visibility = 'hidden';
 		}
-	}
-	// 滚滚动条缓动事件
-	function move(){
-		var speed;
-		//speed=（目标-现在的位置）除以 数值
-		speed = (0-scrollTop)/10;
-		if (scrollTop <= 0) {
-			clearInterval(t1);
-		}else{
-			document.body.scrollTop = scrollTop + speed;
-			document.documentElement.scrollTop = scrollTop + speed;//滚动时也要用到IE的值
-		}
-	}
-	// 滚轮事件
-	document.body.onmousewheel = function(event){//清楚缓动
-		clearInterval(t1);
-	}
-	// 点击事件
-   goback.onclick = function(){
-      if (isExecuted === true){
-         //改变滚动条的值
-         t1 = setInterval(move,1);
-         isExecuted = false;
-      }
-      setTimeout(function(){
-         isExecuted = true;
-      },500);
-   }
+	});
+	clickEle.addEventListener('click', function () {
+    if (isExecuted) {
+      isExecuted = false;
+      intervalId = setInterval(function () {
+        rootNode.scrollTop = rootNode.scrollTop - rootNode.scrollTop * 0.1;
+        if(rootNode.scrollTop <= 0){
+          clearInterval(intervalId)
+        }
+      }, 10);
+    }
+    setTimeout(function () {
+       isExecuted = true;
+    },500);
+	});
 }
-gobackTop("gotop");
+goTop('#gotop')
