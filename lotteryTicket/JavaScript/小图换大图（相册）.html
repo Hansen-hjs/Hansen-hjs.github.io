@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小图换大图</title>
+</head>
+<style>
+	*{ padding: 0px; margin: 0px;}
+	body{ font-family: 微软雅黑}
+	ul,li{ list-style: none; }
+	a{ text-decoration: none; }
+	/*小图片*/
+	#box{ width: 800px; overflow: hidden; margin: 100px auto;}
+	#box ul{ width: 100%; }
+	#box li{ float: left; display: block; cursor: pointer; width: 235px; height: 150px; margin: 0 30px 20px 0; overflow: hidden; box-shadow:5px 7px 10px #000;}
+	#box img{ width: 100%; -webkit-transition:.3s all; transition:.3s all; -moz-transition:.3s all;}
+	#box img:hover{ -webkit-transform:scale(1.3,1.3); transform:scale(1.3,1.3); -moz-transform:scale(1.3,1.3); }
+	/*大图片*/
+	#big_box{ width: 100%; height: 100%; background: rgba(0,0,0,0.3); position: fixed; top: 0; display: none;}
+	#big_box span{ display: block; border: solid 5px #fff; max-height: 700px; max-width: 800px; margin: 5% auto; position: relative;}
+	#big_box img{ width: 100%; }
+	#big_box h2{ position: absolute; width: 50px; height: 50px; border-radius: 50%; background: #fff; text-align: center; line-height: 50px; font-weight: 100; font-size: 14px; display: block; top: -50px; right: -50px; cursor: pointer;}
+</style>
+<body>
+	<div id="box">
+		<ul>
+			<li><img src="img/c3_1.jpg" alt=""></li>
+			<li><img src="img/c3_2.jpg" alt=""></li>
+			<li><img src="img/c3_3.jpg" alt=""></li>
+			<li><img src="img/c3_4.jpg" alt=""></li>
+			<li><img src="img/c3_5.jpg" alt=""></li>
+			<li><img src="img/c3_6.jpg" alt=""></li>
+			<li><img src="img/c3_7.jpg" alt=""></li>
+			<li><img src="img/c3_8.jpg" alt=""></li>
+			<li><img src="img/c3_9.jpg" alt=""></li>
+		</ul>
+	</div>
+	<div id="big_box">
+		<span>
+			<img src="img/c3_1.jpg" alt="">
+			<h2>关闭</h2>
+		</span>
+	</div>
+</body>
+</html>
+<script>
+	var samll_img = document.getElementById('box').getElementsByTagName('li');
+	var big_box = document.getElementById('big_box');
+	var b_img = big_box.getElementsByTagName('img')[0];
+	var close = big_box.getElementsByTagName('h2')[0];
+	var ind=0;
+	//alert(close);
+
+	close.onclick=function(){
+		big_box.style.display='none';
+	}
+	for(var i=0; i < samll_img.length; i++){
+		samll_img[i].ind = i;
+		samll_img[i].onclick=function(){
+			big_box.style.display='block';
+			ind=this.ind+1;
+			b_img.src='img/c3_'+ind+'.jpg';
+		}
+	}
+	b_img.onclick=function(){
+		ind++;
+		if(ind > samll_img.length){
+			ind = 0;
+		}else{
+			b_img.src='img/c3_'+ind+'.jpg';
+		}
+	}
+</script>

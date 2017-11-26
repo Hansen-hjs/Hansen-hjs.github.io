@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片预加载</title>
+</head>
+<style>
+	*{ margin: 0; padding: 0; }
+	.wrap{ width: 800px; height: 500px; margin: 0 auto;}
+	.wrap ul{ width: 800px; border: solid 1px #525252; border-radius: 5px; overflow: hidden;}
+	.wrap img{ width: 100%; }
+
+</style>
+<body>
+	<div class="wrap">
+		<ul>
+			<li><img src="" alt=""></li>
+		</ul>
+	</div>
+</body>
+</html>
+<script>
+	window.onload=function(){
+		var oImage = new Image();
+		oImage.src = 'http://img.hb.aicdn.com/56a6e7bcc9927b394d538845a035906469a5d8f117998b-rwKUqW_fw658';
+		oImage.onload = function(){
+			alert('完毕')
+		}
+		oImage.onerror = function(){
+			alert('错误')
+		}
+	}
+</script>
