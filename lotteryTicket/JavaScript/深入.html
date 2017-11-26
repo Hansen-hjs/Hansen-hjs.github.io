@@ -183,7 +183,6 @@ function newFunction() {
 }
 // newFunction();
 
-
 // 对象
 function objFunction(){
   // 1
@@ -211,6 +210,27 @@ function objFunction(){
   // console.log(cat.name,dog);
 }
 // objFunction();
+
+// 对象编程
+var msg = new Object();
+msg.al = (str) => {
+  alert(str);
+  msg.con(str);
+}
+msg.con = (str) => {
+  console.log(str);
+}
+// 上面的写法等于
+// var msg = {
+//   al (str) {
+//     alert(str);
+//     msg.con(str); // 这里可以用this
+//   },
+//   con (str) {
+//     console.log(str);
+//   }
+// }
+msg.al('bb');
 
 // class事件
 function classFunction(){
