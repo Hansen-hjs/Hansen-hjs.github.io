@@ -2,7 +2,7 @@
 //   window.location.href="http://modesign.cc/outdatedbrowser/";
 // }
 const box = document.getElementById('wrap');
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
   box.querySelector('.loding').classList.add('loding_hide');
   setTimeout(() => {
     box.removeChild(box.querySelector('.loding'));
