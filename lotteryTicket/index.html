@@ -112,15 +112,13 @@
 				+blue[1]+'</li>';
 		dlt_btn.innerHTML = Ball;
 	  for (var i = 0; i < dlt_li.length; i++) {
-	  	dlt_li[i].style.transform = "scale(0.5,0.5)";
-			dlt_li[i].style.opacity = "0";
+			dlt_li[i].style.cssText = 'transform: scale(0.5,0.5); opacity: 0'
 	  }
 		setTimeout(function(){
 			for (var i = 0; i < dlt_li.length; i++) {
 				(function(j){
 					setTimeout(function(){
-						dlt_li[j].style.transform = "scale(1,1)";
-						dlt_li[j].style.opacity = "1";
+						dlt_li[j].style.cssText = 'transform: scale(1,1); opacity: 1'
 					},100 + 100 * j)
 				})(i)
 			}
@@ -148,15 +146,13 @@
 				+blue[0]+'</li>';
 		ssq_btn.innerHTML = Ball;
 		for (var i = 0; i < ssq_li.length; i++) {
-			ssq_li[i].style.transform = "scale(0.5,0.5)";
-			ssq_li[i].style.opacity = "0";
+			ssq_li[i].style.cssText = 'transform: scale(0.5,0.5); opacity: 0'
 		}
 		setTimeout(function(){
 			for (var i = 0; i < ssq_li.length; i++) {
 				(function(j){
 					setTimeout(function(){
-						ssq_li[j].style.transform = "scale(1,1)";
-						ssq_li[j].style.opacity = "1";
+						ssq_li[j].style.cssText = 'transform: scale(1,1); opacity: 1'
 					},100 + 100 * j)
 				})(i)
 			}
