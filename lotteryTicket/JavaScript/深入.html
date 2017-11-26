@@ -16,7 +16,7 @@
    </style>
 </head>
 <body>
-   <div id="wrap" class="bgc tra">
+   <div id="wrap" class="bgc">
       <p>探索JavaScript</p>
       <ul class="menu"></ul>
    </div>
@@ -25,21 +25,38 @@
 <script type="text/javascript">
 var $ = selector => document.querySelector(selector);
 var $$ = selector => document.querySelectorAll(selector);
-// event.cancelBubble = true;   // 阻止事件冒泡
 // $("#wrap").style.background = '#ccc';
 // var objbox = document.getElementById('wrap');
-var objbox = document.querySelector('#wrap'),
-    objP = objbox.querySelector('p'),
-    list = document.querySelector(".menu");
+/*
+  阻止事件冒泡
+  event.cancelBubble = true;
+
+  addEventListener中的第三个参 数是useCapture,一个bool类型。
+  当为false时为冒泡获取(由里向外)，true为capture方式(由外向里)
+
+  等价于jQuery的 $(document).ready()
+  addEventListener('DOMContentLoaded',functionName) // mouseover,mouseout:hover()
+*/
+
+var objbox = $('#wrap'), objP = objbox.querySelector('p'), list = $(".menu");
 for (var i = 1; i <= 5; i++) {
   var item = document.createElement("LI");
+  item.dataset.index = i;
   item.appendChild(document.createTextNode("测试li " + i));
-  let j = i;
-  item.onclick = function () {
-    console.log("第" + j + "个li");
-  };
   list.appendChild(item);
+  // 不用let的传统写法，添加function完成闭包
+  // (function (j) {
+  //   // var j = i;
+  //   item.addEventListener('click',() => {
+  //     console.log("第" + j + "个li");
+  //   });
+  // })(i)
 }
+// 使用事假代理 (事件委托就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件)
+list.addEventListener('click', (e) => {
+  console.log(`第 ${e.target.dataset.index} 个li`);
+});
+
 // 正则表达式
 function regular() {
   var phoneNum = '13265317656';
@@ -54,7 +71,7 @@ function regular() {
 // regular();
 
 // 循环语句
-loopStatement = () => {
+var loopStatement = () => {
    let loopArr = new Array(); //  等价于 loopArr = []
    let testArr = [];
    let nameArr = ["字符串一","字符串二","字符串三","字符串四","字符串五","字符串六"];
@@ -175,7 +192,7 @@ function objFunction(){
     color:'lightgreen'
   };
   // 2
-  Boy = (name,color) => {
+  var Boy = (name,color) => {
     return {
       name:name,
       color:color
@@ -189,9 +206,9 @@ function objFunction(){
     this.name = name;
     this.color = color;
   }
-  var cat = new Boy('小米','黄色');
-  var dog = new Boy('华为','蓝色');
-  console.log(cat.name,dog);
+  // var cat = new Boy('小米','黄色');
+  // var dog = new Boy('华为','蓝色');
+  // console.log(cat.name,dog);
 }
 // objFunction();
 
@@ -201,14 +218,14 @@ function classFunction(){
       return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
   }
   function addClass(obj, cls) {
-      if (!this.hasClass(obj, cls)) {
-          obj.className += cls;
+      if (!hasClass(obj, cls)) {
+          obj.className += ' '+cls;
       }
   }
   function removeClass(obj, cls) {
       if (hasClass(obj, cls)) {
           var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
-          obj.className = obj.className.replace(reg, ' ');
+          obj.className = obj.className.replace(reg, '');
       }
   }
   function toggleClass(obj,cls){
@@ -225,7 +242,6 @@ function classFunction(){
   // el.classList.toggle(className);
   objP.addEventListener('click',function(){
      toggleClass(objbox,'tra');
-     console.log(1);
      // this.classList.toggle('tra');
   });
 }
@@ -242,7 +258,7 @@ sendData 传参 变量 = 'num=12'+'&id=12'
 function ajaxRequest(url, method, successHandler, errorHandler, sendData){
   var _data = '';
   // 解析对象传参
-  if (typeof sendData !='undefined') {
+  if (typeof sendData != 'undefined') {
     let str = '';
     for (let key in sendData) {
       str += '&'+key+'='+sendData[key];
