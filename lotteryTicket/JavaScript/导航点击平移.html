@@ -59,24 +59,29 @@ function navCss(menu,list_box,list_a,navA_hover,line) {
 };
 // navCss("nav","li","a","hover","slide");
 
-// 更简洁的写法  let
+// ES6的写法
 function navSlide(slideLi,slideA,line,navA_hover) {
-	var navLi = document.querySelectorAll(slideLi);
-	var navA = document.querySelectorAll(slideA);
-	var slide = document.querySelector(line);
-	var slideW = navLi[0].offsetWidth;
-	var howFar;
-	slide.style.width = slideW+"px";
+	let navLi = document.querySelectorAll(slideLi);
+	let navA = document.querySelectorAll(slideA);
+	let slide = document.querySelector(line);
+	let slideW = navLi[0].offsetWidth;
+	let howFar = null;
+	slide.style.width = slideW + 'px';
 	for (let i = 0; i < navLi.length; i++) {
-		navLi[i].onclick = () => {
-         howFar = slideW*i;
-			slide.style.transform = 'translate('+howFar+'px)';
-			for (let k = 0; k < navLi.length; k++) {
-				navA[k].classList.remove(navA_hover)
+		navLi[i].addEventListener('click', () => {
+			howFar = slideW * i;
+			slide.style.transform = `translate(${howFar}px)`;
+			for (let i = 0; i < navLi.length; i++) {
+				navA[i].classList.remove(navA_hover); //清除a的颜色class
 			}
-         navA[i].classList.add(navA_hover);	//清除a的颜色class
-		}
+			navA[i].classList.add(navA_hover);
+		});
 	}
+	window.addEventListener('resize', () => {
+		slideW = navLi[0].offsetWidth;
+		slide.style.width = slideW + 'px';
+		// console.log(slideW);
+	});
 }
 navSlide('#nav li','#nav a','#slide','hover');
 </script>

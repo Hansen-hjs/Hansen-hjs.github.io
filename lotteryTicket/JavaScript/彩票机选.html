@@ -4,27 +4,26 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<title>彩票机选工具</title>
+	<style>
+		*{ padding: 0px; margin: 0px; font-size: 16px; font-family: 微软雅黑; }
+		div,ul,li,span,*:before,:hover{ transition: .4s all; }
+		li{ list-style: none; }
+		span{ display: block; }
+		/*时间*/
+		header{ width: 100%; height: 44px;}
+		header h2{ font-size: 18px; text-align: center; line-height: 44px; color: #48acf8; font-weight: 400;}
+		/*通用样式*/
+		.content{ max-width: 500px; width: 100%; height: 250px; margin: 0 auto 20px; }
+		.ball{ width: 100%; height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover; position: relative; z-index: 1}
+		.ball:before{ position: absolute; content: ""; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: -1; }
+		.box_content{ width: 350px; height: 40px; margin: -20px -175px; overflow: auto; position: absolute; top: 35%; left: 50%;}
+		.box_content li{ float: left; width: 40px; height: 40px; margin-right: 10px; border-radius: 50%; color: #fff; text-align: center; line-height: 40px}
+		.red{ background: #fb3f3f; }
+		.bule{ background: #48acf8; }
+		.create{ width: 150px; height: 40px; position: absolute; margin: -20px -75px; bottom: 35%; left: 50%; background: linear-gradient(to right, #fb3f3f, #48acf8); text-align: center; line-height: 40px; color: #fff; border-radius: 4px; cursor: pointer; }
+		.create:hover{ background: linear-gradient(to right,#48acf8,#fb3f3f); }
+	</style>
 </head>
-<style>
-	*{ padding: 0px; margin: 0px; font-size: 16px; font-family: 微软雅黑; }
-	div,ul,li,span,*:before,:hover{ transition: .4s all; }
-	li{ list-style: none; }
-	span{ display: block; }
-
-	/*时间*/
-	header{ width: 100%; height: 44px;}
-	header h2{ font-size: 18px; text-align: center; line-height: 44px; color: #48acf8; font-weight: 400;}
-	/*通用样式*/
-	.content{ max-width: 500px; width: 100%; height: 250px; margin: 0 auto 20px; }
-	.ball{ width: 100%; height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover; position: relative; z-index: 1}
-	.ball:before{ position: absolute; content: ""; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: -1; }
-	.box_content{ width: 350px; height: 40px; margin: -20px -175px; overflow: auto; position: absolute; top: 35%; left: 50%;}
-	.box_content li{ float: left; width: 40px; height: 40px; margin-right: 10px; border-radius: 50%; color: #fff; text-align: center; line-height: 40px}
-	.red{ background: #fb3f3f; }
-	.bule{ background: #48acf8; }
-	.create{ width: 150px; height: 40px; position: absolute; margin: -20px -75px; bottom: 35%; left: 50%; background: linear-gradient(to right, #fb3f3f, #48acf8); text-align: center; line-height: 40px; color: #fff; border-radius: 4px; cursor: pointer; }
-	.create:hover{ background: linear-gradient(to right,#48acf8,#fb3f3f); }
-</style>
 <body>
 	<header>
 		<h2 id="today_time"></h2>
@@ -158,21 +157,21 @@
 		let tSeconds = ("0"+tTime.getSeconds()).slice(-2);						// 今天小时
 		document.getElementById('today_time').innerHTML = tTime.getFullYear() + "-" + tMonth + "-" + tDay+" "+tHours+":"+tMinutes+":"+tSeconds;
 	},1000);
-	function timeInterval(minInterval) {
-	   var arr = [];
-	   var minTotal = 0;
-	   while (minTotal < 1440) {
-	     var str = '';
-	     var hour = parseInt(minTotal / 60);
-	     var min = parseInt(minTotal % 60);
-	     hour = hour < 10 ? `0${hour}` : hour; //  == hour = hour < 10 ? '0'+hour+': hour
-	     min = min < 10 ? `0${min}` : min;
-	     arr.push(`${hour}:${min}`);
-	     minTotal += minInterval;
-	   }
-	   return arr;
-	 }
-	 var asd = [];
-	 asd=timeInterval(15);
-	 console.log(asd);
+	// function timeInterval(minInterval) {
+	//    var arr = [];
+	//    var minTotal = 0;
+	//    while (minTotal < 1440) {
+	//      var str = '';
+	//      var hour = parseInt(minTotal / 60);
+	//      var min = parseInt(minTotal % 60);
+	//      hour = hour < 10 ? `0${hour}` : hour; //  == hour = hour < 10 ? '0'+hour+': hour
+	//      min = min < 10 ? `0${min}` : min;
+	//      arr.push(`${hour}:${min}`);
+	//      minTotal += minInterval;
+	//    }
+	//    return arr;
+	//  }
+	//  var asd = [];
+	//  asd=timeInterval(15);
+	//  console.log(asd);
 </script>
