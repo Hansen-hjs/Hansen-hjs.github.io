@@ -48,29 +48,53 @@ function regular() {
 // 循环语句
 var loopStatement = () => {
   let loopArr = new Array(); //  等价于 loopArr = []
-  let testArr = [];
+  let testArr = [
+    {
+      id: '今天',
+      value: '青瓜瘦肉',
+      childs: [{ state: false },{ state: true }]
+    },
+    {
+      id: '明天',
+      value: '肉末豆腐',
+      childs: [{ state: false },{ state: true }]
+    },
+    {
+      id: '明天',
+      value: '尖椒牛肉',
+      childs: [{ state: false },{ state: true }]
+    },
+    {
+      id: '昨天',
+      value: '剁椒鱼头',
+      childs: [{ state: false },{ state: true }]
+    }
+  ];
   let nameArr = ["字符串一","字符串二","字符串三","字符串四","字符串五","字符串六"];
-  let valueArr = [];
-  // for
-  for (let i = 30; i <= 50; i++) {
-    loopArr.push(i);
-  }
-  console.log(loopArr);
+  let valueArr = {
+    one_key: {
+      text: 'asdsad'
+    },
+    two_key: {
+      text: 'ggxdfdxf'
+    },
+    three_key: {
+      text: 'qweretw'
+    }
+  };
   // for in (循环数组和对象！)
-  for (let test in loopArr) {
-    testArr.push(test+':'+loopArr[test]);
+  for (let key in valueArr) {
+    console.log(key, valueArr[key].text);
   }
-  console.log(testArr);
   // forEach (循环数组)
-  nameArr.forEach((item, index) => {
-    //  console.log(item, index);
-    valueArr.push({
-      name: item,
-      type: 'line',
-      data: loopArr[(index+1)]
-    });
+  testArr.forEach((str, index, arr) => {
+    console.log(str.childs, index);
+    str.childs.forEach((child, index) => {
+      console.log(child.state,index );
+    })
+    loopArr.push(index + ':' + str.value);
   });
-  console.log(valueArr);
+  console.log(loopArr);
 }
 // loopStatement();
 
@@ -112,25 +136,20 @@ function judge() {
 // judge();
 
 // 时间生成器
-function timeFunction() {
-  timeInterval = (minInterval) => {   // minInterval 时间（5分钟间隔）
-    var arr = [];
-    var minTotal = 0;
-    while (minTotal < 1440) {      // while 循环，如果（）内值为 true 时会一直循环执行
-      var hour = parseInt(minTotal / 60);
-      var min = parseInt(minTotal % 60);
-      hour = hour < 10 ? `0${hour}` : hour;
-      min = min < 10 ? `0${min}` : min;
-      arr.push(`${hour}:${min}`);
-      minTotal += minInterval;
-    }
-    return arr;
+function timeInterval(minInterval) {   // minInterval 时间（5分钟间隔）
+  let arr = [];
+  let minTotal = 0;
+  while (minTotal < 1440) {      // while 循环，如果（）内值为 true 时会一直循环执行
+    let hour = parseInt(minTotal / 60);
+    let min = parseInt(minTotal % 60);
+    hour = hour < 10 ? `0${hour}` : hour;
+    min = min < 10 ? `0${min}` : min;
+    arr.push(`${hour}:${min}`);
+    minTotal += minInterval;
   }
-  var timeArr = [];  // 定义一个数组
-  timeArr = timeInterval(120);
-  console.log(timeArr);
+  return arr;
 }
-// timeFunction();
+// console.log(timeInterval(120));
 
 
 // new 理解
