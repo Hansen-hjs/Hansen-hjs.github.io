@@ -27,6 +27,7 @@ for (var i = 1; i <= 5; i++) {
   //   });
   // })(i)
 }
+console.log(document.querySelectorAll('[data-index="1"]'));
 // 使用事假代理 (事件委托就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件)
 list.addEventListener('click', (e) => {
   console.log(`第 ${e.target.dataset.index} 个li`);
