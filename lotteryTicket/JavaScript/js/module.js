@@ -32,6 +32,24 @@ console.log(document.querySelectorAll('[data-index="1"]'));
 list.addEventListener('click', (e) => {
   console.log(`第 ${e.target.dataset.index} 个li`);
 });
+// 方法二、全局查找节点
+// var _ul = document.querySelector('#app ul');
+// _ul.addEventListener('click', function (e) {
+//     var _target = e.target;
+//     while(_target !== _ul ){
+//        if(_target.tagName.toLowerCase() == 'li'){
+//            // console.log(_target.dataset.id);
+//            break;
+//        }
+//        _target = _target.parentNode;
+//     }
+// })
+// 方法一、指定某个节点
+// _ul.addEventListener('click', function (e) {
+// 	if (e.target.nodeName.toLowerCase() == 'h5') {
+// 		console.log(e.target.dataset.id);
+// 	}
+// })
 
 // 正则表达式
 function regular() {
@@ -151,6 +169,16 @@ function timeInterval(minInterval) {   // minInterval 时间（5分钟间隔）
   return arr;
 }
 // console.log(timeInterval(120));
+function timeStr() {
+    var _date = new Date();
+    var hour = _date.getHours() < 10 ? "0" + _date.getHours() : _date.getHours();
+    var minute = _date.getMinutes() < 10 ? "0" + _date.getMinutes() : _date.getMinutes();
+    var second = _date.getSeconds() < 10 ? "0" + _date.getSeconds() : _date.getSeconds();
+  //   字符串拼接
+    var dayArr = _date.getFullYear() + '-' + (_date.getMonth()+1) + '-' + _date.getDate();
+    var timeArr = hour + ':' + minute + ':' + second;
+    console.log(dayArr, timeArr);
+}
 
 
 // new 理解
