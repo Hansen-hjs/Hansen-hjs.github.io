@@ -23,16 +23,16 @@
       var supportedTypes = ['image/jpg', 'image/jpeg', 'image/png']
       if (!files.length || supportedTypes.indexOf(files[0].type) < 0){
         alert('文件格式只支持：jpg 和 png')
-        return
+        return ;
       }
-      createImage(files[0])
+      createImage(files[0]);
     }
     function createImage(file) {
       let reader = new FileReader()
       reader.onload = (e) => {
         document.querySelector('.updataImg').src = e.target.result
         console.log(e.target.result);
-        console.log(JSON.parse(e.target.result));
+        // console.log(JSON.parse(e.target.result));
       };
       reader.readAsDataURL(file)
     }

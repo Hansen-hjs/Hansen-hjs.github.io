@@ -5,14 +5,11 @@ var $$ = selector => document.querySelectorAll(selector);
 /*
 阻止事件冒泡
 event.cancelBubble = true;
-
 addEventListener中的第三个参 数是useCapture,一个bool类型。
 当为false时为冒泡获取(由里向外)，true为capture方式(由外向里)
-
 等价于jQuery的 $(document).ready()
 addEventListener('DOMContentLoaded',functionName) // mouseover,mouseout:hover()
 */
-
 var objbox = $('#wrap'), objP = objbox.querySelector('p'), list = $(".menu");
 for (var i = 1; i <= 5; i++) {
   var item = document.createElement("LI");
@@ -27,7 +24,6 @@ for (var i = 1; i <= 5; i++) {
   //   });
   // })(i)
 }
-console.log(document.querySelectorAll('[data-index="1"]'));
 // 使用事假代理 (事件委托就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件)
 list.addEventListener('click', (e) => {
   console.log(`第 ${e.target.dataset.index} 个li`);
@@ -153,7 +149,36 @@ function judge() {
   console.log(x);
 }
 // judge();
-
+// 日期生成
+function dayJson () {
+    var calendar = [];
+    var minYears = new Date().getFullYear();
+    var maxYears = new Date().getFullYear()+10;
+    var monthCount = 1;
+    var dayCount = 1;
+    for (var i = minYears; i <= maxYears; i++) {
+        var yearObj = {};    // 这里的定义变量放在外面会导致变量key一直重复
+        yearObj.name = i.toString();
+        yearObj.sub = [];
+        for (var j = monthCount; j <= 12; j++) {
+            var monthObj = {};
+            monthObj.name = j.toString();
+            monthObj.sub = [];
+            yearObj.sub.push(monthObj);
+            dayCount = new Date(i, j, 0).getDate();
+            for (var k = 1; k <= dayCount; k++) {
+                var dayObj = {};
+                dayObj.name = k.toString();
+                monthObj.sub.push(dayObj)
+            }
+        }
+        calendar.push(yearObj)
+    }
+    // 这里是限制不能选小于之前的日期
+    calendar[0].sub.splice(0,new Date().getMonth());
+    calendar[0].sub[0].sub.splice(0,new Date().getDate());
+    return calendar
+}
 // 时间生成器
 function timeInterval(minInterval) {   // minInterval 时间（5分钟间隔）
   let arr = [];
@@ -337,7 +362,7 @@ function ajaxRequest(url, method, successHandler, errorHandler, sendData){
       var target = event.target;
       // console.log(1)
       if (target.readyState !== 4) {
-        return
+        return ;
       }
       if (target.status === 200 || target.status === 304) {
         var indexContentData = JSON.parse(target.responseText);
