@@ -9,79 +9,80 @@
 	body{ background: #525252; font-family: 微软雅黑}
 	ul,li{ list-style: none; }
 	a{ text-decoration: none; }
-
 	.flex{ display: flex; display: -webkit-flex; display: -moz-flex; }
 	.f1{ flex: 1 }
-	header{ width: 500px; margin: 100px auto; }
+	header{ max-width: 600px; width: 90%; margin: 100px auto; }
 	nav{ background: #fff; height: 48px; position: relative;}
-	nav li{ text-align: center; position: relative; z-index: 2}
-	nav a{ color: #000; line-height: 48px; display: block; width: 100%; height: 48px;}
-	.hover{ color: #31c27c; }
-	#slide{ display: block; background: #31c27c; width: 125px; height: 3px; position: absolute; bottom: 0; left: 0; z-index: 1; transition: 0.5s all; -webkit-transition:0.5s all;}
+	nav li{ text-align: center; position: relative; z-index: 2; color: #000; line-height: 48px; cursor: pointer; -webkit-transition: 0.5s all; transition: 0.5s all; }
+	.nav_hover{ color: #fff; }
+	.nav_slide{ display: block; background: #31c27c; width: 1px; height: 48px; position: absolute; bottom: 0; left: 0; z-index: 1; -webkit-transition: 0.3s all; transition: 0.3s all; }
 </style>
 <body>
 	<header>
-		<nav class="flex" id="nav">
-			<li class="f1"><a href="#" class="hover">导航一</a></li>
-			<li class="f1"><a href="#">导航二</a></li>
-			<li class="f1"><a href="#">导航三</a></li>
-			<li class="f1"><a href="#">导航四</a></li>
-			<span id="slide"></span>
+		<nav class="flex nav">
+			<li class="f1 nav_hover">导航一</li>
+			<li class="f1">导航二</li>
+			<li class="f1">导航三</li>
+			<li class="f1">导航四</li>
+			<span class="nav_slide"></span>
 		</nav>
 	</header>
 </body>
 </html>
 <script>
-function navCss(menu,list_box,list_a,navA_hover,line) {
-	var navLi = document.getElementById(menu).getElementsByTagName(list_box);
-	var navA = document.getElementById(menu).getElementsByTagName(list_a);
-	var slide = document.getElementById(line);
-	var slideW = navLi[0].offsetWidth;
-	slide.style.width = slideW+"px";
-	for (var i=0; i < navLi.length; i++) {
-		navLi[i].index = i;
-		navLi[i].onclick = function(){
-			for(var j = 0; j < navLi.length; j++){
-				navA[j].classList.remove(navA_hover);	//清除a的颜色class
+function navSlide(btn, className, slide) {
+	var _li = document.querySelectorAll(btn);
+	var _slide = document.querySelector(slide);
+	var _howFar = _li[0].offsetWidth;
+	_slide.style.width = _howFar + 'px';
+    // 窗口变动时的值
+	var resizeIndex = 0;
+	_li.forEach((li, index) => {
+		li.addEventListener('click', () => {
+			for (var i = 0; i < _li.length; i++) {
+				_li[i].classList.remove(className);
 			}
-			// console.log(i);
-			var whatTab = this.index;
-			var howFar = slideW*whatTab;
-			slide.style.transform = 'translate('+howFar+'px)';
-			navA[whatTab].className = navA_hover;
-		}
-	}
-	window.onresize = function(){		// 窗口变动改变尺寸
-		slideW = navLi[0].offsetWidth;
-		slide.style.width = slideW+"px";
-		console.log(slideW);
-	}
-};
-// navCss("nav","li","a","hover","slide");
+            // 移动的时候改变这个窗口变动值
+			resizeIndex = index;
+			_slide.style.transform = `translateX(${_howFar * index}px)`;
+			_li[index].classList.add(className);
+		})
+	});
 
-// ES6的写法
-function navSlide(slideLi,slideA,line,navA_hover) {
-	let navLi = document.querySelectorAll(slideLi);
-	let navA = document.querySelectorAll(slideA);
-	let slide = document.querySelector(line);
-	let slideW = navLi[0].offsetWidth;
-	let howFar = null;
-	slide.style.width = slideW + 'px';
-	for (let i = 0; i < navLi.length; i++) {
-		navLi[i].addEventListener('click', () => {
-			howFar = slideW * i;
-			slide.style.transform = `translate(${howFar}px)`;
-			for (let i = 0; i < navLi.length; i++) {
-				navA[i].classList.remove(navA_hover); //清除a的颜色class
-			}
-			navA[i].classList.add(navA_hover);
-		});
-	}
+    // 一、用函数来实现闭包
+	// for (var k = 0; k < _li.length; k++) {
+	// 	(function (j) {
+	// 		_li[j].addEventListener('click', () => {
+	// 			for (var i = 0; i < _li.length; i++) {
+	// 				_li[i].classList.remove(className);
+	// 			}
+	// 			_slide.style.transform = `translateX(${_howFar * j}px)`;
+	// 			_li[j].classList.add(className);
+	// 			console.log(j);
+	// 		});
+	// 	})(k)
+	// }
+
+    // 二、用赋值进行闭包变量
+	// for (var k = 0; k < _li.length; k++) {
+	// 	_li[k].index = k;
+	// 	_li[k].addEventListener('click', function() {
+	// 		for (var i = 0; i < _li.length; i++) {
+	// 			_li[i].classList.remove(className);
+	// 		}
+	// 		var j = this.index;
+	// 		_slide.style.transform = `translateX(${_howFar * j}px)`;
+	// 		_li[j].classList.add(className);
+	// 		// console.log(j);
+	// 	});
+	// }
+
+    // 响应式兼容
 	window.addEventListener('resize', () => {
-		slideW = navLi[0].offsetWidth;
-		slide.style.width = slideW + 'px';
-		// console.log(slideW);
+		_howFar = _li[0].offsetWidth;
+		_slide.style.width = _howFar + 'px';
+		_slide.style.transform = `translateX(${_howFar * resizeIndex}px)`;
 	});
 }
-navSlide('#nav li','#nav a','#slide','hover');
+navSlide('.nav li', 'nav_hover', '.nav_slide');
 </script>

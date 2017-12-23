@@ -18,24 +18,24 @@
    <div id="wrap">
       <h2>简单的图片预加载</h2>
       <ul class="photos">
-         <li><img class="lazy" src="img/loading.gif" data-echo="img/big-1.jpg" alt=""></li>
-         <li><img class="lazy" src="img/loading.gif" data-echo="img/big-2.jpg" alt=""></li>
-         <li><img class="lazy" src="img/loading.gif" data-echo="img/big-3.jpg" alt=""></li>
-         <li><img class="lazy" src="img/loading.gif" data-echo="img/big-4.jpg" alt=""></li>
-         <li><img class="lazy" src="img/loading.gif" data-echo="img/big-5.jpg" alt=""></li>
-         <li><img class="lazy" src="img/loading.gif" data-echo="img/big-6.jpg" alt=""></li>
-         <li><img class="lazy" src="img/loading.gif" data-echo="img/big-7.jpg" alt=""></li>
+         <li><img class="lazy" src="img/loading.gif" data-lazy="img/big-1.jpg" alt=""></li>
+         <li><img class="lazy" src="img/loading.gif" data-lazy="img/big-2.jpg" alt=""></li>
+         <li><img class="lazy" src="img/loading.gif" data-lazy="img/big-3.jpg" alt=""></li>
+         <li><img class="lazy" src="img/loading.gif" data-lazy="img/big-4.jpg" alt=""></li>
+         <li><img class="lazy" src="img/loading.gif" data-lazy="img/big-5.jpg" alt=""></li>
+         <li><img class="lazy" src="img/loading.gif" data-lazy="img/big-6.jpg" alt=""></li>
+         <li><img class="lazy" src="img/loading.gif" data-lazy="img/big-7.jpg" alt=""></li>
+         <li><img class="lazy" src="img/loading.gif" data-lazy="img/A7.jpg" alt=""></li>
       </ul>
    </div>
 </body>
 </html>
 <script type="text/javascript">
-window.Echo = (function(window, document, undefined) {
+// 为了在外面清除window scroll 事件定义的变量
+// var _throttle;
+window.imgLazyLoad = (function(window, document, undefined) {
    'use strict';
-   var store = [],
-   offset,
-   throttle,
-   poll;
+   var store = [], offset, throttle,poll;
    var _inView = function(el) {
       var coords = el.getBoundingClientRect();
       return ((coords.top >= 0 && coords.left >= 0 && coords.top) <= (window.innerHeight || document.documentElement.clientHeight) + parseInt(offset));
@@ -44,7 +44,7 @@ window.Echo = (function(window, document, undefined) {
       for (var i = store.length; i--;) {
          var self = store[i];
          if (_inView(self)) {
-            self.src = self.getAttribute('data-echo');
+            self.src = self.getAttribute('data-lazy');
             store.splice(i, 1);
          }
       }
@@ -54,11 +54,10 @@ window.Echo = (function(window, document, undefined) {
       poll = setTimeout(_pollImages, throttle);
    };
    var init = function(obj) {
-      var nodes = document.querySelectorAll('[data-echo]');
+      var nodes = document.querySelectorAll('[data-lazy]');
       var opts = obj || {};
       offset = opts.offset || 0;
       throttle = opts.throttle || 250;
-
       for (var i = 0; i < nodes.length; i++) {
          store.push(nodes[i]);
       }
@@ -75,9 +74,15 @@ window.Echo = (function(window, document, undefined) {
    };
 })(window, document);
 
-Echo.init({
+imgLazyLoad.init({
 	offset: 0,      //离可视区域多少像素的图片可以被加载
 	throttle: 0,    //图片延时多少毫秒加载
 });
-
+// 3秒后关闭滚动监听事件
+// setTimeout(() => {
+//     // window.removeEventListener('scroll', _throttle);
+//     window.addEventListener('scroll', () => {
+//         console.log('追加的滚动事件');
+//     });
+// },3000);
 </script>
