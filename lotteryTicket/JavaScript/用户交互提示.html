@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>用户交互提示</title>
+	<style>
+        html, body{ padding: 0px; margin: 0; }
+        #interactive, #interactive p, #interactive h2, #interactive i, #iprompt, #iprompt p, #iprompt span{ padding: 0px; margin: 0px; }
+        #interactive span{ padding: 0px; margin: 0px; display: block; }
+        #interactive h2{ line-height: 36px; font-size: 16px; font-weight: 400; }
+        #interactive p{ line-height: 30px; font-size: 14px; }
+        #interactive span{ width: 88px; height: 40px; border-radius: 4px; text-align: center; line-height: 40px; color: #59c2f9; font-size: 14px; cursor: pointer; margin-bottom: 10px; margin: auto; }
+        /* 点击时高亮 */
+        #interactive span:active{ background-color: #eee; }
+        /* 两个容器的定义 */
+        #interactive, #iprompt{ width: 100%; height: 100vh; position: fixed; z-index: 10; top: 0; left: 0; display: -webkit-box; display: -webkit-flex; display: flex; flex-wrap: wrap; -webkit-box-pack: center; justify-content: center; -webkit-box-align: center; align-items: center; -webkit-box-orient: vertical; -webkit-flex-flow: column; flex-flow: column; -webkit-transition: 0.3s all; transition: 0.3s all; }
+        #interactive{ opacity: 0; background-color: rgba(0,0,0,0.3);}
+        /* 两个提示框 */
+        #interactive .prompt{ min-width: 200px; min-height: 100px; background-color: #fff; text-align: center; padding: 10px; border-radius: 4px; }
+        #interactive .confirm{ min-width: 200px; min-height: 100px; background-color: #fff; text-align: center; padding: 10px; border-radius: 4px; }
+        #interactive .confirm span{ float: left; color: #333; }
+        #interactive .confirm [data-confirmRight]{ float: right; color: #59c2f9; }
+        /* 加载中球类动画 */
+        #interactive .loding_ball{ width: 140px; height: 40px; }
+        #interactive .loding_ball i{ display: block; width: 40px; height: 40px; background-color: gold; border-radius: 100%; display: inline-block; -webkit-animation: bounce 1.4s ease-in-out 0s infinite both; animation: bounce 1.4s ease-in-out 0s infinite both; }
+        #interactive .loding_ball i:nth-child(1){ -webkit-animation-delay: -0.32s; animation-delay: -0.32s; }
+        #interactive .loding_ball i:nth-child(2){ -webkit-animation-delay: -0.16s; animation-delay: -0.16s; }
+        @-webkit-keyframes bounce {
+        	0%,80%,100% { -webkit-transform: scale(0); transform: scale(0); }
+        	40% { -webkit-transform: scale(1); transform: scale(1); }
+        }
+        @keyframes bounce {
+        	0%,80%,100% { -webkit-transform: scale(0); transform: scale(0); }
+        	40% { -webkit-transform: scale(1); transform: scale(1); }
+        }
+        /* 加载中，仿原生app */
+        #iprompt{ opacity: 0; background-color: rgba(0,0,0,0); }
+        #iprompt .loading_box{ min-width: 120px; min-height: 90px; padding-top: 30px; background-color: rgba(0,0,0,0.5); border-radius: 4px; }
+        #iprompt .loading_box span{ display: block; width: 40px; height: 40px; border: solid 2px #fff; border-radius: 50%; border-right-color: rgba(0,0,0,0); margin: auto; -webkit-animation: circular 1.3s ease infinite; animation: circular 1.3s ease infinite;}
+        #iprompt .loading_box p{ font-size: 15px; color: #fff; text-align: center; line-height: 36px; }
+        @-webkit-keyframes circular {
+        	0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+            50% { opacity: 0.5; }
+            100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); opacity: 1; }
+        }
+        @keyframes circular {
+        	0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+            50% { opacity: 0.5; }
+            100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); opacity: 1; }
+        }
+        /* toast，仿原生app */
+        #itoast{ display: inline-block; padding: 0 15px; min-height: 34px; line-height: 34px; font-size: 12px; color: #fff; background-color: rgba(0,0,0,0.5); border-radius: 17px; position: fixed; z-index: 10; bottom: 10%; left: 50%; -webkit-transform: translateX(-50%); transform: translateX(-50%); -webkit-animation: toastmove 0.4s ease; animation: toastmove 0.4s ease; -webkit-transition: 0.2s all; transition: 0.2s all; }
+        @-webkit-keyframes toastmove {
+        	0% { opacity: 0; -webkit-transform: translate(-50%, 300%); transform: translate(-50%, 300%); }
+            50% { opacity: 1; -webkit-transform: translate(-50%, -100%); transform: translate(-50%, -100%); }
+            100% { -webkit-transform: translate(-50%, 0%); transform: translate(-50%, 0%); }
+        }
+        @keyframes toastmove {
+        	0% { opacity: 0; -webkit-transform: translate(-50%, 300%); transform: translate(-50%, 300%); }
+            50% { opacity: 1; -webkit-transform: translate(-50%, -100%); transform: translate(-50%, -100%); }
+            100% { -webkit-transform: translate(-50%, 0%); transform: translate(-50%, 0%); }
+        }
+        /* 触发按钮 */
+        .click_box{ width: 100px; overflow: hidden; margin: auto; padding-top: 100px; }
+        .click_box span{ display: block; width: 100px; height: 40px; cursor: pointer; color: #fff; text-align: center; line-height: 40px; background-color: gold; margin-bottom: 10px; }
+	</style>
+</head>
+<body>
+    <div class="click_box">
+        <span onclick="openPrompt()">提示框</span>
+        <span onclick="openConfirm()">对话框</span>
+        <span onclick="openloading()">loading</span>
+        <span onclick="openLoadingBall()">loadingBall</span>
+        <span onclick="openToast()">toast</span>
+    </div>
+</body>
+<script type="text/javascript">
+    const interactive = {
+        output (str) {
+            var _div = document.createElement('div');
+            _div.id = 'interactive';
+            _div.innerHTML = str;
+            document.body.appendChild(_div);
+            setTimeout(() => { _div.style.opacity = 1 },1);
+        },
+        removeThis () {
+            var _div = document.getElementById('interactive');
+            _div.style.opacity = 0;
+            setTimeout(() => { document.body.removeChild(_div) },310);
+        },
+        prompt (text, fn, title) {
+            var that = this;
+            var _title = title || '提示';
+            var _html = '<div class="prompt">\
+                            <h2>'+_title+'</h2>\
+                            <p>'+text+'</p>\
+                            <span data-prompt>确定</span>\
+                        </div>';
+            that.output(_html);
+            document.querySelector('[data-prompt]').addEventListener('click', () => {
+                if (typeof fn === 'function') fn.call(this);
+                that.removeThis();
+            });
+        },
+        confirm (text, rightfn, title, leftfn) {
+            var that = this;
+            var _title = title || '提示';
+            var _html = '<div class="confirm">\
+                            <h2>'+_title+'</h2>\
+                            <p>'+text+'</p>\
+                            <span data-confirmLeft>取消</span>\
+                            <span data-confirmRight>确定</span>\
+                        </div>';
+            that.output(_html);
+            document.querySelector('[data-confirmLeft]').addEventListener('click', () => {
+                if (typeof leftfn === 'function') leftfn.call(this);
+                that.removeThis();
+            });
+            document.querySelector('[data-confirmRight]').addEventListener('click', () => {
+                if (typeof rightfn === 'function') rightfn.call(this);
+                that.removeThis();
+            });
+        },
+        loadingBall () {
+            var _html = '<div class="loding_ball"><i></i><i></i><i></i></div>';
+            this.output(_html);
+        },
+        hideBall () {
+            this.removeThis()
+        },
+        loading (text) {
+            var _div = document.createElement('div');
+            var _text = text || '';
+            _div.id = 'iprompt';
+            _div.innerHTML = '<div class="loading_box">\
+                                <span></span>\
+                                <p>'+_text+'</p>\
+                            </div>';
+            document.body.appendChild(_div);
+            setTimeout(() => { _div.style.opacity = 1 },1);
+        },
+        hideLoading () {
+            var _div = document.getElementById('iprompt');
+            _div.style.opacity = 0;
+            setTimeout(() => { document.body.removeChild(_div) },310);
+        },
+        toast (text, num) {
+            var _div = document.createElement('div');
+            var _text = text || '底部提示文字';
+            var _time = Number(num) || 1000;
+            _div.id = 'itoast';
+            _div.textContent = _text;
+            document.body.appendChild(_div);
+            setTimeout(() => { _div.style.opacity = 0 },_time);
+            setTimeout(() => { document.body.removeChild(_div) },_time+200);
+        }
+    }
+    function openPrompt() {
+        interactive.prompt('提示框文字',() => {
+            console.log('确认按钮回调');
+        });
+    }
+    function openConfirm() {
+        interactive.confirm('对话框文字',() => {
+            console.log('确认');
+        },'标题',function () {
+            console.log('取消');
+        });
+    }
+    function openLoadingBall() {
+        interactive.loadingBall();
+        setTimeout(() => { interactive.hideBall() },3000);
+    }
+    function openloading() {
+        interactive.loading('loading...');
+        setTimeout(() => { interactive.hideLoading() },3000);
+    }
+    function openToast() {
+        interactive.toast('原生APP toast', 2000);
+    }
+</script>
+</html>
