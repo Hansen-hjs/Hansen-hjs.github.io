@@ -51,7 +51,7 @@
             100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); opacity: 1; }
         }
         /* toast，仿原生app */
-        #itoast{ display: inline-block; padding: 0 15px; min-height: 34px; line-height: 34px; font-size: 12px; color: #fff; background-color: rgba(0,0,0,0.5); border-radius: 17px; position: fixed; z-index: 10; bottom: 10%; left: 50%; -webkit-transform: translateX(-50%); transform: translateX(-50%); -webkit-animation: toastmove 0.4s ease; animation: toastmove 0.4s ease; -webkit-transition: 0.2s all; transition: 0.2s all; }
+        .itoast{ display: inline-block; padding: 0 15px; min-height: 34px; line-height: 34px; font-size: 12px; color: #fff; background-color: rgba(0,0,0,0.5); border-radius: 17px; position: fixed; z-index: 10; bottom: 10%; left: 50%; -webkit-transform: translateX(-50%); transform: translateX(-50%); -webkit-animation: toastmove 0.4s ease; animation: toastmove 0.4s ease; -webkit-transition: 0.2s all; transition: 0.2s all; }
         @-webkit-keyframes toastmove {
         	0% { opacity: 0; -webkit-transform: translate(-50%, 300%); transform: translate(-50%, 300%); }
             50% { opacity: 1; -webkit-transform: translate(-50%, -100%); transform: translate(-50%, -100%); }
@@ -150,11 +150,11 @@
             var _div = document.createElement('div');
             var _text = text || '底部提示文字';
             var _time = Number(num) || 1000;
-            _div.id = 'itoast';
+            _div.className = 'itoast';
             _div.textContent = _text;
             document.body.appendChild(_div);
             setTimeout(() => _div.style.opacity = 0, _time);
-            setTimeout(() => document.body.removeChild(_div), _time+200);
+            setTimeout(() => document.body.removeChild(_div), _time + 200);
         }
     }
 
