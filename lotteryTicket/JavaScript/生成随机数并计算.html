@@ -28,10 +28,10 @@ function Calculation(){
 	var rd;
 
 	function radom(min1,max1){
-		var length=max1-min1+1; //计算到底范围有多长，如果是2-6 长度变成5
+		var length = max1 - min1 + 1; //计算到底范围有多长，如果是2-6 长度变成5
 		return Math.floor(Math.random()*length)+min1;
 	}
-	rd =radom(1,8);
+	rd = radom(1,8);
 	var suzi = suzu[rd-1];
 
 	for(var i=1; i <= suzi; i++){
@@ -40,7 +40,7 @@ function Calculation(){
 	console.log(sum) 		// 最后输出结果
 	span.innerHTML='计算出1开始加到 '+suzi+' 的值 = <input type="text" id="textValue">';
 	var inputValue = document.getElementById("textValue");
-	btn.onclick=function(){
+	btn.onclick = function(){
 		if (sum == inputValue.value) {
 			// location.href="https://hansen-hjs.github.io/CV/";
 			console.log("正确");
