@@ -13,11 +13,8 @@
 window.onload = () => {
     //     alert('网页完成加载')
     var audioEl = document.getElementById('bgmusic');
-    log = (info) => {  // 打印事件
-        console.log(info);
-        // alert(info);
-    }
-    forceSafariPlayAudio = () => {
+    var log = info => console.log(info);
+    var forceSafariPlayAudio = () => {
         audioEl.load(); // iOS 9   还需要额外的 load 一下, 否则直接 play 无效
         audioEl.play(); // iOS 7/8 仅需要 play 一下
     }

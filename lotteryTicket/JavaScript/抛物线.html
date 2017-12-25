@@ -93,21 +93,22 @@
             <span class="ball"></span>
         </div>
         <script type="text/javascript">
-            var cartAnimate = (e) => {
+            var cartAnimate = el => {
                 let _speed = 10;
                 // 定义初始化x和y的值
                 let x = 0, y = 0;
-                let _obj = e.getBoundingClientRect();
+                let _el = el.getBoundingClientRect();
                 // 小球
                 let _ball = document.querySelector('.ball');
                 // 先让小球去到当前点击位置
-                _ball.style.cssText = `top: ${_obj.top}px; left: ${_obj.left}px`;
+                _ball.style.cssText = `top: ${_el.top}px; left: ${_el.left}px`;
                 // 购物车
                 let _cart = document.querySelector('.cartState').getBoundingClientRect();
                 // 计算动态速度
-                if (_cart.left/2 < _obj.left) _speed = 5;
+                if (_cart.left/2 < _el.left) _speed = 5;
                 // xh是目标的X距离，yh是目标的y距离
-                let xh = _cart.left-_obj.left, yh = _cart.top-_obj.top, p = xh * xh / (-2 * yh);
+                // -(_cart.right*1.5-_el.right)     购物车在右边的时候
+                let xh = _cart.left-_el.left, yh = _cart.top-_el.top, p = xh * xh / (-2 * yh);
                 let flicker = () => {
                       // 抛物线公式：x2=-2py
                       // x 可以控制速度
