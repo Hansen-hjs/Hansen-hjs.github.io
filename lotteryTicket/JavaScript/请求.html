@@ -9,6 +9,7 @@
 <body>
 
 </body>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
 <script type="text/javascript">
 	const Ajax = {
 		website: 'http://longrenhui.ws.6-315.com/index.php/wap',
@@ -117,6 +118,7 @@
 				_data += '&' + key + '=' + sendData[key];
 			}
 			_data = _data.slice(1);
+			// console.log(JSON.stringify(sendData),_data);
 			fetch(this.website+url, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -152,11 +154,31 @@
 	// });
     //
     // // POST
-	// Fetch.post('/Agent/trustee_list.html',{ deviceid: '864147010086266', agent_id: '88' }, ret => {
+	// Fetch.post('/agent/mine.html',{ deviceid: '864147010086266' }, ret => {  // , agent_id: '88'
 	// 	console.log(ret);
 	// },err => {
 	// 	console.log(err);
 	// });
+	// $.ajax({
+	// 	url:  'http://longrenhui.ws.6-315.com/index.php/wap/agent/mine.html',
+	// 	data: {
+	// 		deviceid: '864147010086266'
+	// 	},
+	// 	dataType: 'json',
+	// 	type: 'post',
+	// 	xhrFields:{ // 跨域cookie打开
+	// 		withCredentials: true
+	// 	},
+	// 	crossDomain: true,
+	// 	success:function(data){
+	// 	   // console.log(data)
+	// 	   if (data.success) {
+	// 			console.log(data);
+	// 	   }else{
+	// 			alert(data.message);
+	// 	   }
+	//    }
+	// })
 </script>
 
 </html>
