@@ -9,7 +9,7 @@
         html, body{ padding: 0px; margin: 0; }
         #interactive, #interactive p, #interactive h2, #interactive i, #iprompt, #iprompt p, #iprompt span{ padding: 0px; margin: 0px; }
         /* 两个容器的定义 */
-        #interactive, #iprompt{ width: 100%; height: 100vh; position: fixed; z-index: 10; top: 0; left: 0; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-orient: vertical; -ms-flex-flow: column; flex-flow: column; -webkit-transition: 0.3s all; transition: 0.3s all; }
+        #interactive, #iprompt{ width: 100%; height: 100vh; position: fixed; z-index: 999; top: 0; left: 0; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-orient: vertical; -ms-flex-flow: column; flex-flow: column; -webkit-transition: 0.3s all; transition: 0.3s all; }
         #interactive span{ padding: 0px; margin: 0px; display: block; }
         #interactive h2{ line-height: 36px; font-size: 16px; font-weight: 400; }
         #interactive p{ line-height: 30px; font-size: 14px; }
@@ -65,7 +65,19 @@
         /* 触发按钮 */
         .click_box{ width: 100px; overflow: hidden; margin: auto; padding-top: 100px; }
         .click_box span{ display: block; width: 100px; height: 40px; cursor: pointer; color: #fff; text-align: center; line-height: 40px; background-color: gold; margin-bottom: 10px; }
-	</style>
+        /* 选择插件 */
+        #select_logistics{ padding: 0; margin: 0; width: 100%; height: 100vh; opacity: 0; background-color: rgba(0,0,0,0.2); position: fixed; z-index: 999; top: 0; left: 0; -webkit-transition: 0.3s all; transition: 0.3s all; overflow: hidden; }
+        #select_logistics .select_box{ padding: 0; margin: 0; width: 100%; height: 230px; background-color: #fff; -webkit-transition: 0.3s all; transition: 0.3s all; -webkit-transform: translateY(100%); transform: translateY(100%); position: absolute; bottom: 0; left: 0; }
+        #select_logistics header{ padding: 0; margin: 0; width: 100%; height: 40px; background-color: #eee; display: -webkit-box; display: -webkit-flex;	display: flex; flex-wrap: wrap; }
+        #select_logistics header span{ padding: 0; margin: 0; -webkit-box-flex: 1; flex: 1; font-size: 15px; text-align: center; line-height: 40px; -webkit-transition: 0s all; transition: 0s all; }
+        #select_logistics header span:active{ opacity: 0.7; }
+        #select_logistics header span:nth-child(1){ color: #333; }
+        #select_logistics header span:nth-child(3){ color: #59c2f9; }
+        #select_logistics header h2{ padding: 0; margin: 0; -webkit-box-flex: 4; flex: 4; font-size: 14px; text-align: center; line-height: 40px; color: #999; }
+        #select_list{ padding: 0; margin: 0; width: 76%; height: 190px; overflow-y: auto; margin: auto; }
+        #select_list li{ padding: 0; margin: 0; line-height: 36px; text-align: center; font-size: 14px; -webkit-transition: 0.3s all; transition: 0.3s all; list-style: none; }
+        #select_list .li_active{ color: #59c2f9; font-size: 18px; letter-spacing: 2px; }
+    </style>
 </head>
 <body>
     <div class="click_box">
@@ -74,16 +86,18 @@
         <span onclick="openloading()">loading</span>
         <span onclick="openLoadingBall()">loadingBall</span>
         <span onclick="openToast()">toast</span>
+        <span onclick="addLogistics()">选择器</span>
     </div>
 </body>
 <script type="text/javascript">
     const interactive = {
-        output (str) {
+        output (str, fn) {
             var _div = document.createElement('div');
             _div.id = 'interactive';
             _div.innerHTML = str;
             document.body.appendChild(_div);
             setTimeout(() => _div.style.opacity = 1, 1);
+            if (typeof fn === 'function') fn.call(this);
         },
         removeThis () {
             var _div = document.getElementById('interactive');
@@ -98,10 +112,11 @@
                             <p>'+text+'</p>\
                             <span data-prompt>确定</span>\
                         </div>';
-            that.output(_html);
-            document.querySelector('[data-prompt]').addEventListener('click', () => {
-                if (typeof fn === 'function') fn.call(this);
-                that.removeThis();
+            that.output(_html, () => {
+                document.querySelector('[data-prompt]').addEventListener('click', () => {
+                    if (typeof fn === 'function') fn.call(this);
+                    that.removeThis();
+                });
             });
         },
         confirm (text, rightfn, title, leftfn) {
@@ -113,14 +128,15 @@
                             <span data-confirmLeft>取消</span>\
                             <span data-confirmRight>确定</span>\
                         </div>';
-            that.output(_html);
-            document.querySelector('[data-confirmLeft]').addEventListener('click', () => {
-                if (typeof leftfn === 'function') leftfn.call(this);
-                that.removeThis();
-            });
-            document.querySelector('[data-confirmRight]').addEventListener('click', () => {
-                if (typeof rightfn === 'function') rightfn.call(this);
-                that.removeThis();
+            that.output(_html, () => {
+                document.querySelector('[data-confirmLeft]').addEventListener('click', () => {
+                    if (typeof leftfn === 'function') leftfn.call(this);
+                    that.removeThis();
+                });
+                document.querySelector('[data-confirmRight]').addEventListener('click', () => {
+                    if (typeof rightfn === 'function') rightfn.call(this);
+                    that.removeThis();
+                });
             });
         },
         loadingBall () {
@@ -157,7 +173,106 @@
             setTimeout(() => document.body.removeChild(_div), _time + 200);
         }
     }
-
+    // 自定义选择物流插件
+    var Selector = {
+        activeText: '',
+        output: function (str, fn, title) {
+            var that = this;
+            var _title = title || '请选择~';
+            var _div = document.createElement('div');
+            _div.id = 'select_logistics';
+            _div.innerHTML = '<div class="select_box">\
+                <header>\
+                    <span>取消</span>\
+                    <h2>'+_title+'</h2>\
+                    <span>确认</span>\
+                </header>\
+                <ul id="select_list"></ul>\
+            </div>';
+            document.body.appendChild(_div);
+            document.getElementById('select_list').innerHTML = str;
+            setTimeout(function () { _div.style.opacity = 1 },1);
+            setTimeout(function () {
+                _div.querySelector('.select_box').style.WebkitTransform = 'translateY(0%)';
+                _div.querySelector('.select_box').style.transform = 'translateY(0%)';
+            },100);
+            // 点击事件
+            that.selectClick();
+            // 关闭
+            _div.querySelectorAll('span')[0].addEventListener('click', function () {
+                that.removeSelect(_div);
+            });
+            // 关闭-确认按钮触发回调
+            _div.querySelectorAll('span')[1].addEventListener('click', function () {
+                if (typeof fn === 'function') fn.call(this, that.activeText);
+                that.removeSelect(_div);
+            });
+        },
+        selectClick: function () {
+            var that = this;
+            var _ul = document.getElementById('select_list');
+            var _li = _ul.getElementsByTagName('li');
+            var _listText = ''
+            _ul.addEventListener('click', function (ev) {
+                if (ev.target.nodeName.toLowerCase() == 'li') {
+                    for (var i = 0; i < _li.length; i++) {
+                        if (i != ev.target.dataset.id) {
+                            _li[i].className = '';
+                        }
+                        ev.target.className = 'li_active';
+                        _listText = _li[ev.target.dataset.id].textContent
+                    }
+                    that.activeText = _listText;
+                }
+            })
+        },
+        removeSelect: function (el) {
+            el.querySelector('.select_box').style.WebkitTransform = 'translateY(100%)';
+            el.querySelector('.select_box').style.transform = 'translateY(100%)';
+            setTimeout(function () {
+                el.style.opacity = 0;
+            },150);
+            setTimeout(function () {
+                document.body.removeChild(el);
+            },300);
+        }
+    }
+    var _data = [{
+            value: 'ZTO',
+            title: '中通物流'
+        },{
+            value: 'STO',
+            title: '申通物流'
+        },{
+            value: 'ZTO',
+            title: '中通物流'
+        },{
+            value: 'ZTO',
+            title: '中通物流'
+        },{
+            value: 'ZTO',
+            title: '中通物流'
+        },{
+            value: 'ZTO',
+            title: '中通物流'
+        },{
+            value: 'ZTO',
+            title: '中通物流'
+        },{
+            value: 'ZTO',
+            title: '中通物流'
+        }
+    ];
+    function addLogistics() {
+        var _html = '';
+        for (var i = 0; i < _data.length; i++) {
+            _html +=  '<li data-id="'+i+'">'+_data[i].title+' '+_data[i].value+'</li>';
+        }
+        Selector.output(_html, function (str) {
+            // document.querySelector('[data-lname]').textContent = str;
+            console.log(str);
+        });
+    }
     function openPrompt() {
         interactive.prompt('提示框文字',() => {
             console.log('确认按钮回调');
