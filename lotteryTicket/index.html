@@ -480,7 +480,6 @@
 				_auto = setInterval(autoPaly, that._interval);
 				// 开始触摸
 				_ul.addEventListener('touchstart', ev => {
-					if (ev.targetTouches.length != 1) return ;
 					clearInterval(_auto);
 					noAnimation();
 					// 开始计算触摸时间
@@ -493,7 +492,6 @@
 				});
 				// 触摸移动
 				_ul.addEventListener('touchmove', ev => {
-					if (ev.targetTouches.length != 1) return ;
 					// 清除默认动作
 					ev.preventDefault();
 					// noAnimation();	// 一开始我把触摸时停止动画放在这里，不过好像没有达到我想要的效果，所以我放在了开始触摸事件那边
@@ -508,8 +506,7 @@
 					}
 				});
 				// 触摸离开
-				_ul.addEventListener('touchend', (ev) => {
-					if (ev.targetTouches.length != 1) return ;
+				_ul.addEventListener('touchend', () => {
 					clearInterval(_Interval);
 					// 判断如果是点击的话就不执行移动
 					if (_endState !== _end) judgeMove();
