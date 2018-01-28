@@ -508,13 +508,13 @@
 				// 触摸离开
 				_ul.addEventListener('touchend', () => {
 					returnP();
-					// clearInterval(_Interval);
-					// // 判断如果是点击的话就不执行移动
-					// if (_endState !== _end) judgeMove();
-					// // 开启自动播放
-					// _auto = setInterval(autoPaly, that._interval);
-					// // 走完之后再更改触摸距离,重置触摸时间一定要写在最后
-					// [_endState, _t] = [_end, 0];
+					clearInterval(_Interval);
+					// 判断如果是点击的话就不执行移动
+					if (_endState !== _end) judgeMove();
+					// 开启自动播放
+					_auto = setInterval(autoPaly, that._interval);
+					// 走完之后再更改触摸距离,重置触摸时间一定要写在最后
+					[_endState, _t] = [_end, 0];
 				});
 			}
 		}
