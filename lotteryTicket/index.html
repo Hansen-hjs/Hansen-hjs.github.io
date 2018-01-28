@@ -281,14 +281,14 @@
 			let that = this;
 			let _ul = _div.querySelector('.swiper_list');
 			let _li = _ul.querySelectorAll('.swiper_slider')
-			// 触摸开始时间，触摸结束时间，开始的距离，结束的距离，移动的距离，圆点位置
-			let [sTime, eTime, _sd, _ed, _md, _index] = [0, 0, 0, 0, 0, 0];
-			// 设置动画
+			// 触摸开始时间，触摸结束时间，开始的距离，结束的距离，结束距离状态，移动的距离，圆点位置，自动播放定时器id
+			let [sTime, eTime, _sd, _ed, _eState, _md, _index, _auto] = [0, 0, 0, 0, 0, 0, 0, null];
+            // 设置动画
 			function hasAnimation() {
 				_ul.style.WebkitTransition = that._moveTime/1000+'s all';
 				_ul.style.transition = that._moveTime/1000+'s all';
 			}
-			// 关闭动画
+            // 关闭动画
 			function noAnimation() {
 				_ul.style.WebkitTransition = '0s all';
 				_ul.style.transition = '0s all'
@@ -305,7 +305,7 @@
 				}
 				return _d;
 			}
-			// Y距离
+            // Y距离
 			function touchRangeY () {
 				let _d = 0;
 				if ((_ed - _sd) >= _h) {
@@ -319,8 +319,8 @@
 			}
 			// 判断触摸处理函数 _d是距离X/Y
 			function judgeTouch(_d) {
-				//	这里我设置了120毫秒的有效拖拽间隔
-				if ((eTime-sTime) < 120) return true;
+				//	这里我设置了200毫秒的有效拖拽间隔
+				if ((eTime-sTime) < 200) return true;
 				// 这里判断方向（正值和负值）
 				if (_d < 0) {
 					if ((_ed-_sd) < (_d/2)) return true;
@@ -425,8 +425,51 @@
 					}
 				}
 			}
+			// 自动播放
+			function autoMove() {
+				if (!that._autoPaly) return ;
+				// 这里判断是否有回路loop的自动播放
+				if (that._loop) {
+					// 判断X-Y方向
+					if (that._direction) {
+						_index += 1;
+						slideMove(_md-_h);
+						_md -= _h;
+					}else {
+						_index += 1;
+						slideMove(_md-_w);
+						_md -= _w;
+					}
+				}else {
+					// 判断X-Y方向
+					if (that._direction) {
+						if (_index >= _li.length-1) {
+							_index = 0;
+							slideMove(0);
+							_md = 0;
+						}else {
+							_index += 1;
+							slideMove(_md-_h);
+							_md -= _h;
+						}
+					}else {
+						if (_index >= _li.length-1) {
+							_index = 0;
+							slideMove(0);
+							_md = 0;
+						}else {
+							_index += 1;
+							slideMove(_md-_w);
+							_md -= _w;
+						}
+					}
+				}
+			}
+			// 首次开启
+			_auto = setInterval(autoMove, that._interval);
 			// 开始触摸
 			_ul.addEventListener('touchstart', ev => {
+				clearInterval(_auto);
 				sTime = new Date().getTime();
 				noAnimation();
 				if (that._direction) {
@@ -451,7 +494,11 @@
 			// 触摸离开
 			_ul.addEventListener('touchend', () => {
 				eTime = new Date().getTime();
-				judgeMove()
+				// 判断如果是点击的话就不执行移动
+				if (_eState !== _ed) judgeMove();
+                // 更新位置
+				_eState = _ed;
+				_auto = setInterval(autoMove, that._interval)
 			});
 		}
 	}
