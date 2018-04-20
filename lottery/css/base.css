@@ -43,7 +43,7 @@ textarea::-webkit-input-placeholder { color: #999; }
 .checked_btn::before{ position: absolute; content: ''; -webkit-transition: 0.2s all; transition: 0.2s all; }
 .checked_btn::before{ width: 30%; height: 50%; background-color: transparent; left: 35%; top: 13%; -webkit-transform: rotate(45deg) scale(0,0); transform: rotate(45deg) scale(0,0); }
 .check_on{ background-color: #2196f3; border-color: #2196f3; }
-.check_on::before{ -webkit-transform: rotate(45deg) scale(1,1); transform: rotate(45deg) scale(1,1); border: solid 1.5px #fff; border-top: none; border-left: none; }
+.check_on::before{ -webkit-transform: rotate(45deg) scale(1,1); transform: rotate(45deg) scale(1,1); border: solid 1px #fff; border-top: none; border-left: none; }
 /* 开关 */
 .switch_btn{ width: .7rem; height: .26rem; background-color: #ccc; position: relative; border-radius: .13rem; }
 .switch_btn::before{ position: absolute; content: ''; -webkit-transition: 0.3s all; transition: 0.3s all; width: .4rem; height: .4rem; background-color: #fff; border-radius: 50%; left: 0; top: -0.075rem; -webkit-transform: translateX(0rem); transform: translateX(0rem); -webkit-box-shadow: 0px 1px 10px 0 rgba(0,0,0,0.2); box-shadow: 0px 1px 10px 0 rgba(0,0,0,0.2)}
