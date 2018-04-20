@@ -48,12 +48,27 @@
     </div>
     <!-- 底部 -->
     <footer class="flex vertical hide">
-        <div class="checked_btn" onclick="single(this)"></div>
+        <div class="checked_btn" onclick="allChecked(this)"></div>
         <p class="f1">全选</p>
-        <div class="iconfont icon-delete"></div>
+        <div class="iconfont icon-delete" onclick="deleteList()"></div>
     </footer>
     <script type="text/javascript">
         const _list = document.querySelector('.list');
+        var _data = String();
+        // 首次渲染本地储存的列表
+        function fetchList() {
+            _data = JSON.parse(window.localStorage.getItem('todolist') || '[]');
+            _list.innerHTML = _data;
+            isChecked();
+        }
+        fetchList();
+        // 保存列表
+        function saveList() {
+            // 新建一个列表数据
+            _data = _list.innerHTML;
+            // 将新建的数据储存到本地
+            window.localStorage.setItem('todolist', JSON.stringify(_data));
+        }
         // 执行回车事件
         function inputBtn (e, el) {
             if (e.keyCode !== 13) return ;
@@ -62,17 +77,57 @@
             _li.className = 'md_box_shadow flex vertical';
             _li.innerHTML = `<p class="f1">${ _content }</p><div class="checked_btn" onclick="single(this)"></div>`;
             _list.appendChild(_li);
+            saveList();
+            // 清空输入
             el.value = '';
         }
         // 单个切换
         function single(el) {
-            el.classList.toggle('check_on')
+            el.classList.toggle('check_on');
+            isChecked();
+            saveList();
+        }
+        // 全选事件
+	    function allChecked(el) {
+            let _li = _list.querySelectorAll('.checked_btn');
+            if (!_li.length) return alert('当前没有可选的列表~');
+	        if (el.classList.contains('check_on')) {
+				_li.forEach(item => {
+					item.classList.remove('check_on');
+				})
+	        }else {
+				_li.forEach(item => {
+					item.classList.add('check_on');
+				})
+	        }
+	        el.classList.toggle('check_on');
+	        saveList();
+        }
+        // 检查是否全选
+        function isChecked() {
+            let _noChecked = _list.querySelectorAll('.checked_btn');
+            let _checked = _list.querySelectorAll('.check_on');
+	        if (_noChecked.length === _checked.length && _noChecked.length) {
+	            document.querySelector('footer .checked_btn').classList.add('check_on')
+	        } else {
+	            document.querySelector('footer .checked_btn').classList.remove('check_on')
+	        }
+        }
+        // 删除
+        function deleteList() {
+            let _li = _list.querySelectorAll('.check_on');
+            if (!_li.length) return alert('都没选到列表\n删你个傻吊！');
+            _li.forEach(item => {
+				_list.removeChild(item.parentNode)
+            });
+            saveList();
         }
         // 底部切换
         function footerSwitch(el) {
             el.classList.toggle('icon-close')
             document.querySelector('footer').classList.toggle('hide')
         }
+        
     </script>
 </body>
 </html>
