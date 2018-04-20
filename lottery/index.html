@@ -16,7 +16,7 @@
             .swiper .swiper_btn{ float: left; margin-left: 8px; width: 8px; height: 8px; background-color: rgba(0,0,0,0.5); border-radius: 50%; }
             .swiper .swiper_btn_active{ background-color: #fff; }
             /*  */
-            .ball_content{ width: 100%; height: 3.79rem; -webkit-box-shadow: 0 10px 15px 0 rgba(0,0,0,0.3); box-shadow: 0 10px 25px 0 rgba(0,0,0,0.3); border-radius: 8px; background-image: url(./image/A7.jpg); background-size: cover; background-position: center center; margin-bottom: .3rem; border-radius: 8px; position: relative; z-index: 1; overflow: hidden; }
+            .ball_content{ width: 100%; height: 3.79rem; border-radius: 8px; background-image: url(./image/A7.jpg); background-size: cover; background-position: center center; margin-bottom: .3rem; border-radius: 8px; position: relative; z-index: 1; overflow: hidden; }
             .ball_content::before{ position: absolute; content: ''; width: 100%; height: 100%; top: 0; left: 0; background-color: rgba(0,0,0,0.5); z-index: -1; }
             .ball_list{ width: 6.38rem; height: .74rem; overflow: hidden; margin: 0 auto .4rem;}
             .ball_list li{ float: left; margin-left: .2rem; width: .74rem; height: .74rem; border-radius: 50%; text-align: center; line-height: .74rem; font-size: .32rem; background-color: #fb3f3f; color: #fff; -webkit-animation: bounce .4s; animation: bounce .4s; }
@@ -35,11 +35,13 @@
             }
             .ball_btn{ width: 2.8rem; height: .8rem; border-radius: 4px; text-align: center; line-height: .8rem; font-size: .32rem; color: #fff; background: -webkit-gradient(linear,left top, right top,from(#48acf8),to(#fb3f3f)); background: linear-gradient(to right,#48acf8,#fb3f3f); margin: 0 auto; }
             .ball_btn:active{ background: -webkit-gradient(linear,left top, right top,from(#fb3f3f),to(#48acf8)); background: linear-gradient(to right,#fb3f3f,#48acf8); }
+            .todo{ width: 3rem; height: .8rem; box-sizing: border-box; padding: 0 .3rem; background-color: #2196f3; color: #fff; font-size: .32rem; text-align: center; line-height: .8rem; display: block; margin: 0 auto .3rem; border-radius: 3px;}
+            .todo .iconfont{ font-size: .38rem; color: #fff; float: right; }
         </style>
     </head>
     <body>
         <div id="app">
-            <div class="ball_content flex vertical center">
+            <div class="ball_content flex vertical center md_box_shadow">
                 <div>
                     <ul class="ball_list shuangseqiu">
                         <li>0</li>
@@ -53,7 +55,7 @@
                     <div class="ball_btn" onclick="outputBall(this, true)">机选一注双色球</div>
                 </div>
             </div>
-            <div class="ball_content flex vertical center">
+            <div class="ball_content flex vertical center md_box_shadow">
                 <div>
                     <ul class="ball_list daletou">
                         <li>0</li>
@@ -67,6 +69,7 @@
                     <div class="ball_btn" onclick="outputBall(this, false)">机选一注大乐透</div>
                 </div>
             </div>
+            <a href="./todo.html" class="todo md_box_shadow"><i class="iconfont icon-arrow-right"></i>Todo-list</a>
         </div>
         <script type="text/javascript" src="./js/swiper.js"></script>
         <script type="text/javascript">
