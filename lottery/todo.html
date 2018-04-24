@@ -57,7 +57,7 @@
         var _data = String();
         // 首次渲染本地储存的列表
         function fetchList() {
-            _data = JSON.parse(window.localStorage.getItem('todolist') || '[]');
+            _data = JSON.parse(window.localStorage.getItem('todolist')) || '';
             _list.innerHTML = _data;
             isChecked();
         }
