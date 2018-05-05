@@ -1,93 +1,79 @@
-/*焦点图*/
-.banner{ width: 100%; height: 657px; z-index: 2; position: relative; overflow: hidden;}
-.banner ul{ width: 100%; height: 100%;}
-.banner li{width: 100%; height: 100%; background-position: center center; background-size: cover; background-attachment: fixed; position: absolute; top: 0; left: 0; opacity: 0; -webkit-transition: 3s all; transition: 3s all; -moz-transition: 3s all; -o-transition: 3s all;}
-.banner li:nth-child(1){ background-image: url(../img/index.jpg); }
-.banner li:nth-child(2){ background-image: url(../img/index2.jpg); }
-.banner li:nth-child(3){ background-image: url(../img/index4.jpg); }
-.banner .index_hover{ z-index: 2; opacity: 1; }
-.banner .index_b{ z-index: 3; opacity: 1; }
-.banner span{ width: 910px; height: 250px; color: #fff; text-align: center; display: block; border-top: solid 2px #fff; position: absolute; margin: auto; left: 0; right: 0; top: 0; bottom: 0; -webkit-transition: 2s all; transition: 2s all; -moz-transition: 2s all; -o-transition: 2s all; }
-.banner span h2{ font-weight: 400; font-size: 74px; margin-bottom: 10px; }
-.banner span h3{ font-weight: 400; font-size: 28px; margin-bottom: 20px; }
-.banner span p{ font-size: 16px; margin-bottom: 20px; }
-.banner span i{ display: block; width: 250px; height: 2px; margin: 0 auto; background: rgba(255,255,255,0.3); }
-.banner em{ display: block; width: 1%; height: 2px; background: #fff;}
-.banner .em_move{ animation: loadline 6s linear infinite; -webkit-animation: loadline 6s linear infinite; }
-@keyframes loadline{
-	0%{ width: 1%; }
-	100%{ width: 100%; }
-}
-@-webkit-keyframes loadline{
-	0%{ width: 1%; }
-	100%{ width: 100%; }
-}
-.banner .text_h1{ -webkit-transform: rotate(-50deg) translateY(-200%); transform: rotate(-50deg) translateY(-200%); }
-.banner .text_h2{ -webkit-transform: rotate(50deg) translateY(-200%); transform: rotate(50deg) translateY(-200%); }
-/*文字内容*/
-section{ padding: 100px 0; background: #000; text-align: center; overflow: hidden;}
-.text{ display: block; width: 910px; margin: 0 auto; -webkit-transform: translateY(100%); transform: translateY(100%); opacity: 0; -webkit-transition: .8s all; transition: .8s all; -moz-transition: .8s all; -o-transition: .8s all;}
-.text h2{ font-size: 22px; margin-bottom: 20px; font-weight: 100;}
-.text p{ font-size: 14px; font-family: 宋体; line-height: 24px; margin-bottom: 24px; }
-.more_a{ margin: 0 auto; display: block; width: 123px; height: 40px; border: solid 2px #fff; border-radius: 5px; font-size: 14px; text-align: center; line-height: 37px; position: relative; overflow: hidden;}
-.line{ display: block; width: 15px; height: 40px; background: rgba(255,255,255, 0.8); position: absolute; top: 0; left: -20%; -webkit-transform: skewX(-25deg); transform: skewX(-25deg); }
-.more_a:hover{ font-size: 20px; }
-.more_a:hover > .line{ left: 120%; }
-section .show{ -webkit-transform: translateY(0); transform: translateY(0); opacity: 1; }
-/*图片鉴赏*/
+.banner{ width: 100%; padding: 25% 0; position: relative; z-index: 2; overflow: hidden; }
+.banner .banner_item{ background-size: cover; background-attachment: fixed; position: absolute; width: 100%; height: 100%; left: 0; top: 0; opacity: 0; z-index: 2; -webkit-transition: 3s all; -moz-transition: 3s all; -ms-transition: 3s all; -o-transition: 3s all; transition: 3s all; }
+.banner .banner_item::before{ content: ''; position: absolute; width: 100%; height: 100%; z-index: -1; left: 0; top: 0; background-color: rgba(0,0,0,0.3); }
+.banner .banner_item:nth-child(1){ background-image: url(../image/index.jpg); }
+.banner .banner_item:nth-child(2){ background-image: url(../image/index2.jpg); }
+.banner .banner_item:nth-child(3){ background-image: url(../image/index4.jpg); }
+.banner_text{ width: 910px; height: 250px; color: #fff; text-align: center; border-top: solid 2px #fff; position: absolute; margin: auto; left: 0; right: 0; top: 0; bottom: 0; -webkit-transition: 1.4s all; -moz-transition: 1.4s all; -ms-transition: 1.4s all; -o-transition: 1.4s all; transition: 1.4s all; }
+.banner_text h2{ font-weight: 400; font-size: 74px; margin-bottom: 10px; }
+.banner_text h3{ font-weight: 400; font-size: 28px; margin-bottom: 20px; }
+.banner_text p{ font-size: 16px; margin-bottom: 20px; }
+.banner_text .banner_line{ width: 250px; height: 2px; margin: 0 auto; background: rgba(255,255,255,0.1); }
+.banner_text .banner_line span{ display: block; width: 0.1%; height: 2px; background: #fff; -webkit-transition: 8s linear; -moz-transition: 8s linear; -ms-transition: 8s linear; -o-transition: 8s linear; transition: 8s linear; }
+.banner_text .banner_line .line_move{ width: 100%; }
+/* banner过渡样式 */
+.banner .item_show{ z-index: 3; }
+.banner .opacity{ opacity: 1; }
+.banner .back{ opacity: 0; transform: rotate(-50deg) translateY(-200%); }
+.banner .next{ opacity: 0; transform: rotate(50deg) translateY(-200%); }
+/* 介绍文字 */
+.introduction{ padding: 100px 0; background: #000; text-align: center; overflow: hidden; }
+.introduction .text_box{ width: 910px; margin: 0 auto; }
+.introduction .text_box h2{ font-size: 24px; margin-bottom: 20px; color: #fff; }
+.introduction .text_box p{ font-size: 14px; font-family: '宋体'; line-height: 24px; margin-bottom: 24px; color: #fff; }
+.introduction .more_btn{ margin: 0 auto; display: block; width: 124px; height: 40px; border: solid 2px #fff; border-radius: 5px; font-size: 14px; text-align: center; line-height: 37px; position: relative; overflow: hidden; color: #fff; }
+.introduction .line{ width: 15px; height: 40px; background: rgba(255,255,255, 0.8); position: absolute; top: 0; left: -20%; -webkit-transform: skewX(-25deg); transform: skewX(-25deg); }
+.introduction .more_btn:hover{ font-size: 20px; }
+.introduction .more_btn:hover > .line{ left: 120%; }
+/* 图片鉴赏 */
 .photos{ width: 100%; overflow: hidden; }
-.photos span{ display: block; float: left; overflow: hidden; width: 33.33%; padding: 0; opacity: 0; -webkit-transition: .8s all; transition: .8s all; -moz-transition: .8s all; -o-transition: .8s all;}
-.photos span:nth-child(1){ -webkit-transform: translate(-50%,0); transform: translate(-50%,0); }
-.photos span:nth-child(2){ -webkit-transform: translate(0,50%); transform: translate(0,50%); }
-.photos span:nth-child(3){ -webkit-transform: translate(50%,0); transform: translate(50%,0); }
-.photos span img{ width: 100%; display: block;}
-#album{ width: 100%; overflow: hidden; }
-#album li{ display: block; width: 16.66%; float: left; overflow: hidden; padding: 6% 0; background-position: center center; background-size: cover; cursor: pointer; position: relative; z-index: 1; -webkit-transform: translateY(100px); transform: translateY(100px); opacity: 0; -webkit-transition: .8s all; transition: .8s all; -moz-transition: .8s all; -o-transition: .8s all;}
-#album li:before{ content: ""; position: absolute; background: none; height: 0; top: 50%; width: 100%; left: 0; border: solid 3em rgba(0, 0, 0, 0.5); margin: -3em; z-index: -1; }
-#album li:hover:before{ top: 0; height: 100%; }
-#album .a_show{ -webkit-transform: translateY(0); transform: translateY(0); opacity: 1; }
-/*大图相册*/
-.big_photos{ width: 100%; height: 100%; position: fixed; top: 0; left: 0; background: #525252; z-index: 4; display: none; -webkit-transform: translateY(-100%); transform: translateY(-100%);}
-.big_album{ width: 100%; height: 95%; position: relative; background: none;}
-.big_album img{ max-width: 100%; max-height: 100%; display: block; margin: auto; position: absolute; top: 0; bottom: 0; left: 0; right: 0}
-.big_photos ul{ width: 810px; margin: 0 auto; height: 65px;}
-.big_photos li{ float: left; width: 65px; height: 65px; overflow: hidden; background-position: center center; background-size: cover; cursor: pointer; position: relative; z-index: 5; }
-.big_photos li:hover{ width: 90px; height: 90px; margin-top: -25px; }
-.big_photos span{ display: block; background: rgba(0, 0, 0, 0.5); text-align: center; width: 50px; height: 50px; line-height: 50px; position: absolute; margin-top: -25px; font-size: 20px; cursor: pointer;}
-.big_photos .album_left{ top: 50%; left: 0;}
-.big_photos .album_right{ top: 50%; right: 0;}
-.big_photos .album_close{ top: 25px; right: 0; font-size: 26px; }
-.bp_hover{ -webkit-transform: translateY(0); transform: translateY(0); }
-
+.photos div{ float: left; overflow: hidden; width: 33.33%; padding: 0; margin: 0; }
+.photos img{ padding: 0; margin: 0; }
+/* 底部相册 */
+.Album_list{ width: 100%; overflow: hidden; }
+.Album_list li{ display: block; width: 16.6666666666%; float: left; overflow: hidden; padding: 6% 0; background-position: center center; background-size: cover; cursor: pointer; position: relative; z-index: 1; }
+.Album_list li:before{ content: ""; position: absolute; background: none; height: 0%; top: 50%; width: 100%; left: 0; border: solid 8em rgba(0, 0, 0, 0.5); margin: -8em; z-index: -1; }
+.Album_list li:hover:before{ top: 0; height: 100%; }
+/* 大相册 */
+.Album_big{ width: 100%; height: 100%; position: fixed; top: 0; left: 0; overflow: hidden; background: #525252; z-index: 10; transform: translateY(0%); -webkit-transform: translateY(0%); -moz-transform: translateY(0%); -ms-transform: translateY(0%); -o-transform: translateY(0%); }
+.Album_big .center_img{ width: 100%; height: 90%; position: relative; }
+.Album_big .center_img img{ width: auto; margin: auto; position: absolute; top: 0; bottom: 0; left: 0; right: 0; max-width: 100%; max-height: 100%; }
+.Album_big .Album_menu{ margin: 0 auto; width: 100%; height: 65px; text-align: center; position: absolute; bottom: 0; left: 0; }
+.Album_big .Album_menu li{ display: inline-block; width: 65px; height: 65px; overflow: hidden; background-position: center center; background-size: cover; cursor: pointer; }
+.Album_big .Album_menu li:hover{ width: 90px; height: 90px; margin-top: -25px; }
+.Album_big .btn{ background: rgba(0, 0, 0, 0.5); text-align: center; width: 50px; height: 50px; line-height: 50px; position: absolute; margin-top: -25px; font-size: 20px; cursor: pointer; color: #fff; }
+.Album_big .icon-left{ top: 50%; left: 0;}
+.Album_big .icon-right{ top: 50%; right: 0;}
+.Album_big .icon-close{ top: 25px; right: 0; font-size: 26px; }
+.Album_big_hide{ transform: translateY(-100%); -webkit-transform: translateY(-100%); -moz-transform: translateY(-100%); -ms-transform: translateY(-100%); -o-transform: translateY(-100%); }
 /*响应式*/
 @media screen and (max-width: 1366px){
-	.big_album{ height: 90%; }
-	.banner span{ width: 800px; height: 200px; }
-	.banner span h2{ font-size: 64px; }
-	.banner span h3{ font-size: 24px; }
+	.banner_text{ width: 800px; height: 200px; }
+	.banner_text h2{ font-size: 64px; }
+	.banner_text h3{ font-size: 24px; }
 }
 @media screen and (max-width: 930px) {
-	header{ display: none; }
-	.menu_btn{ display: block; }
-	.banner span{ width: 90%; height: 170px; }
-	.banner span h2{ font-size: 48px; }
-	.banner span h3{ font-size: 18px; }
-	.banner span p{ font-size: 14px; }
-	.banner span i{ width: 200px; }
-	.text{ width: 95%; }
-	#album li{ width: 25%; padding: 8% 0;}
-	.big_album{ height: 100%; }
-	.big_photos ul{ display: none; }
+	.banner{ padding: 0; height: 100vh; }
+	.banner_text{ width: 90%; height: 170px; padding-top: 30px; }
+	.banner_text h2{ font-size: 48px; }
+	.banner_text h3{ font-size: 18px; }
+	.banner_text p{ font-size: 14px; }
+	.banner_text .banner_line{ width: 200px; }
+	.introduction .text_box{ width: 95%; }
+    .Album_list li{ width: 25%; padding: 8% 0; }
+    .Album_big .Album_menu{ display: none; }
+    .Album_big .center_img{ height: 100%; }
 }
 @media screen and (max-width: 680px) {
-	.banner span{ width: 90%; height: 150px; }
-	.banner span h2{ font-size: 38px; }
-	.banner span h3{ font-size: 16px; }
-	.banner span p{ font-size: 14px; }
-	.banner span i{ width: 200px; }
+	.banner_text{ height: 150px; }
+	.banner_text h2{ font-size: 38px; }
+	.banner_text h3{ font-size: 16px; }
+	.banner_text p{ font-size: 14px; }
+	.banner_text .banner_line{ width: 200px; }
 }
 @media screen and (max-width: 600px) {
-	.banner span h2{ font-size: 24px; }
-	.text h2{ font-size: 18px; }
-	#album li{ width: 50%; padding: 15% 0;}
+	.banner_text h2{ font-size: 24px; }
+    .introduction .text_box h2{ font-size: 18px; }
+    .introduction .text_box p{ font-size: 14px; }
+	.Album_list li{ width: 50%; padding: 15% 0; }
 }

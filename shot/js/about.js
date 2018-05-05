@@ -1,86 +1,40 @@
-$(window).load(function(){
-	//加载页事件
-	$('.loading').addClass('loading_hide');
-	$('html').css({overflowY: 'auto'})
-	setTimeout(function(){$('.loading').remove()},500);//删除加载页
-});
-function about(){
-	var wTop = $(window).scrollTop();//文档对顶部偏移
-	var wHeight = $(window).height();//窗口高度
-	var h = $('.banner').height();
-	var w = $(window).width();//窗口宽度
-
-	//窗口变动事件
-	$(window).resize(function(){
-		wTop = $(window).scrollTop();
-		wHeight = $(window).height();
-	})
-	//手机按钮事件
-	$(".menu_btn").toggle(
-	  function () {
-	  	$(".menu_btn").css({ width: "100%", height: "auto" })
-	    $(".menu_btn i").removeClass("icon-cai").addClass("btn_hover icon-guanbi");
-	    setTimeout(function(){$('.phone_menu').show()},400);
-	    setTimeout(function(){$('.phone_menu').addClass('menu_hover')},450);
-	  },
-	  function () {
-	    $('.phone_menu').removeClass('menu_hover');
-	    setTimeout(function(){
-	    	$(".menu_btn i").removeClass("icon-guanbi btn_hover").addClass("icon-cai");
-	    	$(".menu_btn").css({width: "46px", height: "46px"})
-	    },400)
-	    setTimeout(function(){$('.phone_menu').hide()},410); 
-	  }
-	)
-	//导航事件
-	function menu(){
-		if (wTop > h-100) {
-			$('header').addClass('header');
-			$('#logo').css({padding:'0px 30px'});
-		}else{
-			$('header').removeClass('header');
-			$('#logo').css({padding:'15px 30px'});
-		}
-	}
-	menu();
-	//内容显示事件
-	function content(){
-		$('.content span').each(function(index,span){
-			if (wTop + wHeight > $(span).offset().top) {
-				$(span).removeClass('span_hide');
-			}
-		});
-		if (wTop + wHeight > $('.contact_photo').offset().top) {
-				$('.contact_photo').removeClass('photo_hide');
-		}if(wTop + wHeight > $('.contact_text').offset().top) {
-				$('.contact_text').removeClass('text_hide');
-		}
-	}
-	setTimeout(content,800)
-	//二维码点击事件
-	$('.contact_text .em_cursor').click(function(){
-		$('.contact_text p').eq(-1).text("").append('<em class="iconfont em_cursor">&#xe658;</em>下方已显示二维码');
-		$('.contact_text .qrcode').removeClass('qrcode_hide');
-	})
-	//返回顶部事件
-	function goback(){
-		if (wTop > 500) {
-			$('#goback').fadeIn();
-		} else {
-			$('#goback').fadeOut();
-		}
-	}
-	goback();
-	$('#goback').click(function(){
-		$('body,html').animate({scrollTop: 0},300)
-	});
-	//滚动条事件
-	$(document).scroll(function(){
-		wTop = $(window).scrollTop();
-		wHeight = $(window).height();
-		menu();
-		content();
-		goback();
-	});
+var _isClick = false;
+// 判断元素出现
+function elMoveShow() {
+    var _els = document.querySelectorAll('.startMove');
+    if (!_els.length) return;
+    for (var k = 0; k < _els.length; k++) {
+        if (Math.floor(_els[k].getBoundingClientRect().top) <= Math.floor(window.innerHeight || document.documentElement.clientHeight) - 50) {
+            _els[k].classList.add('reset');
+            (function (j) {
+                setTimeout(function () {
+                    _els[j].classList.remove('startMove');
+                    _els[j].classList.add('transition');
+                },800);
+            })(k);
+        }
+    }
 }
-about();
+function codeShow(el) {
+    if (_isClick) return;
+    _isClick = true;
+    document.querySelector('.qrcode').classList.add('reset');
+    el.innerHTML = '<em class="iconfont icon-iconfontweixin em_cursor"></em>已显示二维码'
+}
+window.addEventListener('load',function() {
+    var _load = document.querySelector('.loading'),
+        _maxbox = document.querySelector('.content');
+    _load.classList.add('loading_hide');
+    // 默认执行一次
+    setTimeout(function(){
+        document.querySelector('html').style.overflowY = 'auto';
+        _load.parentNode.removeChild(_load);
+        elMoveShow();
+        _headerSwitch(_maxbox);
+    },400);
+    // 滚动条事件
+    window.addEventListener('scroll', function() {
+        elMoveShow();
+        _headerSwitch(_maxbox);
+    });
+});
