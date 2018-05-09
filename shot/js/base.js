@@ -1,5 +1,5 @@
-// document.oncontextmenu = new Function("event.returnValue=false;");
-// document.onselectstart = new Function("event.returnValue=false;");
+document.oncontextmenu = new Function("event.returnValue=false;");
+document.onselectstart = new Function("event.returnValue=false;");
 // 检测浏览器版本
 function getIEVersion() {
     var rv = -1; // Return value assumes failure.
