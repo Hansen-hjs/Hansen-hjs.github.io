@@ -1,0 +1,37 @@
+/* 轮播图 */
+.swiper{ width: 100%; position: relative; z-index: 10; background-color: #eee; overflow: hidden; border-radius: 8px; margin-bottom: .3rem; }
+.swiper .swiper_list{ overflow: hidden; position: relative; z-index: 5; width: 100%; min-height: 3.79rem; }
+.swiper .swiper_slider{ float: left; width: 100%; text-align: center; color: #fff; }
+.swiper img{ width: 100%; }
+.swiper .swiper_pagination{ position: absolute; z-index: 5; height: 10px; bottom: 10px; left: 50%; text-align: center; -webkit-transform: translateX(-50%); transform: translateX(-50%); }
+.swiper .swiper_btn{ float: left; margin-left: 8px; width: 8px; height: 8px; background-color: rgba(0,0,0,0.5); border-radius: 50%; }
+.swiper .swiper_btn_active{ background-color: #fff; }
+/*  */
+.ball_content{ width: 100%; height: 3.79rem; border-radius: 8px; background-image: url(../image/A7.jpg); background-size: cover; background-position: center center; margin-bottom: .3rem; border-radius: 8px; position: relative; z-index: 1; overflow: hidden; }
+.ball_content::before{ position: absolute; content: ''; width: 100%; height: 100%; top: 0; left: 0; background-color: rgba(0,0,0,0.5); z-index: -1; }
+.ball_list{ width: 6.38rem; height: .74rem; overflow: hidden; margin: 0 auto .4rem;}
+.ball_list li{ float: left; margin-left: .2rem; width: .74rem; height: .74rem; border-radius: 50%; text-align: center; line-height: .74rem; font-size: .32rem; background-color: #fb3f3f; color: #fff; -webkit-animation: bounce .4s; animation: bounce .4s; }
+.ball_list li:nth-child(1){ margin-left: 0; }
+.shuangseqiu li:nth-child(7), .daletou li:nth-child(6), .daletou li:nth-child(7){ background-color: #48acf8; }
+/* 球类动画 */
+@-webkit-keyframes bounce {
+    0% { opacity: 0; -webkit-transform: translateX(-100%); transform: translateX(-100%); -webkit-transform: rotate(-360deg); transform: rotate(-360deg); }
+    50% { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+    100% { opacity: 1; -webkit-transform: translateX(0%); transform: translateX(0%); -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+}
+@keyframes bounce {
+    0% { opacity: 0; -webkit-transform: translateX(-100%); transform: translateX(-100%); -webkit-transform: rotate(-360deg); transform: rotate(-360deg); }
+    50% { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+    100% { opacity: 1; -webkit-transform: translateX(0%); transform: translateX(0%); -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+}
+.ball_btn{ width: 2.8rem; height: .8rem; text-align: center; line-height: .8rem; font-size: .32rem; color: #fff; background-color: #2196f3; border-radius: .08rem; margin: 0 auto; }
+.todo{ width: 3rem; height: .8rem; box-sizing: border-box; padding: 0 .3rem; background-color: #2196f3; color: #fff; font-size: .32rem; text-align: center; line-height: .8rem; display: block; margin: 0 auto .3rem; border-radius: 3px; }
+.todo .iconfont{ font-size: .38rem; color: #fff; float: right; }
+.ripple_btn{ position: relative; display: block; cursor: pointer; }
+.ripple_btn canvas{ opacity: 0.25; position: absolute; top: 0; left: 0; transition: .2s all; -webkit-transition: .2s all }
+/* 触摸容器 */
+.img-zoom{ width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 10; background-color: rgba(0,0,0,0.7); transition: .3s all; -webkit-transition: .3s all; transform: scale(0.9,0.9); -webkit-transform: scale(0.9,0.9); opacity: 0; visibility: hidden; }
+.img-zoom .img-zoom-close .iconfont{ font-size: .44rem; color: #fff; position: absolute; top: 4px; right: 4px; background-color: #000; width: .8rem; height: .8rem; line-height: .8rem; text-align: center; z-index: 11; }
+.img-zoom .img-zoom-img{ width:100%; height:100%; position: absolute; left: 0; top: 0; overflow: hidden; }
+.img-zoom .img-zoom-img img{ width:100%; position:absolute; top: 50%; }
+.img-zoom-show{ transform: scale(1,1); -webkit-transform: scale(1,1); opacity: 1; visibility: visible; }
