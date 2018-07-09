@@ -57,7 +57,7 @@
     <script type="text/javascript" src="./js/ripple.js"></script>
     <script type="text/javascript">
         const _list = document.querySelector('.list');
-        var _data = String();
+        var _data = '';
         // 首次渲染本地储存的列表
         function fetchList() {
             _data = JSON.parse(window.localStorage.getItem('todolist')) || '';
@@ -74,7 +74,7 @@
         }
         // 执行回车事件
         function inputBtn (e, el) {
-            if (e.keyCode !== 13) return ;
+            if (e.keyCode !== 13) return;
             let [_content, _li] = [el.value, document.createElement('li')];
             if (!_content) return alert('输入的内容为空~');
             _li.className = 'md_box_shadow flex vertical';
@@ -111,9 +111,9 @@
             let _noChecked = _list.querySelectorAll('.checked_btn');
             let _checked = _list.querySelectorAll('.check_on');
 	        if (_noChecked.length === _checked.length && _noChecked.length) {
-	            document.querySelector('footer .checked_btn').classList.add('check_on')
+	            document.querySelector('footer .checked_btn').classList.add('check_on');
 	        } else {
-	            document.querySelector('footer .checked_btn').classList.remove('check_on')
+	            document.querySelector('footer .checked_btn').classList.remove('check_on');
 	        }
         }
         // 删除
@@ -121,17 +121,16 @@
             let _li = _list.querySelectorAll('.check_on');
             if (!_li.length) return console.log('都没选到列表\n删你个傻吊！');
             _li.forEach(item => {
-				_list.removeChild(item.parentNode)
+				_list.removeChild(item.parentNode);
             });
             document.querySelector('footer .checked_btn').classList.remove('check_on');
             saveList();
         }
         // 底部切换
         function footerSwitch(el) {
-            el.classList.toggle('icon-close')
-            document.querySelector('footer').classList.toggle('hide')
+            el.classList.toggle('icon-close');
+            document.querySelector('footer').classList.toggle('hide');
         }
-
     </script>
 </body>
 </html>

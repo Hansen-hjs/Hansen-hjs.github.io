@@ -1,13 +1,16 @@
 // 轮播图数组
-const _list = ['./image/a7-1.jpg','./image/a7-2.jpg','./image/a7-3.jpg','./image/a7-4.jpg','./image/a7-5.jpg','./image/a7-6.jpg'];
+const _list = ['./image/a7-1.jpg', './image/a7-2.jpg', './image/a7-3.jpg', './image/a7-4.jpg', './image/a7-5.jpg', './image/a7-6.jpg'];
 // 创建轮播图 参数为：数组，是否需要圆点，回调函数
 function createSwiper(list, isBtn, fn) {
-    let [_swiper, _ul, _li, _btn] = [document.createElement('div'), document.createElement('ul'), '', document.createElement('div')];
+    let _swiper = document.createElement('div'),
+        _ul = document.createElement('div'),
+        _btn = document.createElement('div'),
+        _li = '';
     _swiper.className = 'swiper';
     _ul.className = 'swiper_list';
     _btn.className = 'swiper_pagination';
     list.forEach((item, index) => {
-        _li += `<li class="swiper_slider"><img src="${ item }" onclick="openImgZoom(this)" alt=""></li>`
+        _li += `<li class="swiper_slider"><img src="${item}" onclick="openImgZoom(this)" alt=""></li>`
     });
     _ul.innerHTML = _li;
     _swiper.appendChild(_ul);
@@ -17,13 +20,11 @@ function createSwiper(list, isBtn, fn) {
 }
 // 调用轮播图组件
 createSwiper(_list, true, () => {
-    window.onload = function () {
-        new Swiper({
-            el: '.swiper',
-            pagination: true,
-            autoPaly: true
-        });
-    };
+    new Swiper({
+        el: '.swiper',
+        pagination: true,
+        autoPaly: true
+    });
 });
 // 手势操作插件
 var _Zoom = new ImgZoom({
@@ -35,9 +36,9 @@ function openImgZoom(el) {
     _Zoom.init(el.src)
 }
 // 生成随机球 n是随机个数，min和max是数域
-function createBall(n, min, max, _arr){
+function createBall(n, min, max, _arr) {
     for (let i = 0; i < n; i++) {
-        _arr[i] = parseInt(Math.random()*(max-min+1)+min);
+        _arr[i] = parseInt(Math.random() * (max - min + 1) + min);
     }
     // 走多一次 如果有相同的数字就再随机多一次
     for (let k = 0; k < n; k++) {
@@ -45,7 +46,7 @@ function createBall(n, min, max, _arr){
             if (_arr[k] == _arr[j]) {
                 // console.log('执行');
                 createBall(n, min, max, _arr);
-                return ;
+                return;
             }
         }
     }
@@ -54,18 +55,19 @@ function createBall(n, min, max, _arr){
 var _isClick = false;
 // 输出彩色球
 function outputBall(el, _type) {
-    if (_isClick) return ;
+    if (_isClick) return;
     _isClick = true;
-    let _ul = el.parentNode.querySelector('.ball_list');
+    let _ul = el.parentNode.querySelector('.ball_list'),
+        // 两种色球的数组
+        redballs = [],
+        blueballs = [];
     _ul.innerHTML = '';
-    // 两种色球的数组
-    let [redballs, blueballs] = [new Array(), new Array()];
     if (_type) {
         // 双色球
-        createBall(6,1,33, redballs);
-        createBall(1,1,16, blueballs);
+        createBall(6, 1, 33, redballs);
+        createBall(1, 1, 16, blueballs);
         // console.log('双色球');
-    }else {
+    } else {
         // 大乐透
         createBall(5, 1, 35, redballs);
         createBall(2, 1, 12, blueballs);
@@ -79,6 +81,6 @@ function outputBall(el, _type) {
             _li.textContent = _newList[i];
             _ul.appendChild(_li);
             if (i == 6) _isClick = false;
-        },200 + 100 * i);
+        }, 200 + 100 * i);
     }
 }
