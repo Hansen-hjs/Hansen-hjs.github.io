@@ -23,20 +23,20 @@ checkVersion();
 var _isMenuMove = false;
 // 手机导航切换
 function phoneMenu(el) {
-    if (_isMenuMove) return ;
+    if (_isMenuMove) return;
     _isMenuMove = true;
     if (el.parentNode.classList.contains('phone_header_hover')) {
         el.parentNode.querySelector('.menu').classList.remove('menu_hover')
         setTimeout(function () {
             el.parentNode.classList.remove('phone_header_hover');
             _isMenuMove = false;
-        },400);
-    }else {
+        }, 400);
+    } else {
         el.parentNode.classList.add('phone_header_hover');
         setTimeout(function () {
             el.parentNode.querySelector('.menu').classList.add('menu_hover')
             _isMenuMove = false;
-        },400);
+        }, 400);
     }
 }
 // 头部样式判断切换
@@ -46,7 +46,7 @@ function _headerSwitch(_el) {
     if (_top < 80) {
         document.querySelector('.pc_header').classList.add('pc_header_hover');
         document.querySelector('.logo').classList.add('logo_hover');
-    }else {
+    } else {
         document.querySelector('.pc_header').classList.remove('pc_header_hover');
         document.querySelector('.logo').classList.remove('logo_hover');
     }
