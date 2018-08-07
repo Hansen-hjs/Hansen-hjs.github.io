@@ -10,7 +10,7 @@ var ver = (function () {
 })();
 if (ver > -1) {
     if (ver < 10) {
-        return window.location.href = 'http://modesign.cc/outdatedbrowser/';
+        window.location.href = 'http://modesign.cc/outdatedbrowser/';
     } else {
         console.log('当前IE浏览版本为：', ver);
     }
