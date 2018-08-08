@@ -1,6 +1,7 @@
 *{ padding: 0; margin: 0; }
-html, body{ font-family: '微软雅黑'; font-size: 16px; background-color: #eee; color: #333; letter-spacing: 1px; }
+html, body{ font-family: '微软雅黑'; font-size: 16px; background-color: #333; color: #333; letter-spacing: 1px; }
 h1,h2,h3,h4,h5,h6,i,b{ font-style: normal; font-weight: normal; }
+ul, li{ list-style: none; }
 /* flex布局 vertical：垂直平居中 center：水平居中*/
 .flex{ display: -webkit-box; display: -webkit-flex; display: flex; flex-wrap: wrap }
 .f1{ -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; }
