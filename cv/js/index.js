@@ -15,7 +15,7 @@ if (ver > -1) {
         console.log('当前IE浏览版本为：', ver);
     }
 }
-let list = [
+var list = [
     {
         index: 1,
         title: '电力系统-webAPP',
@@ -114,20 +114,81 @@ let list = [
         endTime: '2018-07',
         skill: 'ES6 + wx语法',
         content: '升级的第二个版本，一个设置红包口令然后派发到广场，说出口令即可参与红包玩法；第二版主要是增加了红包拼团的玩法（最多四个人）、红包审核、广告插入和一些用户操作提示的功能。'
+    }, {
+        index: 15,
+        title: '元气游戏中心-小程序',
+        startTime: '2018-08',
+        endTime: '2018-08',
+        skill: 'ES6 + wx语法',
+        content: '公司游戏盒子'
+    }, {
+        index: 16,
+        title: '颜值猫养成-小游戏',
+        startTime: '2018-08',
+        endTime: '2018-08',
+        skill: 'cocos creator游戏引擎',
+        content: '养成类换装小游戏，数据是由本地储存和计算，小程序搜索“颜值猫养成”即可体验。'
+    }, {
+        index: 17,
+        title: '太空黑洞迷航-小游戏',
+        startTime: '2018-08',
+        endTime: '2018-08',
+        skill: 'cocos creator游戏引擎',
+        content: '休闲类动作过关小游戏，小程序搜索“太空黑洞迷航”即可体验。'
+    }, {
+        index: 18,
+        title: '开局一条咸鱼-小游戏',
+        startTime: '2018-08',
+        endTime: '2018-08',
+        skill: 'cocos creator游戏引擎',
+        content: '休闲类单指操作小游戏，小程序搜索“开局一条咸鱼”即可体验。'
+    }, {
+        index: 19,
+        title: '踩砖块-小游戏',
+        startTime: '2018-08',
+        endTime: '2018-09',
+        skill: 'cocos creator游戏引擎',
+        content: '休闲类动作小游戏，小程序搜索“踩砖块”即可体验。'
+    }, {
+        index: 20,
+        title: '嫦娥中秋奔月-小游戏',
+        startTime: '2018-09',
+        endTime: '2018-09',
+        skill: 'cocos creator游戏引擎',
+        content: '类似经典游戏“涂鸦跳跃”，增加了收集道具并使用、奖励模式和复活三大玩法，小程序搜索“嫦娥中秋奔月”即可体验。'
+    }, {
+        index: 20,
+        title: '陨石破坏王-小游戏',
+        startTime: '2018-09',
+        endTime: '2018-09',
+        skill: 'cocos creator游戏引擎',
+        content: '玩家可操控的只有一大块巨石。当游戏开启后，巨石将被弹射出来，玩家可点击屏幕让巨石狠狠得砸到地面，并且在这些看起来相当恐慌的兽人中藏有一些手握道具的特殊兽人。比如砸中一个携带炸弹的兽人他就会把巨石远远炸到空中;砸中携带金库的兽人就能收获到丰厚的金钱，金币可以用来购买升级增益道具，小程序搜索“陨石破坏王”即可体验。'
     }
 ];
 function createList(arr) {
     arr.reverse();
-    arr.forEach((item, ind) => {
-        const li = document.createElement('li');
-        li.innerHTML = `<div class="title-box flex">
-                            <span class="f1 title">${item.title}</span>
-                            <span class="f1 time">${item.startTime}-${item.endTime}</span>
-                            <span class="f1"></span>
-                        </div>
-                        <p class="skill">所用技能：${item.skill}</p>
-                        <p class="info">${item.content}</p>`;
+    for (var i = 0; i < arr.length; i++) {
+        var item = arr[i];
+        var li = document.createElement('li');
+        li.innerHTML = '<div class="title-box flex">\
+                            <span class="f1 title">'+ item.title + '</span>\
+                            <span class="f1 time">'+ item.startTime + '-' + item.endTime + '</span>\
+                            <span class="f1"></span>\
+                        </div>\
+                        <p class="skill">所用技能：'+ item.skill + '</p>\
+                        <p class="info">'+ item.content + '</p>';
         document.querySelector('.project-list').appendChild(li);
-    });
+    }
+    // arr.forEach((item, ind) => {
+    //     const li = document.createElement('li');
+    //     li.innerHTML = `<div class="title-box flex">
+    //                         <span class="f1 title">${item.title}</span>
+    //                         <span class="f1 time">${item.startTime}-${item.endTime}</span>
+    //                         <span class="f1"></span>
+    //                     </div>
+    //                     <p class="skill">所用技能：${item.skill}</p>
+    //                     <p class="info">${item.content}</p>`;
+    //     document.querySelector('.project-list').appendChild(li);
+    // });
 }
 createList(list);
