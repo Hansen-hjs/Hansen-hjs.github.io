@@ -27,13 +27,15 @@ ul, li{ list-style: none; }
 /* 内容 */
 .content{ width: 100%; padding: 20px 100px; box-sizing: border-box; }
 .content h2{ font-size: 24px; margin-bottom: 15px; }
+.content .tip{ color: orange; }
 .content .iconfont{ color: #0a9bf3; margin-left: 8px; }
 .content .title-box{ margin-bottom: 10px; }
 .content .comment{ color: #00a693; margin-bottom: 20px; line-height: 24px; }
-.project-list li{ margin-bottom: 20px; border-top: dashed #ccc 1px; padding-top: 15px; }
+.project-list li{ margin-bottom: 20px; border-top: dashed #ccc 1px; padding-top: 15px; clear: both; }
 .project-list .title{ font-size: 18px; color: #000; }
 .project-list .time{ color: #666; }
 .project-list .skill{ color: #0a9bf3; margin-bottom: 10px; }
+.project-list .info-code{ max-width: 900px; float: left; }
 
 
 

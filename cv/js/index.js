@@ -160,41 +160,59 @@ var myInfo = {
             skill: 'cocos creator游戏引擎',
             content: '类似经典游戏“涂鸦跳跃”，增加了收集道具并使用、奖励模式和复活三大玩法，小程序搜索“嫦娥中秋奔月”即可体验。'
         }, {
-            index: 20,
+            index: 21,
             title: '陨石破坏王-小游戏',
             startTime: '2018-09',
             endTime: '2018-09',
             skill: 'cocos creator游戏引擎',
-            content: '玩家可操控的只有一大块巨石。当游戏开启后，巨石将被弹射出来，玩家可点击屏幕让巨石狠狠得砸到地面，并且在这些看起来相当恐慌的兽人中藏有一些手握道具的特殊兽人。比如砸中一个携带炸弹的兽人他就会把巨石远远炸到空中;砸中携带金库的兽人就能收获到丰厚的金钱，金币可以用来购买升级增益道具，小程序搜索“陨石破坏王”即可体验。'
+            content: '玩家可操控的只有一大块巨石。当游戏开启后，巨石将被弹射出来，玩家可点击屏幕让巨石狠狠得砸到地面，并且在这些看起来相当恐慌的兽人中藏有一些手握道具的特殊兽人。比如砸中一个携带炸弹的兽人他就会把巨石远远炸到空中;砸中携带金库的兽人就能收获到丰厚的金钱，金币可以用来购买升级增益道具，扫描右方二维码体验。',
+            code: 'http://skt.webgz.cn/orc/'
+        }, {
+            index: 22,
+            title: '方块切割-小游戏',
+            startTime: '2018-10',
+            endTime: '2018-10',
+            skill: 'cocos creator游戏引擎',
+            content: '类似水果忍者的切割休闲游戏，有抽奖，签到和皮肤试玩等功能。扫描右方二维码体验。',
+            code: 'http://skt.webgz.cn/slicing/'
+        }, {
+            index: 23,
+            title: '方块切割-小游戏',
+            startTime: '2018-10',
+            endTime: '2018-11',
+            skill: 'cocos creator游戏引擎',
+            content: '企鹅宝宝大逃亡，操作类跑酷游戏，各种道具和皮肤更换（各自不同的属性）。扫描右方二维码体验。该游戏资源较多首次加载可能久一点',
+            code: 'http://skt.webgz.cn/dash/'
         }
     ]
 };
 
 function outputList(arr) {
     arr.reverse();
-    for (var i = 0; i < arr.length; i++) {
-        var item = arr[i];
+    function createItem(obj) {
         var li = document.createElement('li');
+        var calssName = obj.code ? 'info-code' : 'info';
         li.innerHTML = '<div class="title-box flex">\
-                            <span class="f1 title">'+ item.title + '</span>\
-                            <span class="f1 time">'+ item.startTime + '-' + item.endTime + '</span>\
+                            <span class="f1 title">'+ obj.title + '</span>\
+                            <span class="f1 time">'+ obj.startTime + '-' + obj.endTime + '</span>\
                             <span class="f1"></span>\
                         </div>\
-                        <p class="skill">所用技能：'+ item.skill + '</p>\
-                        <p class="info">'+ item.content + '</p>';
+                        <p class="skill">所用技能：'+ obj.skill + '</p>\
+                        <p class="'+ calssName +'">'+ obj.content + '</p>';
         document.querySelector('.project-list').appendChild(li);
+        // 判断生成二维码
+        if (obj.code) {
+            var codeImg = document.createElement('div');
+            codeImg.style.float = 'right';
+            var qrcode = new QRCode(codeImg, {
+                width: 100,
+                height: 100
+            });
+            qrcode.makeCode(obj.code);
+            li.appendChild(codeImg);
+        }
     }
-    // arr.forEach((item, ind) => {
-    //     const li = document.createElement('li');
-    //     li.innerHTML = `<div class="title-box flex">
-    //                         <span class="f1 title">${item.title}</span>
-    //                         <span class="f1 time">${item.startTime}-${item.endTime}</span>
-    //                         <span class="f1"></span>
-    //                     </div>
-    //                     <p class="skill">所用技能：${item.skill}</p>
-    //                     <p class="info">${item.content}</p>`;
-    //     document.querySelector('.project-list').appendChild(li);
-    // });
+    for (var i = 0; i < arr.length; i++) createItem(arr[i]);
 }
 
 function updataInfo() {
