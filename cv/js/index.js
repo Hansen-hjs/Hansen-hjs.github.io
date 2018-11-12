@@ -177,7 +177,7 @@ var myInfo = {
             code: 'http://skt.webgz.cn/slicing/'
         }, {
             index: 23,
-            title: '方块切割-小游戏',
+            title: '企鹅大逃亡-小游戏',
             startTime: '2018-10',
             endTime: '2018-11',
             skill: 'cocos creator游戏引擎',
