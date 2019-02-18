@@ -118,48 +118,48 @@ var myInfo = {
             skill: 'ES6 + wx语法',
             content: '升级的第二个版本，一个设置红包口令然后派发到广场，说出口令即可参与红包玩法；第二版主要是增加了红包拼团的玩法（最多四个人）、红包审核、广告插入和一些用户操作提示的功能。'
         }, {
-            index: 15,
-            title: '元气游戏中心-小程序',
-            startTime: '2018-08',
-            endTime: '2018-08',
-            skill: 'ES6 + wx语法',
-            content: '公司游戏盒子'
-        }, {
-            index: 16,
-            title: '颜值猫养成-小游戏',
-            startTime: '2018-08',
-            endTime: '2018-08',
-            skill: 'cocos creator游戏引擎',
-            content: '养成类换装小游戏，数据是由本地储存和计算，小程序搜索“颜值猫养成”即可体验。'
-        }, {
-            index: 17,
-            title: '太空黑洞迷航-小游戏',
-            startTime: '2018-08',
-            endTime: '2018-08',
-            skill: 'cocos creator游戏引擎',
-            content: '休闲类动作过关小游戏，小程序搜索“太空黑洞迷航”即可体验。'
-        }, {
-            index: 18,
-            title: '开局一条咸鱼-小游戏',
-            startTime: '2018-08',
-            endTime: '2018-08',
-            skill: 'cocos creator游戏引擎',
-            content: '休闲类单指操作小游戏，小程序搜索“开局一条咸鱼”即可体验。'
-        }, {
-            index: 19,
-            title: '踩砖块-小游戏',
-            startTime: '2018-08',
-            endTime: '2018-09',
-            skill: 'cocos creator游戏引擎',
-            content: '休闲类动作小游戏，小程序搜索“踩砖块”即可体验。'
-        }, {
-            index: 20,
-            title: '嫦娥中秋奔月-小游戏',
-            startTime: '2018-09',
-            endTime: '2018-09',
-            skill: 'cocos creator游戏引擎',
-            content: '类似经典游戏“涂鸦跳跃”，增加了收集道具并使用、奖励模式和复活三大玩法，小程序搜索“嫦娥中秋奔月”即可体验。'
-        }, {
+        //     index: 15,
+        //     title: '元气游戏中心-小程序',
+        //     startTime: '2018-08',
+        //     endTime: '2018-08',
+        //     skill: 'ES6 + wx语法',
+        //     content: '公司游戏盒子'
+        // }, {
+        //     index: 16,
+        //     title: '颜值猫养成-小游戏',
+        //     startTime: '2018-08',
+        //     endTime: '2018-08',
+        //     skill: 'cocos creator游戏引擎',
+        //     content: '养成类换装小游戏，数据是由本地储存和计算，小程序搜索“颜值猫养成”即可体验。'
+        // }, {
+        //     index: 17,
+        //     title: '太空黑洞迷航-小游戏',
+        //     startTime: '2018-08',
+        //     endTime: '2018-08',
+        //     skill: 'cocos creator游戏引擎',
+        //     content: '休闲类动作过关小游戏，小程序搜索“太空黑洞迷航”即可体验。'
+        // }, {
+        //     index: 18,
+        //     title: '开局一条咸鱼-小游戏',
+        //     startTime: '2018-08',
+        //     endTime: '2018-08',
+        //     skill: 'cocos creator游戏引擎',
+        //     content: '休闲类单指操作小游戏，小程序搜索“开局一条咸鱼”即可体验。'
+        // }, {
+        //     index: 19,
+        //     title: '踩砖块-小游戏',
+        //     startTime: '2018-08',
+        //     endTime: '2018-09',
+        //     skill: 'cocos creator游戏引擎',
+        //     content: '休闲类动作小游戏，小程序搜索“踩砖块”即可体验。'
+        // }, {
+        //     index: 20,
+        //     title: '嫦娥中秋奔月-小游戏',
+        //     startTime: '2018-09',
+        //     endTime: '2018-09',
+        //     skill: 'cocos creator游戏引擎',
+        //     content: '类似经典游戏“涂鸦跳跃”，增加了收集道具并使用、奖励模式和复活三大玩法，小程序搜索“嫦娥中秋奔月”即可体验。'
+        // }, {
         //     index: 21,
         //     title: '陨石破坏王-小游戏',
         //     startTime: '2018-09',
@@ -173,15 +173,16 @@ var myInfo = {
             startTime: '2018-10',
             endTime: '2018-10',
             skill: 'cocos creator游戏引擎',
-            content: '类似水果忍者的切割休闲游戏，有抽奖，签到和皮肤试玩等功能。扫描右方二维码体验。',
-            code: 'http://skt.webgz.cn/demo/slicing/'
+            content: '参照app(slicing)游戏写的H5游戏。类似水果忍者的切割休闲游戏，有抽奖，签到和皮肤试玩等功能。扫描右方二维码体验。',
+            code: 'http://skt.webgz.cn/demo/slicing/',
+            end: true
         }, {
             index: 22,
             title: '企鹅大逃亡-H5游戏',
             startTime: '2018-10',
             endTime: '2018-11',
             skill: 'cocos creator游戏引擎',
-            content: '企鹅宝宝大逃亡，操作类跑酷游戏，各种道具和皮肤更换（各自不同的属性）。扫描右方二维码体验。该游戏资源较多首次加载可能久一点',
+            content: '企鹅冲刺，操作类跑酷(伪3D)游戏，各种道具和皮肤更换，每种皮肤带有不同的属性。扫描右方二维码体验。该游戏资源较多首次加载可能久一点',
             code: 'http://skt.webgz.cn/demo/dash_v2/'
         }, {
             index: 23,
@@ -215,34 +216,54 @@ var myInfo = {
     ]
 };
 
-function outputList(arr) {
-    arr.reverse();
-    function createItem(obj) {
-        var li = document.createElement('li');
-        var calssName = obj.code ? 'info-code' : 'info';
-        li.innerHTML = '<div class="title-box flex">\
-                            <span class="f1 title">'+ obj.title + '</span>\
-                            <span class="f1 time">'+ obj.startTime + '-' + obj.endTime + '</span>\
-                            <span class="f1"></span>\
-                        </div>\
-                        <p class="skill">所用技能：'+ obj.skill + '</p>\
-                        <p class="'+ calssName +'">'+ obj.content + '</p>';
-        document.querySelector('.project-list').appendChild(li);
-        // 判断生成二维码
-        if (obj.code) {
-            var codeImg = document.createElement('div');
-            codeImg.style.float = 'right';
-            var qrcode = new QRCode(codeImg, {
-                width: 100,
-                height: 100
-            });
-            qrcode.makeCode(obj.code);
-            li.appendChild(codeImg);
-        }
-    }
-    for (var i = 0; i < arr.length; i++) createItem(arr[i]);
+/** 项目列表输出节点 */
+var listNode = document.querySelector('.project-list');
+
+/** 输出列表索引 */
+var listIndex = 0;
+
+/**
+ * 创建当个项目列表
+ * @param {Object} info 项目信息
+ */
+function createItem(info) {
+    var li = document.createElement('li');
+    var calssName = info.code ? 'info-code' : 'info';
+    li.innerHTML = '<div class="title-box flex">\
+                        <span class="f1 title">'+ info.title + '</span>\
+                        <span class="f1 time">'+ info.startTime + '-' + info.endTime + '</span>\
+                        <span class="f1"></span>\
+                    </div>\
+                    <p class="skill">所用技能：'+ info.skill + '</p>\
+                    <p class="'+ calssName +'">'+ info.content + '</p>';
+    listNode.appendChild(li);
+
+    // 判断生成二维码
+    if (!info.code) return;
+    var codeImg = document.createElement('div');
+    codeImg.style.float = 'right';
+    var qrcode = new QRCode(codeImg, {
+        width: 100,
+        height: 100
+    });
+    qrcode.makeCode(info.code);
+    li.appendChild(codeImg);
 }
 
+/**
+ * 输出项目列表
+ * @param {Array} list 项目列表
+ */
+function outputList(list) {
+    list.reverse();
+    for (var i = 0; i < list.length; i++) {
+        createItem(list[i]);
+        listIndex += 1;
+        if (list[i].end) break;
+    }
+}
+
+/** 更新信息 */
 function updataInfo() {
     var text = document.createTextNode(myInfo.age);
     document.querySelector('.Age').appendChild(text);
@@ -250,3 +271,13 @@ function updataInfo() {
     outputList(myInfo.projectList);
 }
 updataInfo();
+
+/** 更多项目 */
+function moreList(el) {
+    el.parentNode.removeChild(el);
+    var list = myInfo.projectList;
+    for (var i = listIndex; i < list.length; i++) {
+        createItem(list[i]);
+        listIndex += 1;
+    }
+}
