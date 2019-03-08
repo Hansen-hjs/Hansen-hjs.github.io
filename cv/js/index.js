@@ -216,8 +216,13 @@ var myInfo = {
     ]
 };
 
+/** 选择元素 单个 */
+function find(name) {
+    return document.querySelector(name);
+}
+
 /** 项目列表输出节点 */
-var listNode = document.querySelector('.project-list');
+var listNode = find('.project-list');
 
 /** 输出列表索引 */
 var listIndex = 0;
@@ -266,8 +271,8 @@ function outputList(list) {
 /** 更新信息 */
 function updataInfo() {
     var text = document.createTextNode(myInfo.age);
-    document.querySelector('.Age').appendChild(text);
-    document.querySelector('.comment').textContent = myInfo.comment;
+    find('.Age').appendChild(text);
+    find('.comment').textContent = myInfo.comment;
     outputList(myInfo.projectList);
 }
 updataInfo();
