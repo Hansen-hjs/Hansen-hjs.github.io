@@ -183,7 +183,7 @@ var myInfo = {
             endTime: '2018-11',
             skill: 'cocos creator游戏引擎',
             content: '企鹅冲刺，操作类跑酷(伪3D)游戏，各种道具和皮肤更换，每种皮肤带有不同的属性。扫描右方二维码体验。该游戏资源较多首次加载可能久一点',
-            code: 'http://skt.webgz.cn/demo/dash_v2/'
+            code: 'https://hansen-hjs.github.io/cv/demo/dash/index.html'
         }, {
             index: 23,
             title: '疯狂大逃杀-小游戏',
