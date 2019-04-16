@@ -17,7 +17,7 @@ if (ver > -1) {
 }
 var myInfo = {
     age: (new Date().getFullYear() - 1995) + '岁',
-    comment: '自我评价：做过的项目类型有web、web-App、hybrid-App、公众号、小程序和小游戏，对于开发有丰富的领域经验，能快速高效的进行项目部署。对移动端前端开发有深入了解，并且自己写过了一些移动端的日常插件（ES6）：swiper轮播图、手势放大缩小图片、用户交互提示、下拉刷新、图片懒加载、基于fech.js的Ajax、小球抛物线，按钮点击水波纹。线上预览地址：skt.webgz.cn/vue-dome代码在github上。无论对开发环境Webpack+node.js+Vue.js还是直接原生JavaScript开发都能够熟练掌握使用，并且在性能至上的前提下进行开发。',
+    comment: '自我评价：做过的项目类型有web、web-App、hybrid-App、公众号、小程序和小游戏，对于开发有丰富的领域经验，能快速高效的进行项目部署。对移动端前端开发有深入了解，并且自己写过了一些移动端的日常插件（ES6）：swiper轮播图、手势放大缩小图片、用户交互提示、下拉刷新、图片懒加载、基于fech.js的Ajax、小球抛物线，按钮点击水波纹。线上预览地址：https://hansen-hjs.github.io/cv/demo/vue/。无论对开发环境Webpack+node.js+Vue.js还是直接原生JavaScript开发都能够熟练掌握使用，并且在性能至上的前提下进行开发。',
     projectList: [
         {
             index: 1,
@@ -212,6 +212,13 @@ var myInfo = {
             endTime: '2019-01',
             skill: 'cocos creator游戏引擎',
             content: '合成+战斗类休闲挂机游戏，有商店、技能、背包、超越好友等丰富功能，战斗是多个敌人参与战斗，有近战和远战两种攻击模式，三种武器攻击类型。微信小程序搜索“荒野英雄”即可体验',
+        }, {
+            index: 27,
+            title: '玩爆砖块-小游戏',
+            startTime: '2019-04',
+            endTime: '2019-04',
+            skill: 'cocos creator游戏引擎',
+            content: '射击类消除游戏，分无限模式和关卡模式，每个模式都有7种不同的玩法，多个皮肤和音乐供选择。微信小程序搜索“玩爆砖块”即可体验',
         }
     ]
 };
