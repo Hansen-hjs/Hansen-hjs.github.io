@@ -17,7 +17,7 @@ if (ver > -1) {
 }
 var myInfo = {
     age: (new Date().getFullYear() - 1995) + '岁',
-    comment: '自我评价：做过的项目类型有web、web-App、hybrid-App、公众号、小程序和小游戏，对于开发有丰富的领域经验，能快速高效的进行项目部署。对移动端前端开发有深入了解，并且自己写过了一些移动端的日常插件（ES6）：swiper轮播图、手势放大缩小图片、用户交互提示、下拉刷新、图片懒加载、基于fech.js的Ajax、小球抛物线，按钮点击水波纹。线上预览地址：https://hansen-hjs.github.io/cv/demo/vue/。无论对开发环境Webpack+node.js+Vue.js还是直接原生JavaScript开发都能够熟练掌握使用，并且在性能至上的前提下进行开发。',
+    comment: '自我评价：做过的项目类型有web、web-App、hybrid-App、公众号、小程序和小游戏，对于开发有丰富的领域经验，能快速高效的进行项目部署。对移动端前端开发有深入了解，并且自己写过了一些移动端的日常插件（ES6）：swiper轮播图、手势放大缩小图片、用户交互提示、下拉刷新、图片懒加载、基于fech.js的Ajax、小球抛物线，按钮点击水波纹。线上预览地址：https://hansen-hjs.github.io/cv/demo/vue/。无论对开发环境webpack+Vue.js还是直接原生JavaScript开发都能够熟练掌握使用。',
     projectList: [
         {
             index: 1,
@@ -33,13 +33,6 @@ var myInfo = {
             endTime: '2017-09',
             skill: 'Vue.js（Vuex、vue-router）+ ES6 + webpack；数据交换用自己封装的Ajax（优先使用fetch）',
             content: '1、两种角色的应用状态显示内容（游客和会员）。2、短信登陆和推荐人，记住登录状态。3、商品购买（余额和支付宝支付），商品收藏，和淘宝一样的购物车功能。4、商品列表的价格筛选，商品类型排序（前端实现，带过渡特效）。5、发表评论，上传图片（多张）。6、组件功能：提示框、loading状态、城市选择，搜索框（动态搜索，搜索提示）、分享弹框。备注：此项目属于二次开发，之前用的是jQuery.js后来客户需要页面和功能大改动，于是改用Vue.js重构，优化了整个项目。'
-        }, {
-            index: 3,
-            title: '医疗商城-PC端',
-            startTime: '2017-08',
-            endTime: '2017-09',
-            skill: '原生JavaScript',
-            content: '轮播图；购物车组件功能（单选、多选并动态计算价格等，参考手机版）；收货地址的增新、更改和删除；商品详情页的相册功能（小图换大图加轮播类似淘宝）；菜单下拉切换；返回顶部 该项目在首次移动端开发时同步开发的，后来客户需求变动，导致这个项目废弃，所以就没有下文了，也没有后台数据那些...'
         }, {
             index: 4,
             title: '信用超市-公众号',
@@ -118,65 +111,15 @@ var myInfo = {
             skill: 'ES6 + wx语法',
             content: '升级的第二个版本，一个设置红包口令然后派发到广场，说出口令即可参与红包玩法；第二版主要是增加了红包拼团的玩法（最多四个人）、红包审核、广告插入和一些用户操作提示的功能。'
         }, {
-        //     index: 15,
-        //     title: '元气游戏中心-小程序',
-        //     startTime: '2018-08',
-        //     endTime: '2018-08',
-        //     skill: 'ES6 + wx语法',
-        //     content: '公司游戏盒子'
-        // }, {
-        //     index: 16,
-        //     title: '颜值猫养成-小游戏',
-        //     startTime: '2018-08',
-        //     endTime: '2018-08',
-        //     skill: 'cocos creator游戏引擎',
-        //     content: '养成类换装小游戏，数据是由本地储存和计算，小程序搜索“颜值猫养成”即可体验。'
-        // }, {
-        //     index: 17,
-        //     title: '太空黑洞迷航-小游戏',
-        //     startTime: '2018-08',
-        //     endTime: '2018-08',
-        //     skill: 'cocos creator游戏引擎',
-        //     content: '休闲类动作过关小游戏，小程序搜索“太空黑洞迷航”即可体验。'
-        // }, {
-        //     index: 18,
-        //     title: '开局一条咸鱼-小游戏',
-        //     startTime: '2018-08',
-        //     endTime: '2018-08',
-        //     skill: 'cocos creator游戏引擎',
-        //     content: '休闲类单指操作小游戏，小程序搜索“开局一条咸鱼”即可体验。'
-        // }, {
-        //     index: 19,
-        //     title: '踩砖块-小游戏',
-        //     startTime: '2018-08',
-        //     endTime: '2018-09',
-        //     skill: 'cocos creator游戏引擎',
-        //     content: '休闲类动作小游戏，小程序搜索“踩砖块”即可体验。'
-        // }, {
-        //     index: 20,
-        //     title: '嫦娥中秋奔月-小游戏',
-        //     startTime: '2018-09',
-        //     endTime: '2018-09',
-        //     skill: 'cocos creator游戏引擎',
-        //     content: '类似经典游戏“涂鸦跳跃”，增加了收集道具并使用、奖励模式和复活三大玩法，小程序搜索“嫦娥中秋奔月”即可体验。'
-        // }, {
         //     index: 21,
-        //     title: '陨石破坏王-小游戏',
-        //     startTime: '2018-09',
-        //     endTime: '2018-09',
+        //     title: '方块切割-H5游戏',
+        //     startTime: '2018-10',
+        //     endTime: '2018-10',
         //     skill: 'cocos creator游戏引擎',
-        //     content: '玩家可操控的只有一大块巨石。当游戏开启后，巨石将被弹射出来，玩家可点击屏幕让巨石狠狠得砸到地面，并且在这些看起来相当恐慌的兽人中藏有一些手握道具的特殊兽人。比如砸中一个携带炸弹的兽人他就会把巨石远远炸到空中;砸中携带金库的兽人就能收获到丰厚的金钱，金币可以用来购买升级增益道具，扫描右方二维码体验。',
-        //     code: 'http://skt.webgz.cn/orc/'
+        //     content: '参照app(slicing)游戏写的H5游戏。类似水果忍者的切割休闲游戏，有抽奖，签到和皮肤试玩等功能。扫描右方二维码体验。',
+        //     code: 'http://skt.webgz.cn/demo/slicing/',
+        //     end: true
         // }, {
-            index: 21,
-            title: '方块切割-H5游戏',
-            startTime: '2018-10',
-            endTime: '2018-10',
-            skill: 'cocos creator游戏引擎',
-            content: '参照app(slicing)游戏写的H5游戏。类似水果忍者的切割休闲游戏，有抽奖，签到和皮肤试玩等功能。扫描右方二维码体验。',
-            code: 'http://skt.webgz.cn/demo/slicing/',
-            end: true
-        }, {
             index: 22,
             title: '企鹅大逃亡-H5游戏',
             startTime: '2018-10',
