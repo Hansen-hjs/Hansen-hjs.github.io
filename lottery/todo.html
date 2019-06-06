@@ -54,8 +54,17 @@
         <p class="f1">全选</p>
         <div class="iconfont icon-delete ripple_btn" data-color="#bce0fd" onclick="rippleClick(this); deleteList()"></div>
     </footer>
-    <script type="text/javascript" src="./js/ripple.js"></script>
-    <script type="text/javascript">
+    <script id="main">
+        function remove(el, remove) {
+            el.parentNode.removeChild(el);
+            if (remove) {
+                var label = document.getElementById('main');
+                label.parentNode.removeChild(label);
+            }
+        }
+    </script>
+    <script type="text/javascript" src="./js/ripple.js" onload="remove(this)"></script>
+    <script type="text/javascript" onload="remove(this, true)">
         const _list = document.querySelector('.list');
         var _data = '';
         // 首次渲染本地储存的列表

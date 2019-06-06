@@ -70,7 +70,16 @@
             <!-- <div class="more" onclick="moreList(this)">查看更多>></div> -->
         </div>
     </section>
-    <script src="./js/qrcode.min.js"></script>
-    <script src="./js/index.js"></script>
+    <script id="main">
+        function remove(el, remove) {
+            el.parentNode.removeChild(el);
+            if (remove) {
+                var label = document.getElementById('main');
+                label.parentNode.removeChild(label);
+            }
+        }
+    </script>
+    <script src="./js/qrcode.min.js" onload="remove(this, false)"></script>
+    <script src="./js/index.js" onload="remove(this, true)"></script>
 </body>
 </html>

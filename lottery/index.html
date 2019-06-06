@@ -61,9 +61,18 @@
             <div class="img-zoom-close" onclick="this.parentNode.className = 'img-zoom'"><i class="iconfont icon-close"></i></div>
             <div class="img-zoom-img"></div>
         </div>
-        <script type="text/javascript" src="./js/swiper.js"></script>
-        <script type="text/javascript" src="./js/ripple.js"></script>
-        <script type="text/javascript" src="./js/imgzoom.js"></script>
-        <script type="text/javascript" src="./js/index.js"></script>
+        <script id="main">
+            function remove(el, remove) {
+                el.parentNode.removeChild(el);
+                if (remove) {
+                    var label = document.getElementById('main');
+                    label.parentNode.removeChild(label);
+                }
+            }
+        </script>
+        <script type="text/javascript" src="./js/swiper.js" onload="remove(this)"></script>
+        <script type="text/javascript" src="./js/ripple.js" onload="remove(this)"></script>
+        <script type="text/javascript" src="./js/imgzoom.js" onload="remove(this)"></script>
+        <script type="text/javascript" src="./js/index.js" onload="remove(this, true)"></script>
     </body>
 </html>
