@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>获取ip</title>
+</head>
+<body>
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script>
+        function showAlert(content, confirmText, callback) {
+            /** 弹框id */
+            var alert_id = '_alert-box';
+            /** 弹框子节点变量名 */
+            var nodes = ['_box', '_content_box', '_confirm_box'];
+            /** 弹出层整体 */
+            var alert_box = document.getElementById(alert_id);
+            if (!alert_box) {
+                alert_box = document.createElement('div');
+                alert_box.id = alert_id;
+                alert_box[nodes[0]] = document.createElement('div');
+                alert_box[nodes[1]] = document.createElement('div');
+                alert_box[nodes[2]] = document.createElement('div');
+                
+                alert_box.style.cssText = 'position: fixed; top: 0; left: 0; z-index: 999; width: 100%; height: 100vh; background-color: rgba(0,0,0,0.45)';
+                alert_box[nodes[0]].style.cssText = 'position: absolute; width: 75%; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fafafc; text-align: center; border-radius: 3px; font-family: arial';
+                alert_box[nodes[1]].style.cssText = 'padding: 20px 20px 30px; font-size: 16px; color: #000; word-wrap: break-word; word-break: break-all';
+                alert_box[nodes[2]].style.cssText = 'width: 100%; height: 50px; padding-bottom: 1px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; color: #0bb20c; font-size: 16px; border-top: solid 1px #dadada';
+
+                alert_box[nodes[0]].appendChild(alert_box[nodes[1]]);
+                alert_box[nodes[0]].appendChild(alert_box[nodes[2]]);
+                alert_box.appendChild(alert_box[nodes[0]]);
+                document.body.appendChild(alert_box);
+            }
+
+            alert_box.style.display = 'block';
+            alert_box[nodes[1]].innerHTML = content;
+            alert_box[nodes[2]].innerHTML = confirmText || '确定';
+            alert_box[nodes[2]].onclick = function() {
+                alert_box.style.display = 'none';
+                if (typeof callback === 'function') {
+                    callback();
+                }
+            }
+        }
+
+        console.log(returnCitySN, navigator.userAgent);
+        showAlert(JSON.stringify(returnCitySN,null,4), '继续', function() {
+            showAlert(navigator.userAgent, '完成');
+        });
+    </script>
+</body>
+</html>
