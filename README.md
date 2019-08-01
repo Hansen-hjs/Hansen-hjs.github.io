@@ -1,3 +1,3 @@
 > &nbsp;
 >> &nbsp;
->>> 什么时候才能发大财啊~
+>>> [博客地址](https://hansen-hjs.github.io/blog/ "click!")
