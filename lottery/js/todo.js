@@ -188,7 +188,13 @@
         const inputs = listNode.querySelectorAll('[name="select"]');
         if (inputs.length == 0) return alert('没有可选的列表');
         for (let i = 0; i < inputs.length; i++) {
-            inputs[i].checked = this.checked;
+            const input = inputs[i];
+            input.checked = this.checked;
+            if (this.checked) {
+                input.setAttribute('checked', '');
+            } else {
+                input.removeAttribute('checked');
+            }
         }
         saveList();
     });
