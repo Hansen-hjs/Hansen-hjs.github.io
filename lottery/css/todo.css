@@ -5,10 +5,10 @@ input {
     outline: none;
     cursor: pointer;
 }
-input[name="select"]{ width: .4rem; height: .4rem; text-align: center; line-height: .36rem; margin-left: .2rem; font-size: .3rem; transition: .3s all; background-color: transparent; border: solid 1px #2196f3; color: #fff; }
-input[name="select"]::after{ content: "✔"; color: transparent; transition: .3s all; }
+input[name="select"]{ width: .44rem; height: .44rem; margin-left: .2rem; background-color: transparent; border: solid 1px #2196f3; position: relative; transition: .2s all; }
+input[name="select"]::after{ content: ""; position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%) rotate(45deg); width: 30%; height: 60%; border: solid 2px transparent; border-top: none; border-left: none; transition: .2s all; }
 input[name="select"]:checked{ background-color: #2196f3; }
-input[name="select"]:checked::after{ color: #fff; }
+input[name="select"]:checked::after{ border-color: #fff; }
 
 .page{ width: 100%; height: 100vh; padding: 0; overflow: hidden; }
 .header{ width: 100%; height: 1rem; background: #2196f3; position: relative; margin-bottom: 10px; }
