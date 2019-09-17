@@ -1,78 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
-        <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-        <title>彩票机选</title>
-        <link rel="stylesheet" href="./css/base.css">
-        <link rel="stylesheet" href="./css/index.css">
-    </head>
-    <body>
-        <div id="app">
-            <div class="ball_content flex vertical center md_box_shadow">
-                <div>
-                    <ul class="ball_list shuangseqiu">
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                    </ul>
-                    <div class="ball_btn ripple_btn md_box_shadow" data-color="#bce0fd" onclick="outputBall(this, 'ssq'); rippleClick(this)">机选一注双色球</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>彩票机选工具</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div class="page">
+        <div class="card content flex fcenter fvertical">
+            <div class="box">
+                <div class="ball-list flex fcenter fvertical">
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                    <div class="ball blue-ball">0</div>
+                    <div class="ball blue-ball">0</div>
                 </div>
+                <button ripple ball="0" class="button green-btn">机选一组双色球</button>
             </div>
-            <div class="ball_content flex vertical center md_box_shadow">
-                <div>
-                    <ul class="ball_list daletou">
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                    </ul>
-                    <div class="ball_btn ripple_btn md_box_shadow" data-color="#bce0fd" onclick="outputBall(this, 'dlt'); rippleClick(this)">机选一注大乐透</div>
-                </div>
-            </div>
-            <div class="ball_content flex vertical center md_box_shadow">
-                <div>
-                    <ul class="ball_list">
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                        <li>0</li>
-                    </ul>
-                    <div class="ball_btn ripple_btn md_box_shadow" data-color="#bce0fd" onclick="outputBall(this, 'ten'); rippleClick(this)">机选一注双色球</div>
-                </div>
-            </div>
-
-            <a href="./todo.html" class="todo md_box_shadow ripple_btn" onclick="rippleClick(this)"><i class="iconfont icon-arrow-right"></i>Todo-list</a>
         </div>
-        <!-- 触摸容器 -->
-        <div class="img-zoom">
-            <div class="img-zoom-close" onclick="this.parentNode.className = 'img-zoom'"><i class="iconfont icon-close"></i></div>
-            <div class="img-zoom-img"></div>
+        <div class="card content flex fcenter fvertical">
+            <div class="box">
+                <div class="ball-list flex fcenter fvertical">
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                    <div class="ball blue-ball">0</div>
+                </div>
+                <button ripple ball="1" class="button green-btn">机选一组大乐透</button>
+            </div>
         </div>
-        <script id="main">
-            function remove(el, remove) {
-                el.parentNode.removeChild(el);
-                if (remove) {
-                    var label = document.getElementById('main');
-                    label.parentNode.removeChild(label);
-                }
-            }
-        </script>
-        <script type="text/javascript" src="./js/swiper.js" onload="remove(this)"></script>
-        <script type="text/javascript" src="./js/ripple.js" onload="remove(this)"></script>
-        <script type="text/javascript" src="./js/imgzoom.js" onload="remove(this)"></script>
-        <script type="text/javascript" src="./js/index.js" onload="remove(this, true)"></script>
-    </body>
+        <div class="card content flex fcenter fvertical">
+            <div class="box">
+                <div class="ball-list flex fcenter fvertical">
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                    <div class="ball red-ball">0</div>
+                </div>
+                <button ripple ball="2" class="button green-btn">机选一组快乐十分</button>
+            </div>
+        </div>
+        <button ripple class="button blue-btn open-btn">
+            <a href="./todo.html">Todo-list <i class="iconfont icon-arrow-right"></i></a>
+        </button>
+    </div>
+    <script src="./js/index.min.js"></script>
+</body>
 </html>

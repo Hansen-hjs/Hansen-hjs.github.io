@@ -2,144 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
-    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
     <title>todo-list</title>
     <link rel="stylesheet" href="./css/base.css">
-    <style media="screen">
-        header{ width: 100%; height: 1rem; background: #2196f3; position: fixed; top: 0; left: 0; z-index: 10; }
-        header::after{ content: ''; position: absolute; right: 0; width: 100%; top: 100%; bottom: auto; height: 10px; pointer-events: none; background: -webkit-gradient(linear,left top, left bottom,color-stop(0, rgba(0,0,0,.3)),color-stop(40%, rgba(0,0,0,.1)),color-stop(50%, rgba(0,0,0,.05)),color-stop(80%, rgba(0,0,0,0)),to(rgba(0,0,0,0))); background: linear-gradient(to bottom,rgba(0,0,0,.3) 0,rgba(0,0,0,.1) 40%,rgba(0,0,0,.05) 50%,rgba(0,0,0,0) 80%,rgba(0,0,0,0) 100%); }
-        header .iconfont{ display: block; width: 1rem; height: 1rem; line-height: 1rem; color: #fff; font-size: .38rem; text-align: center; }
-        header .icon-menu{ -webkit-transition: .3s all; transition: .3s all; }
-        header input{ color: #fff; font-size: .3rem; height: .7rem; border-bottom: solid 1px #fff; -webkit-transition: .3s all; transition: .3s all; }
-        header input:focus{ margin-right: .2rem; }
-        header input:focus+.icon-menu{ width: 1px; }
-        header input::-webkit-input-placeholder { color: #fff; }
-        #app{ min-height: 100vh; padding: 1.2rem .2rem; }
-        .list{ width: 100%; }
-        .list li{ width: 100%; min-height: 1rem; color: #666; font-size: .3rem; -webkit-box-sizing: border-box; box-sizing: border-box; padding: 0 .2rem; margin-bottom: .2rem; -webkit-animation: liMove .5s; animation: liMove .5s; }
-        .list li:last-child{ margin-bottom: 0; }
-        .list li .checked_btn{ margin-left: .2rem; }
-        @-webkit-keyframes liMove {
-            0% { opacity: 0; -webkit-transform: scale(0, 0.5); transform: scale(0, 0.5); }
-            100% { opacity: 1; -webkit-transform: scale(1, 1); transform: scale(1, 1); }
-        }
-        @keyframes liMove {
-            0% { opacity: 0; -webkit-transform: scale(0, 0.5); transform: scale(0, 0.5); }
-            100% { opacity: 1; -webkit-transform: scale(1, 1); transform: scale(1, 1); }
-        }
-        footer{ width: 100%; height: 1rem; background: #2196f3; position: fixed; bottom: 0; left: 0; z-index: 10; -webkit-transition: .3s all; transition: .3s all; -webkit-transform: translateY(0%); transform: translateY(0%); }
-        footer::after{ content: ''; position: absolute; right: 0; width: 100%; bottom: 100%; top: auto; height: 10px; pointer-events: none; background: -webkit-gradient(linear,left bottom, left top,color-stop(0, rgba(0,0,0,.3)),color-stop(40%, rgba(0,0,0,.1)),color-stop(50%, rgba(0,0,0,.05)),color-stop(80%, rgba(0,0,0,0)),to(rgba(0,0,0,0))); background: linear-gradient(to top,rgba(0,0,0,.3) 0,rgba(0,0,0,.1) 40%,rgba(0,0,0,.05) 50%,rgba(0,0,0,0) 80%,rgba(0,0,0,0) 100%); }
-        footer p{ color: #fff; font-size: .32rem; }
-        footer .icon-delete{ width: 1rem; height: 1rem; text-align: center; line-height: 1rem; font-size: .42rem; color: #fff; }
-        footer .checked_btn{ border-color: #fff; margin-left: .2rem; margin-right: .2rem; }
-        .hide{ -webkit-transform: translateY(150%); transform: translateY(150%); }
-        .ripple_btn{ position: relative; display: block; cursor: pointer; }
-        .ripple_btn canvas{ opacity: 0.25; position: absolute; top: 0; left: 0; transition: .2s all; -webkit-transition: .2s all }
-    </style>
+    <link rel="stylesheet" href="./css/todo.css">
 </head>
 <body>
-    <header class="flex vertical">
-        <a href="./index.html" class="iconfont icon-arrow-left ripple_btn" data-color="#bce0fd" onclick="rippleClick(this)"></a>
-        <input type="text" placeholder="输入内容摁回车生成列表" class="f1" onkeypress="inputBtn(event, this)">
-        <div class="iconfont icon-menu ripple_btn" data-color="#bce0fd" onclick="footerSwitch(this); rippleClick(this)"></div>
-    </header>
-    <!-- 列表 -->
-    <div id="app" class="flex vertical">
-        <ul class="list"></ul>
+    <div class="page">
+        <div class="header flex fvertical">
+            <a href="./index.html" ripple class="iconfont icon-arrow-left"></a>
+            <input type="text" placeholder="输入内容摁回车生成列表" class="f1 input">
+            <div ripple class="iconfont icon-menu"></div>
+        </div>
+        <div class="content flex fvertical">
+            <div class="list"></div>
+        </div>
+        <div class="footer flex fvertical hide">
+            <input name="select" type="checkbox">
+            <p class="f1">全选</p>
+            <div ripple class="iconfont icon-delete"></div>
+        </div>
     </div>
-    <!-- 底部 -->
-    <footer class="flex vertical hide">
-        <div class="checked_btn" onclick="allChecked(this)"></div>
-        <p class="f1">全选</p>
-        <div class="iconfont icon-delete ripple_btn" data-color="#bce0fd" onclick="rippleClick(this); deleteList()"></div>
-    </footer>
-    <script id="main">
-        function remove(el, remove) {
-            el.parentNode.removeChild(el);
-            if (remove) {
-                var label = document.getElementById('main');
-                label.parentNode.removeChild(label);
-            }
-        }
-    </script>
-    <script type="text/javascript" src="./js/ripple.js" onload="remove(this)"></script>
-    <script type="text/javascript" onload="remove(this, true)">
-        const _list = document.querySelector('.list');
-        var _data = '';
-        // 首次渲染本地储存的列表
-        function fetchList() {
-            _data = JSON.parse(window.localStorage.getItem('todolist')) || '';
-            _list.innerHTML = _data;
-            isChecked();
-        }
-        fetchList();
-        // 保存列表
-        function saveList() {
-            // 新建一个列表数据
-            _data = _list.innerHTML;
-            // 将新建的数据储存到本地
-            window.localStorage.setItem('todolist', JSON.stringify(_data));
-        }
-        // 执行回车事件
-        function inputBtn (e, el) {
-            if (e.keyCode !== 13) return;
-            let [_content, _li] = [el.value, document.createElement('li')];
-            if (!_content) return alert('输入的内容为空~');
-            _li.className = 'md_box_shadow flex vertical';
-            _li.innerHTML = `<p class="f1">${ _content }</p><div class="checked_btn" onclick="single(this)"></div>`;
-            _list.appendChild(_li);
-            saveList();
-            // 清空输入
-            el.value = '';
-        }
-        // 单个切换
-        function single(el) {
-            el.classList.toggle('check_on');
-            isChecked();
-            saveList();
-        }
-        // 全选事件
-	    function allChecked(el) {
-            let _li = _list.querySelectorAll('.checked_btn');
-            if (!_li.length) return alert('当前没有可选的列表~');
-	        if (el.classList.contains('check_on')) {
-				_li.forEach(item => {
-					item.classList.remove('check_on');
-				})
-	        }else {
-				_li.forEach(item => {
-					item.classList.add('check_on');
-				})
-	        }
-            el.classList.toggle('check_on');
-	        saveList();
-        }
-        // 检查是否全选
-        function isChecked() {
-            let _noChecked = _list.querySelectorAll('.checked_btn');
-            let _checked = _list.querySelectorAll('.check_on');
-	        if (_noChecked.length === _checked.length && _noChecked.length) {
-	            document.querySelector('footer .checked_btn').classList.add('check_on');
-	        } else {
-	            document.querySelector('footer .checked_btn').classList.remove('check_on');
-	        }
-        }
-        // 删除
-        function deleteList() {
-            let _li = _list.querySelectorAll('.check_on');
-            if (!_li.length) return console.log('都没选到列表\n删你个傻吊！');
-            _li.forEach(item => {
-				_list.removeChild(item.parentNode);
-            });
-            document.querySelector('footer .checked_btn').classList.remove('check_on');
-            saveList();
-        }
-        // 底部切换
-        function footerSwitch(el) {
-            el.classList.toggle('icon-close');
-            document.querySelector('footer').classList.toggle('hide');
-        }
-    </script>
+
+    <script src="./js/todo.min.js"></script>
 </body>
 </html>

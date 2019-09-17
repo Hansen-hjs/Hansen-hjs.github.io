@@ -1,6 +1,6 @@
 (function () {
     const doc = document;
-    
+
     /**
      * rem 适配
      * @param {HTMLElement} el 指定元素适配
@@ -104,108 +104,108 @@
             target = target.parentNode;
         }
     });
-
-    /**
-     * 生成范围数组
-     * @param {number} end 
-     */
-    function range(end) {
-        return Array.from({ length: end }, (item, index) => index + 1);
-    }
-
-    const ssq = {
-        red: range(33),
-        blue: range(16)
-    }
-
-    const dlt = {
-        red: range(35),
-        blue: range(12)
-    }
-
-    const ten = range(20);
-
-    /**
-     * 数组中随机取几个元素
-     * @param {Array<number>} array 数组
-     * @param {number} count 元素个数
-     */
-    function getRandomArrayElements(array, count) {
-        let length = array.length;
-        let min = length - count;
-        let index = 0;
-        let value = '';
-        while (length-- > min) {
-            index = Math.floor((length + 1) * Math.random());
-            value = array[index];
-            array[index] = array[length];
-            array[length] = value;
-        }
-        return array.slice(min);
-    }
-
-    /**
-     * 获取球列表
-     * @param {number} type 类型
-     */
-    function getBall(type) {
-        /**
-         * @type {Array<number>}
-         */
-        let balls = [];
-        switch (type) {
-            case 0:
-                balls = [...getRandomArrayElements(ssq.red, 6), ...getRandomArrayElements(ssq.blue, 1)];
-                break;
-        
-            case 1:
-                balls = [...getRandomArrayElements(dlt.red, 5), ...getRandomArrayElements(dlt.blue, 2)];
-                break;
-
-            case 2:
-                balls = getRandomArrayElements(ten, 8);
-                break;
-        }
-        return balls;
-    }
-
-    /**
-     * 按钮点击
-     * @param {HTMLElement} el 按钮
-     * @param {number} type 类型
-     */
-    function onClick(el, type) {
-        const listNode = el.parentNode.querySelector('.ball-list');
-        // 防止重复点击
-        if (el['isClick']) return;
-        el['isClick'] = true;
-        // 防止抖动设置固定高度
-        listNode.style.height = listNode.clientHeight + 'px';
-        /**
-         * @type {Array<HTMLElement>}
-         */
-        const nodes = [...listNode.children];
-        const balls = getBall(type);
-        nodes.forEach((item, index) => {
-            item.style.display = 'none';
-            item.textContent = balls[index];
-        });
-        setTimeout(() => {
-            nodes.forEach(item => {
-                item.style.display = '';
-            });
-            listNode.removeAttribute('style');
-            el['isClick'] = false;
-        }, 100);
-    }
-
-    const ballBtns = doc.querySelectorAll('[ball]');
     
-    for (let i = 0; i < ballBtns.length; i++) {
-        const btn = ballBtns[i];
-        const type = btn.getAttribute('ball');
-        btn.addEventListener('click', () => {
-            onClick(btn, Number(type));
-        });
+    /** 底部节点 */
+    const footerNode = doc.querySelector('.footer');
+    /**
+     * 全选节点
+     * @type {HTMLInputElement}
+     */ 
+    const selectAllNode = footerNode.querySelector('[name="select"]');
+    /** 列表节点 */
+    const listNode = doc.querySelector('.content .list');
+
+    /** 初始化获取列表 */
+    function fetchList() {
+        const list = localStorage.getItem('todolist') || '';
+        listNode.innerHTML = list;
+        checkState();
     }
+
+    /** 保存列表数据 */
+    function saveList() {
+        const html = listNode.innerHTML.replace(/>\s+</g, '><').trim();
+        // console.log(html);
+        localStorage.setItem('todolist', html);
+    }
+
+    /** 检测是否全选 */
+    function checkState() {
+        const inputs = listNode.querySelectorAll('[name="select"]');
+        const selected = listNode.querySelectorAll('[checked]');
+
+        if (inputs.length > 0 && inputs.length == selected.length) {
+            selectAllNode.checked = true; 
+        } else {
+            selectAllNode.checked = false; 
+        }
+    }
+
+    // 添加输入事件
+    doc.querySelector('.input').addEventListener('keypress', function(e) {
+        if (e.keyCode != 13) return;
+        const value = e.target.value.trim();
+        if (!value) return alert('输入的内容不能为空');
+        const item = `
+        <div class="card flex fvertical item">
+            <p class="f1">${value}</p>
+            <input name="select" type="checkbox">
+        </div>`;
+        // console.log(item.replace(/[\r\n]/g, ''));
+        listNode.insertAdjacentHTML('beforeend', item.replace(/\r|\n/g, ''));
+        e.target.value = null;
+        checkState();
+        saveList();
+    });
+
+    // 右上角按钮切换事件
+    doc.querySelector('.icon-menu').addEventListener('click', function() {
+        footerNode.classList.toggle('hide');
+        this.classList.toggle('icon-close');
+    });
+
+    // 添加列表选择框点击事件
+    listNode.addEventListener('click', function(e) {
+        /**
+         * @type {HTMLInputElement}
+         */
+        const input = e.target;
+        if (input.name != 'select') return;
+        if (input.checked) {
+            input.setAttribute('checked', '');
+        } else {
+            input.removeAttribute('checked');
+        }
+        checkState();
+        saveList();
+    });
+
+    // 全选事件
+    footerNode.querySelector('[name="select"]').addEventListener('click', function() {
+        /**
+         * @type {NodeListOf<HTMLInputElement>}
+         */
+        const inputs = listNode.querySelectorAll('[name="select"]');
+        if (inputs.length == 0) return alert('没有可选的列表');
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].checked = this.checked;
+        }
+        saveList();
+    });
+
+    // 删除事件
+    footerNode.querySelector('.icon-delete').addEventListener('click', function() {
+        /**
+         * @type {NodeListOf<HTMLInputElement>}
+         */
+        const selected = listNode.querySelectorAll('[checked]');
+        if (selected.length == 0) return alert('没有可删除的列表');
+        for (let i = selected.length - 1; i >= 0; i--) {
+            listNode.removeChild(selected[i].parentNode);
+        }
+        checkState();
+        saveList();
+    });
+
+    fetchList();
 })();
