@@ -192,7 +192,7 @@
         });
         setTimeout(() => {
             nodes.forEach(item => {
-                item.style.display = '';
+                item.removeAttribute('style');
             });
             listNode.removeAttribute('style');
             el['isClick'] = false;
