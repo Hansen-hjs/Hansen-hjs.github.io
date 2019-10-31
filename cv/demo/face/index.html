@@ -31,9 +31,10 @@
         .swiper .swiper_pagination{ position: absolute; width: 100%; height: 10px; bottom: 14px; left: 0; text-align: center; }
         .swiper .swiper_dot{ display: inline-block; margin-left: 8px; width: 8px; height: 8px; background-color: rgba(0,0,0,0.4); border-radius: 50%; }
         .swiper .swiper_dot_active{ background-color: tomato; }
-        .page{ width: 100%; max-width: 680px; margin: 0 auto; padding: 10px; }
+        .page{ width: 100%; max-width: 680px; margin: 0 auto; padding: 10px; overflow: hidden; }
         .page .title{ font-size: 22px; font-weight: normal; color: tomato; line-height: 48px; text-align: center; }
-        .page .main{ display: block; width: 320px; height: 320px; margin: 0 auto 16px; border: dashed 1px #999; }
+        .page .main-box{ position: fixed; top: -1000px; left: -1000px; }
+        .page .main-img{ width: 320px; height: 320px; margin: 0 auto 16px; border: dashed 1px #999; }
         .page .text-box{ -webkit-appearance: none; background-color: #fff; background-image: none; border-radius: 4px; border: 1px solid #dcdfe6; box-sizing: border-box; color: #606266; display: inline-block; font-size: inherit; height: 40px; line-height: 40px; outline: none; padding: 0 15px; transition: border-color .2s cubic-bezier(.645,.045,.355,1); width: 100%;  font-size: 15px; margin-bottom: 22px;}
         .page .btn{ display: inline-block; line-height: 1; white-space: nowrap; cursor: pointer; background: #fff; border: 1px solid #dcdfe6; color: #606266; -webkit-appearance: none; text-align: center; box-sizing: border-box; outline: none; margin: 0; transition: .1s; font-weight: 500; -webkit-user-select: none; padding: 12px 20px; font-size: 14px; border-radius: 4px; }
         .page .btn:active{ opacity: 0.8; }
@@ -65,8 +66,9 @@
         <div style="margin-bottom: 16px; text-align: center;">
             <button class="btn blue-btn" the-click="create">点击生成</button>
         </div>
-        <canvas class="main"></canvas>
-        <div style="margin-bottom: 16px; text-align: center;">
+        <canvas class="main-box"></canvas>
+        <img class="main-img" src="" alt="" crossOrigin="anonymous">
+        <div style="margin-bottom: 16px; text-align: center;" the-save>
             <button class="btn green-btn" the-click="download">点击下载</button>
         </div>
     </div>
@@ -86,6 +88,6 @@
             <div class="load-tip">资源加载中</div>
         </div>
     </div>
-    <script src="./js/face.min.js"></script>
+    <script src="./js/face.js"></script>
 </body>
 </html>
