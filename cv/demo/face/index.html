@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>表情包</title>
+    <style>
+        *{ padding: 0; margin: 0; }
+        body{ 
+            background-color: #fff;
+            color: #333;
+            /* 禁用系统长按菜单 */
+            -webkit-touch-callout: none; 
+            /* 禁用字体大小自动调整 */
+            -webkit-text-size-adjust: none !important;
+            /* 去掉点击高亮 */
+            -webkit-tap-highlight-color: transparent;
+            font-family: "Helvetica Neue", Helvetica, sans-serif; 
+        }
+        div{ box-sizing: border-box; }
+        img{ display: block; width: 100%; }
+        .swiper{ width: 100%; position: relative; background-color: #eee; overflow: hidden; margin-bottom: 22px; cursor: move; }
+        .swiper .swiper_list{ overflow: hidden; position: relative; width: 100%; -webkit-transition: 0s all; transition: 0s all; }
+        .swiper .swiper_item{ float: left; width: 100%; text-align: center; color: #fff; }
+        .swiper img{ width: 100%; }
+        .swiper .swiper_pagination{ position: absolute; width: 100%; height: 10px; bottom: 14px; left: 0; text-align: center; }
+        .swiper .swiper_dot{ display: inline-block; margin-left: 8px; width: 8px; height: 8px; background-color: rgba(0,0,0,0.4); border-radius: 50%; }
+        .swiper .swiper_dot_active{ background-color: tomato; }
+        .page{ width: 100%; max-width: 680px; margin: 0 auto; padding: 10px; }
+        .page .title{ font-size: 22px; font-weight: normal; color: tomato; line-height: 48px; text-align: center; }
+        .page .main{ display: block; width: 320px; height: 320px; margin: 0 auto 16px; border: dashed 1px #999; }
+        .page .text-box{ -webkit-appearance: none; background-color: #fff; background-image: none; border-radius: 4px; border: 1px solid #dcdfe6; box-sizing: border-box; color: #606266; display: inline-block; font-size: inherit; height: 40px; line-height: 40px; outline: none; padding: 0 15px; transition: border-color .2s cubic-bezier(.645,.045,.355,1); width: 100%;  font-size: 15px; margin-bottom: 22px;}
+        .page .btn{ display: inline-block; line-height: 1; white-space: nowrap; cursor: pointer; background: #fff; border: 1px solid #dcdfe6; color: #606266; -webkit-appearance: none; text-align: center; box-sizing: border-box; outline: none; margin: 0; transition: .1s; font-weight: 500; -webkit-user-select: none; padding: 12px 20px; font-size: 14px; border-radius: 4px; }
+        .page .btn:active{ opacity: 0.8; }
+        .page .blue-btn{ color: #fff; background-color: #409eff; border-color: #409eff; }
+        .page .green-btn{ color: #fff; background-color: #67c23a; border-color: #67c23a; }
+        .page .text-box:focus{ border-color: #409eff; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h2 class="title">左右切换表情模板</h2>
+        <div class="swiper">
+            <div class="swiper_list">
+                <div class="swiper_item">
+                    <img src="./images/t0.png" alt="">
+                </div>
+                <div class="swiper_item">
+                    <img src="./images/t1.png" alt="">
+                </div>
+                <div class="swiper_item">
+                    <img src="./images/t2.png" alt="">
+                </div>
+            </div>
+        </div>
+        <input class="text-box" type="text" placeholder="输入图片文字">
+        <div style="margin-bottom: 16px; text-align: center;">
+            <button class="btn blue-btn" the-click="create">点击生成</button>
+        </div>
+        <canvas class="main"></canvas>
+        <div style="margin-bottom: 16px; text-align: center;">
+            <button class="btn green-btn" the-click="download">点击下载</button>
+        </div>
+    </div>
+    <script src="./js/face.min.js"></script>
+</body>
+</html>
