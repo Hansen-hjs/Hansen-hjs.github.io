@@ -2,7 +2,7 @@
 html, body{ background-color: #fafafa; }
 body{ width: 100%; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; padding: 8px 0; }
 img{ display: block; width: 100%; }
-a{ text-decoration: none; }
+a{ text-decoration: none; color: inherit; background-color: transparent; }
 div{ box-sizing: border-box; }
 h1,h2,h3,h4,h5,h6{ font-weight: normal; font-style: normal; }
 .hide{ display: none !important; }
